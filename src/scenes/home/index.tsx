@@ -1,13 +1,6 @@
 import useMediaQuery from "@/hooks/useMediaQuery"
 import { SelectedPage } from "@/shared/types"
-import ActionButton from "@/shared/ActionButton"
-import HomePageText from "@/assets/ofma-logo.png"
-// import HomePageGraphic from "@/assets/HomePageGraphic.png"
-import SponsorRedBull from "@/assets/SponsorRedBull.png"
-import SponsorForbes from "@/assets/SponsorForbes.png"
-import SponsorFortune from "@/assets/SponsorFortune.png"
-import AnchorLink from "react-anchor-link-smooth-scroll"
-import { motion } from "framer-motion"
+import legPress from "@/assets/leg press.jpg"
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void
@@ -17,89 +10,66 @@ const Home = ({ setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)")
 
   return (
-    <section
-      id="home"
-      className="gap-16 bg-gray-20 dark:bg-gray-20-dark py-10 md:h-full md:pb-0"
-    >
-      {/* IMAGE AND MAIN HEADER */}
-      <motion.div
-        className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
-      >
-        {/* MAIN HEADER */}
-        <div className="z-10 mt-32 md:basis-3/5">
-          {/* HEADINGS */}
-          <motion.div
-            className="md:-mt-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5 }}
-            variants={{
-              hidden: { opacity: 0, x: -50 },
-              visible: { opacity: 1, x: 0 },
-            }}
-          >
-            <div className="relative">
-              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-ofmabg">
-                <img alt="home-page-text" src={HomePageText} />
-              </div>
+    <section id="home" className="bg-black py-[4rem] h-full pb-0">
+      <div className="h-full flex justify-center items center">
+        {isAboveMediumScreens ? (
+          <div className="flex w-5/6 h-full m-auto justify-between items-center">
+            <div className="">
+              <p className="logo text-[1.8rem] text-lime font-rocksalt">
+                Unleash your potential at
+              </p>
+              <p className="logo text-[4rem] font-dmsans font-bold">
+                Ohio Fitness
+              </p>
+              <p className="logo text-[4rem] font-dmsans font-bold">
+                & Martial Arts
+              </p>
+              <div className="bg-lime h-[1px] w-600px mt-5 mb-10 max-w-[25rem]"></div>
+              <p className="max-w-[25rem] mr-5">
+                Step into Ohio Fitness & Martial Arts - the best gym in the
+                area. Gear up for success with a state-of-the-art facility and
+                an amazing community. Members can access the gym around the
+                clock--24 hours a day, 7 days a week--so join us and be your
+                best!
+              </p>
+              <button className="bg-lime rounded-sm px-4 py-1 text-black font-dmsans font-bold text-[1.2rem] mt-10">
+                Join Now!
+              </button>
             </div>
-
-            <p className="mt-8 text-sm">
-              This is the best fucking gym in the area. Get jacked by lifting
-              weights, get toned by using the cardio equipment, and get lethal
-              by training MMA and BJJ with some of the best coaches in the
-              world. Stop in today!
+            {/* <div className="max-h-[40rem] flex justify-center"></div> */}
+            <img
+              src={legPress}
+              alt=""
+              className="max-h-[30rem] object-cover border-2 border-lime rounded-lg ml-auto"
+            />
+          </div>
+        ) : (
+          <div className="w-5/6 flex flex-col items-center">
+            <p className="logo text-[1.2rem] text-lime font-rocksalt mt-8">
+              Unleash your potential at
             </p>
-          </motion.div>
+            <p className="logo text-[3rem] font-dmsans font-bold">
+              Ohio Fitness
+            </p>
+            <p className="logo text-[3rem] font-dmsans font-bold">
+              & Martial Arts
+            </p>
+            <div className="bg-lime h-[1px] w-5/6 mt-5 mb-10"></div>
 
-          {/* ACTIONS */}
-          <motion.div
-            className="mt-8 flex items-center gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            variants={{
-              hidden: { opacity: 0, x: -50 },
-              visible: { opacity: 1, x: 0 },
-            }}
-          >
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Join Now
-            </ActionButton>
-            <AnchorLink
-              className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
-              onClick={() => setSelectedPage(SelectedPage.ContactUs)}
-              href={`#${SelectedPage.ContactUs}`}
-            >
-              <p>Learn More</p>
-            </AnchorLink>
-          </motion.div>
-        </div>
-
-        {/* IMAGE */}
-        {/* <div
-          className="flex basis-3/5 justify-center md:z-10
-              md:ml-40 md:mt-16 md:justify-items-end"
-        >
-          <img alt="home-pageGraphic" src={HomePageGraphic} />
-        </div> */}
-      </motion.div>
-
-      {/* SPONSORS */}
-      {/* {isAboveMediumScreens && (
-        <div className="h-[150px] w-full bg-primary-100 py-10">
-          <div className="mx-auto w-5/6">
-            <div className="flex w-3/5 items-center justify-between gap-8">
-              <img alt="redbull-sponsor" src={SponsorRedBull} />
-              <img alt="forbes-sponsor" src={SponsorForbes} />
-              <img alt="fortune-sponsor" src={SponsorFortune} />
+            <p className="text-[1.2rem]">
+              Step into Ohio Fitness & Martial Arts - the best gym in the area.
+              Gear up for success with a state-of-the-art facility and an
+              amazing community. Members can access the gym around the clock--24
+              hours a day, 7 days a week--so join us and be your best!
+            </p>
+            <div>
+              <button className="bg-lime rounded-sm px-4 py-1 text-black font-dmsans font-bold text-[1.4rem] mt-10">
+                Join Now!
+              </button>
             </div>
           </div>
-        </div>
-      )} */}
+        )}
+      </div>
     </section>
   )
 }

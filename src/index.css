@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,6 +12,43 @@ body,
   height: 100%;
   width: 100%;
   font-family: "DM Sans", sans-serif;
-  @apply text-gray-500;
+  background-color: black;
+  @apply text-white;
   @apply transition duration-500 ease-in-out;
+}
+
+/* LANDING PAGE STYLING */
+#home {
+  background-image: url(./assets/bg-landing-beta.png);
+  background-size: cover;
+  background-position: center;
+}
+.logo,
+.scene-title {
+  text-shadow: 4px 4px 4px black;
+}
+
+/* FITNESS PAGE STYLING */
+#fitness {
+  background-image: url(./assets/bg-fitness.png);
+  background-size: cover;
+  background-position: center;
+}
+
+/* CONTACT US PAGE STYLING  */
+#contactus {
+  background-image: url(./assets/contact-image.png);
+  background-size: cover;
+  background-position: center;
+}
+
+/* FITNESS DROPDOWN STYLING */
+.dropdown-button {
+  border: solid 0.5px transparent;
+  border-radius: 5px;
+}
+
+.dropdown-button:hover {
+  border: solid 0.5px #33fe12;
+  border-radius: 5px;
 }

@@ -5,6 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        lime: "#33FE12",
+        charcoal: "#323232",
+        grayish: "#EEEEEE",
         "gray-20": "#F8F4EB",
         "gray-50": "#EFE6E6",
         "gray-100": "#DFCCCC",
@@ -33,6 +36,7 @@ module.exports = {
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        rocksalt: ["Rock Salt", "cursive"],
       },
       content: {
         evotext: "url('./assets/EvolveText.png')",
