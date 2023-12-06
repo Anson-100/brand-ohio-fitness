@@ -57,7 +57,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
             <div className="col-span-7 flex flex-col my-2">
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
-                  className={`${isWeightsOpen ? "col-span-5" : "col-span-5"}`}
+                  className={`${isWeightsOpen ? "col-span-7" : "col-span-5"}`}
                 >
                   <button
                     className="flex items-center cursor-pointer"
@@ -68,12 +68,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
                       Weights
                     </p>
                   </button>
-                  <div
-                    className={`bg-lime h-[1px] mt-3 mb-5 transition-all duration-100 ${
-                      isWeightsOpen ? "w-1/3" : "w-full"
-                    }`}
-                  ></div>
-
+                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
                   {isWeightsOpen ? (
                     ""
                   ) : (
@@ -83,9 +78,20 @@ const Benefits = ({ setSelectedPage }: Props) => {
                     </p>
                   )}
                 </div>
-                <div
-                  className={`col-span-2 transform transition-transform duration-100 ${
-                    isWeightsOpen ? "scale-0 h-0" : "scale-100"
+                {isWeightsOpen ? (
+                  ""
+                ) : (
+                  <div className="col-span-2">
+                    <img
+                      className="object-cover border-[1px] border-lime rounded-md"
+                      src={weightsImg}
+                      alt="Weights"
+                    />
+                  </div>
+                )}
+                {/* <div
+                  className={`col-span-2 transform transition-transform duration-200 ${
+                    isWeightsOpen ? "scale-0" : "scale-100"
                   }`}
                 >
                   <img
@@ -93,7 +99,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
                     src={weightsImg}
                     alt="Weights"
                   />
-                </div>
+                </div> */}
               </div>
               <Dropdown
                 section="weights"

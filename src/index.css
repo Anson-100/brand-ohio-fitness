@@ -30,9 +30,9 @@ body,
 
 /* FITNESS PAGE STYLING */
 #fitness {
-  background-image: url(./assets/bg-fitness.png);
+  /* background-image: url(./assets/bg-fitness.png);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
 }
 
 /* CONTACT US PAGE STYLING  */
@@ -51,4 +51,8 @@ body,
 .dropdown-button:hover {
   border: solid 0.5px #33fe12;
   border-radius: 5px;
+}
+
+.dropdown-section {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }

@@ -42,51 +42,68 @@ const ContactUs = ({ setSelectedPage }: Props) => {
       <div className="h-full w-5/6 mx-auto">
         {/* HEADER AND INTRO DIV */}
         {isAboveMediumScreens ? (
-          <div className="flex">
-            <div className="flex-1 my-auto">
-              <p className="logo text-[1.5rem] text-lime font-rocksalt">
+          <div className="flex flex-col h-full items-center">
+            <div>
+              <p className="logo text-[1.5rem] text-lime font-rocksalt text-center">
                 hurry up and
               </p>
-              <p className="scene-title text-[3.5rem] font-bold">Contact Us</p>
-              <div className="h-[1px] bg-lime mt-5 mb-10 w-1/2"></div>
-              <p className="w-2/3">
-                Stop by or call anytime during staffed hours or hit us up on
-                facebook. We look forward to hearing from you!
+              <p className="scene-title text-[3.5rem] font-bold text-center">
+                Contact Us
               </p>
-              <img
-                src={contactImage}
-                alt=""
-                className="h-[250px] border-[1px] border-lime rounded-md mt-5"
-              />
+              <div className="h-[1px] bg-lime mt-5 mb-10"></div>
+            </div>
+
+            <div className="w-full flex gap-4">
+              <div className="flex-1 flex flex-col">
+                <p className="text-center mb-10">
+                  Stop by or call anytime during staffed hours or hit us up on
+                  facebook. We look forward to hearing from you!
+                </p>
+                {/* <div className="flex items-center justify-center">
+                  <img src={contactImage} alt="" className="max-h-[40vh]" />
+                </div> */}
+              </div>
+
+              <div className="grid grid-rows-3 flex-1 rounded-lg gap-4 mx-auto">
+                {" "}
+                <div className="rounded-md bg-grayish">
+                  <p className="text-[1.5] font-bold text-center bg-charcoal rounded-t-md">
+                    Staffed Hours
+                  </p>
+
+                  <p className="font-bold text-[1.1rem] text-black text-center">
+                    Monday, Wednesday, Friday
+                  </p>
+                  <div>
+                    <p className="text-center text-black">Morning: 8am-12pm</p>
+                    <p className="text-center text-black">
+                      Evening: 4pm-8:30pm
+                    </p>
+                  </div>
+                </div>{" "}
+                <div className="rounded-md bg-grayish">
+                  <p className="text-[1.5] font-bold text-center bg-charcoal rounded-t-md">
+                    Contact Info
+                  </p>
+                  <div className="text-center text-black">
+                    {" "}
+                    <p>(937) 599-5425</p>
+                    <p>message us on</p>
+                  </div>
+                </div>
+                <div className="rounded-md bg-grayish">
+                  <p className="text-[1.5] font-bold text-center bg-charcoal rounded-t-md">
+                    Location
+                  </p>
+                  <div className="text-center text-black">
+                    <p>304 E Lake Avenue</p>
+                    <p>Bellefontaine, OH 43311</p>
+                    <p>(behind TP Lanes)</p>
+                  </div>
+                </div>
+              </div>
             </div>
             {/* HOURS AND LOCATION DIV */}
-            <div className="flex-1 my-auto">
-              <div className="mb-5">
-                <p className="scene-title text-[2rem] font-bold">
-                  Staffed Hours
-                </p>
-                <div className="h-[1px] bg-lime w-[220px] mt-3 mb-5"></div>
-                <p className="font-bold text-[1.1rem]">
-                  Monday, Wednesday, Friday
-                </p>
-                <p className="ml-3">Morning: 8am-12pm</p>
-                <p className="ml-3">Evening: 4pm-8:30pm</p>
-              </div>
-              <div>
-                <p className="scene-title text-[2rem] font-bold">
-                  Location/Contact Info
-                </p>
-                <div className="h-[1px] w-[340px] bg-lime mt-3 mb-5"></div>
-
-                <p>304 E Lake Avenue</p>
-                <p>Bellefontaine, OH 43311</p>
-                <p>(behind TP Lanes)</p>
-                <br />
-                <p>(937) 599-5425</p>
-                <br />
-                <p>message us on</p>
-              </div>
-            </div>
           </div>
         ) : (
           <div className="flex flex-col items-center h-full">
