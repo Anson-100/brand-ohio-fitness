@@ -20,7 +20,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between"
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
-  const navbarBackground = isTopOfPage ? "" : "bg-black drop-shadow"
+  const navbarBackground = isTopOfPage
+    ? ""
+    : "bg-black drop-shadow dark:bg-charcoal"
   const [darkMode, setDarkMode] = useState(false)
 
   const toggleDarkMode = () => {
@@ -42,12 +44,14 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
             {/* <img alt="logo" src={Logo} /> */}
-            <p className="text-lime text-bold">Ohio Fitness & Martial Arts</p>
+            <p className="text-lime text-bold text-md">
+              Ohio Fitness & Martial Arts
+            </p>
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} gap-8`}>
-                <div className={`${flexBetween} gap-8 text-sm`}>
+                <div className={`${flexBetween} gap-8 text-md`}>
                   <button onClick={toggleDarkMode}>
                     {darkMode ? (
                       <SunIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
@@ -100,12 +104,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div
-          className={`fixed right-0 top-[72px] z-40 h-auto w-2/3 bg-black drop-shadow-xl bg-opacity-90 py-8 rounded-bl-md transform transition-all duration-[400ms] ${
-            isMenuToggled ? "translate-y-full" : "translate-y-0"
+          className={`fixed mt-[70px] top-0 right-0 w-3/4 z-40 bg-black drop-shadow-xl bg-opacity-90 py-8 rounded-bl-md transition-all duration-300 border-lime border-b-[1px] border-l-[1px]  ${
+            isMenuToggled ? "h-auto" : "h-0"
           }`}
         >
           {/* MENU ITEMS */}
-          <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+          <div className="flex flex-col items-center gap-10 text-2xl">
             <Link
               page="Home"
               selectedPage={selectedPage}

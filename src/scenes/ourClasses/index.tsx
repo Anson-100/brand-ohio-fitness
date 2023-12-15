@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
+import DropdownMobile from "@/components/DropdownMobile"
 
 import {
   ChevronDoubleRightIcon,
@@ -27,6 +28,10 @@ const OurClasses = ({ setSelectedPage }: Props) => {
   const [isAdultMMAOpen, setAdultMMAOpen] = useState(false)
   const [isBJJOpen, setBJJOpen] = useState(false)
 
+  const [isKidsClassMobileOpen, setKidsClassMobileOpen] = useState(false)
+  const [isAdultMMAMobileOpen, setAdultMMAMobileOpen] = useState(false)
+  const [isBJJMobileOpen, setBJJMobileOpen] = useState(false)
+
   return (
     <section
       id="martialarts"
@@ -40,7 +45,7 @@ const OurClasses = ({ setSelectedPage }: Props) => {
               <p className="logo text-[1.5rem] text-lime font-rocksalt">
                 explore
               </p>
-              <p className="scene-title text-[3.5rem] font-bold">
+              <p className="scene-title lg:text-[3.5rem] text-[3rem]  font-bold">
                 Martial Arts
               </p>
               <div className="bg-lime h-[1px] max-w-[300px] mt-5 mb-10"></div>
@@ -173,45 +178,79 @@ const OurClasses = ({ setSelectedPage }: Props) => {
         ) : (
           <div>
             <p className="font-rocksalt text-center text-lime text-[1.3rem]">
-              discover
+              Explore
             </p>
             <p className="scene-title text-center font-bold text-[2.5rem]">
-              Fitness
+              Martial Arts
             </p>
-            <div className="h-[1px] w-4/6 bg-lime mx-auto mt-3 mb-7"></div>
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
+            <div className="h-[1px] w-4/6 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
+            <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
                   {" "}
-                  <p className="text-[1.5rem] font-bold text-center">Weights</p>
-                </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">Build muscle and strength!</p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />
-              </div>
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
-                  {" "}
-                  <p className="text-[1.5rem] font-bold text-center">Cardio</p>
-                </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">
-                  Build endurance and tone up!
-                </p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />{" "}
-              </div>
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
-                  {" "}
-                  <p className="text-[1.5rem] font-bold text-center">
-                    CrossFit
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
+                    Kids Martial Arts
                   </p>
                 </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">
-                  Satisfy your need for intensity!
-                </p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />{" "}
+
+                <p className="text-center mt-2">Build muscle and strength!</p>
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setKidsClassMobileOpen(!isKidsClassMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="kids-class-mobile"
+                  isOpen={isKidsClassMobileOpen}
+                  toggleDropdown={() =>
+                    setKidsClassMobileOpen(!isKidsClassMobileOpen)
+                  }
+                />
+              </div>
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
+                  {" "}
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
+                    Adult MMA
+                  </p>
+                </div>
+
+                <p className="text-center mt-2">Build muscle and strength!</p>
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setAdultMMAMobileOpen(!isAdultMMAMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="adult-mma-mobile"
+                  isOpen={isAdultMMAMobileOpen}
+                  toggleDropdown={() =>
+                    setAdultMMAMobileOpen(!isAdultMMAMobileOpen)
+                  }
+                />
+              </div>
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
+                  {" "}
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
+                    Brazilian Jiu-Jitsu
+                  </p>
+                </div>
+
+                <p className="text-center mt-2">Build muscle and strength!</p>
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setBJJMobileOpen(!isBJJMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="bjj-mobile"
+                  isOpen={isBJJMobileOpen}
+                  toggleDropdown={() => setBJJMobileOpen(!isBJJMobileOpen)}
+                />
               </div>
             </div>
           </div>

@@ -9,6 +9,7 @@ import Benefit from "./Benefit"
 import { useState } from "react"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
+import DropdownMobile from "@/components/DropdownMobile"
 
 import {
   ChevronDoubleRightIcon,
@@ -30,6 +31,10 @@ const Benefits = ({ setSelectedPage }: Props) => {
   const [isCardioOpen, setCardioOpen] = useState(false)
   const [isCrossFitOpen, setCrossFitOpen] = useState(false)
 
+  const [isWeightsMobileOpen, setWeightsMobileOpen] = useState(false)
+  const [isCardioMobileOpen, setCardioMobileOpen] = useState(false)
+  const [isCrossFitMobileOpen, setCrossFitMobileOpen] = useState(false)
+
   return (
     <section
       id="fitness"
@@ -37,13 +42,15 @@ const Benefits = ({ setSelectedPage }: Props) => {
     >
       <div className="h-full w-5/6 mx-auto">
         {isAboveMediumScreens ? (
-          <div className="grid grid-cols-10  mt-5">
+          <div className="grid grid-cols-10 w-full">
             {/* HEADER */}
             <div className="col-span-3 mt-[10vh]">
               <p className="logo text-[1.5rem] text-lime font-rocksalt">
                 discover
               </p>
-              <p className="scene-title text-[3.5rem] font-bold">Fitness</p>
+              <p className="scene-title lg:text-[3.5rem] text-[3rem]  font-bold">
+                Fitness
+              </p>
               <div className="bg-lime h-[1px] max-w-[200px] mt-5 mb-10"></div>
 
               <p className="w-5/6">
@@ -175,40 +182,76 @@ const Benefits = ({ setSelectedPage }: Props) => {
             <p className="scene-title text-center font-bold text-[2.5rem]">
               Fitness
             </p>
-            <div className="h-[1px] w-4/6 bg-lime mx-auto mt-3 mb-7"></div>
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
+            <div className="h-[1px] w-2/3 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
+            <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
                   {" "}
-                  <p className="text-[1.5rem] font-bold text-center">Weights</p>
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
+                    Weights
+                  </p>
                 </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">Build muscle and strength!</p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />
+                <p className="text-center mt-2">Build muscle and strength!</p>{" "}
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setWeightsMobileOpen(!isWeightsMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="weights-mobile"
+                  isOpen={isWeightsMobileOpen}
+                  toggleDropdown={() =>
+                    setWeightsMobileOpen(!isWeightsMobileOpen)
+                  }
+                />
               </div>
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
+
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
                   {" "}
-                  <p className="text-[1.5rem] font-bold text-center">Cardio</p>
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
+                    Cardio
+                  </p>
                 </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">
-                  Build endurance and tone up!
-                </p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />{" "}
+
+                <p className="text-center mt-2">Build muscle and strength!</p>
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setCardioMobileOpen(!isCardioMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="cardio-mobile"
+                  isOpen={isCardioMobileOpen}
+                  toggleDropdown={() =>
+                    setCardioMobileOpen(!isCardioMobileOpen)
+                  }
+                />
               </div>
-              <div className="flex flex-col items-center border-[1px] border-lime bg-black rounded-md">
-                <div className="flex items-center pt-3">
+              <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
+                <div className="flex items-center">
                   {" "}
-                  <p className="text-[1.5rem] font-bold text-center">
+                  <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
                     CrossFit
                   </p>
                 </div>
-                <div className="h-[1px] w-1/2 bg-lime mx-auto mt-1 mb-2"></div>
-                <p className="text-center w-5/6">
-                  Satisfy your need for intensity!
-                </p>
-                <ChevronDoubleDownIcon className="cursor-pointer h-[1.8rem] text-lime mb-1" />{" "}
+
+                <p className="text-center mt-2">Build muscle and strength!</p>
+                <button
+                  className="cursor-pointer mx-auto block"
+                  onClick={() => setCrossFitMobileOpen(!isCrossFitMobileOpen)}
+                >
+                  <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                </button>
+                <DropdownMobile
+                  section="crossfit-mobile"
+                  isOpen={isCrossFitMobileOpen}
+                  toggleDropdown={() =>
+                    setCrossFitMobileOpen(!isCrossFitMobileOpen)
+                  }
+                />
               </div>
             </div>
           </div>
