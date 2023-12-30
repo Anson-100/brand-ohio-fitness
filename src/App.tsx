@@ -1,7 +1,8 @@
 import Navbar from "@/scenes/navbar"
+import ContactBar from "@/scenes/contactbar"
 import Home from "@/scenes/home"
-import OurClasses from "@/scenes/ourClasses"
-import Benefits from "@/scenes/benefits"
+import MartialArts from "@/scenes/martialArts"
+import Fitness from "@/scenes/fitness"
 import ContactUs from "@/scenes/contactUs"
 import Footer from "@/scenes/footer"
 import { useEffect, useState } from "react"
@@ -12,6 +13,25 @@ function App() {
     SelectedPage.Home
   )
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true)
+  const [isFooterInView, setIsFooterInView] = useState<boolean>(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Select the footer element
+      const footer = document.querySelector("footer")
+      if (footer) {
+        const rect = footer.getBoundingClientRect()
+        // Check if the top of the footer is above the bottom of the viewport
+        setIsFooterInView(rect.top < window.innerHeight)
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll)
+
+    // Cleanup function
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +41,7 @@ function App() {
       }
       if (window.scrollY !== 0) setIsTopOfPage(false)
     }
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -33,9 +54,11 @@ function App() {
         setSelectedPage={setSelectedPage}
       />
       <Home setSelectedPage={setSelectedPage} />
-      <Benefits setSelectedPage={setSelectedPage} />
-      <OurClasses setSelectedPage={setSelectedPage} />
+      <Fitness setSelectedPage={setSelectedPage} />
+      <MartialArts setSelectedPage={setSelectedPage} />
       <ContactUs setSelectedPage={setSelectedPage} />
+      <ContactBar isTopOfPage={isTopOfPage} isFooterInView={isFooterInView} />
+      <div className="h-[5rem] bg-black w-full"></div>
       <Footer />
     </div>
   )

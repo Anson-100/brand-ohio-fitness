@@ -1,9 +1,6 @@
-import Logo from "@/assets/Logo.png"
-import facebookIcon from "@/assets/icon-fb.png"
-
 const Footer = () => {
   return (
-    <footer className="bg-grayish py-4 text-black">
+    <footer className="bg-grayish text-black pb-[4.5rem] py-4">
       <div className="w-full flex flex-col">
         <p className="text-center mb-3 font-bold">
           ©Ohio Fitness and Martial Arts All Rights Reserved.

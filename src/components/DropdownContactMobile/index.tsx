@@ -9,7 +9,7 @@ type DropdownProps = {
 const DropdownContactMobile: React.FC<DropdownProps> = ({
   section,
   isOpen,
-  toggleDropdown,
+  // toggleDropdown,
 }) => {
   let content
 
@@ -30,7 +30,9 @@ const DropdownContactMobile: React.FC<DropdownProps> = ({
         <div className="p-2">
           <div className="ml-2 text-[1.2rem]">
             {" "}
-            <p className="underline">(937) 599-5425</p>
+            <a className="underline" href="tel:+19375995425">
+              (937) 599-5425
+            </a>
           </div>
           <br />
           <div className="ml-2 text-[1.2rem]">
@@ -49,7 +51,7 @@ const DropdownContactMobile: React.FC<DropdownProps> = ({
     <div className="absolute z-30 w-[250px] left-1/2 transform -translate-x-1/2">
       {/* Content Container */}
       <div
-        className={` bg-black border-lime border-[1px] rounded-lg bg-opacity-90 transition-all duration-300 overflow-hidden ${
+        className={` bg-blue-100 text-black border-blue-500 border-b-[1px] border-x-[1px] rounded-b-lg bg-opacity-90 transition-all duration-100 overflow-hidden ${
           isOpen ? "h-[155px] opacity-100" : "h-0 opacity-0"
         }`}
       >

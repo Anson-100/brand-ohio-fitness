@@ -20,6 +20,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between"
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
+  const isAboveSmallMobileScreen = useMediaQuery("(min-width: 400px)")
   const navbarBackground = isTopOfPage
     ? ""
     : "bg-black drop-shadow dark:bg-charcoal"
@@ -44,9 +45,13 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
             {/* <img alt="logo" src={Logo} /> */}
-            <p className="text-lime text-bold text-md">
-              Ohio Fitness & Martial Arts
-            </p>
+            {isAboveSmallMobileScreen ? (
+              <p className="text-lime text-bold text-md">
+                Ohio Fitness & Martial Arts
+              </p>
+            ) : (
+              <p className="text-lime text-bold text-md">OF&MA</p>
+            )}
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (

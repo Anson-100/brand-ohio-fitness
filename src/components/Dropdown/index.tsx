@@ -1,7 +1,8 @@
 import React from "react"
 import weightsOne from "@/assets/weights1.jpg"
 import weightsTwo from "@/assets/weights2.jpg"
-import weightsThree from "@/assets/weights3.jpg"
+import weightsFive from "@/assets/weights5.jpg"
+
 import kidsOne from "@/assets/kids1.jpg"
 import kidsTwo from "@/assets/kids2.jpg"
 import kidsThree from "@/assets/kids3.jpg"
@@ -21,7 +22,7 @@ type DropdownProps = {
 const Dropdown: React.FC<DropdownProps> = ({
   section,
   isOpen,
-  toggleDropdown,
+  // toggleDropdown,
 }) => {
   let content
 
@@ -30,18 +31,18 @@ const Dropdown: React.FC<DropdownProps> = ({
       content = (
         <div className="">
           <div className="flex max-h-[65vh] bg-grayish">
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2 rounded-lg">
+            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
               <div>
                 <p className="text-center font-bold text-[1.2rem] p-1">
-                  Free Weights
+                  Weight Machines
                 </p>
                 <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
+                <p className="text-center p-2">
+                  Whether you are doing squats, bench press, or anything in
+                  between, we've got you covered!
+                </p>
               </div>
-              <img src={weightsThree} alt="" />
-              <p className="text-center p-2">
-                Barbells and dumbells galore! Whether it's leg day, chest day,
-                or anything in between, we've got you covered!
-              </p>
+              <img src={weightsFive} alt="" />
             </div>
             <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
               <div>
@@ -76,17 +77,47 @@ const Dropdown: React.FC<DropdownProps> = ({
     case "cardio":
       content = (
         <div>
-          Cardio Content <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
+          <div className="flex max-h-[65vh] bg-grayish">
+            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
+              <div>
+                <p className="text-center font-bold text-[1.2rem] p-1">
+                  Weight Machines
+                </p>
+                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
+                <p className="text-center p-2">
+                  Whether you are doing squats, bench press, or anything in
+                  between, we've got you covered!
+                </p>
+              </div>
+              <img src={weightsFive} alt="" />
+            </div>
+            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
+              <div>
+                <p className="text-center font-bold text-[1.2rem] p-1">
+                  Weight Machines
+                </p>
+                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
+                <p className="text-center p-2">
+                  Some of the best weight machines you will find anywhere
+                  including a brand new Rogue belt squat machine!
+                </p>
+              </div>
+              <img src={weightsTwo} alt="" />
+            </div>
+            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
+              <div>
+                <p className="text-center font-bold text-[1.2rem] p-1">
+                  Cable Machines
+                </p>
+                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
+                <p className="text-center p-2">
+                  Get creative with our great selection of cable machines!
+                  Everything you need to expand your workout routine!
+                </p>
+              </div>
+              <img src={weightsOne} alt="" />
+            </div>
+          </div>
         </div>
       )
       break
