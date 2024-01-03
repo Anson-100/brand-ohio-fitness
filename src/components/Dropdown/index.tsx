@@ -1,11 +1,24 @@
 import React from "react"
+import CardContainer from "../CardContainer"
+
 import weightsOne from "@/assets/weights1.jpg"
 import weightsTwo from "@/assets/weights2.jpg"
-import weightsFive from "@/assets/weights5.jpg"
+import weightsThree from "@/assets/weights3.jpg"
+// import weightsFive from "@/assets/weights5.jpg"
+import cardioOne from "@/assets/cardio 1.jpg"
+import crossfitOne from "@/assets/crossfit1.jpg"
+import crossfitTwo from "@/assets/crossfit2.jpg"
+import crossfitThree from "@/assets/crossfit3.jpg"
 
 import kidsOne from "@/assets/kids1.jpg"
 import kidsTwo from "@/assets/kids2.jpg"
 import kidsThree from "@/assets/kids3.jpg"
+import mmaTwo from "@/assets/mma2.jpg"
+import mmaThree from "@/assets/mma3.jpg"
+import mmaFour from "@/assets/mma4.jpg"
+import bjjOne from "@/assets/bjj1.jpg"
+import bjjTwo from "@/assets/bjj2.jpg"
+import bjjThree from "@/assets/bjj3.jpg"
 
 type DropdownProps = {
   section:
@@ -29,193 +42,175 @@ const Dropdown: React.FC<DropdownProps> = ({
   switch (section) {
     case "weights":
       content = (
-        <div className="">
-          <div className="flex max-h-[65vh] bg-grayish">
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Weight Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Whether you are doing squats, bench press, or anything in
-                  between, we've got you covered!
-                </p>
-              </div>
-              <img src={weightsFive} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Weight Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Some of the best weight machines you will find anywhere
-                  including a brand new Rogue belt squat machine!
-                </p>
-              </div>
-              <img src={weightsTwo} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Cable Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Get creative with our great selection of cable machines!
-                  Everything you need to expand your workout routine!
-                </p>
-              </div>
-              <img src={weightsOne} alt="" />
-            </div>
-          </div>
+        <div>
+          <CardContainer
+            cards={[
+              {
+                image: weightsOne,
+                alt: "Weights One",
+                title: "Cable Machines",
+                description:
+                  "Everything you need to expand your workout routine!",
+              },
+              {
+                image: weightsTwo,
+                alt: "Weights Two",
+                title: "Weight Machines",
+                description:
+                  "The latest and greatest such as this Rogue belt-squat machine!",
+              },
+              {
+                image: weightsThree,
+                alt: "Weights Three",
+                title: "Free Weights",
+                description: "Dumbells and barbells galore!",
+              },
+            ]}
+          />
         </div>
       )
       break
     case "cardio":
       content = (
         <div>
-          <div className="flex max-h-[65vh] bg-grayish">
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Weight Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Whether you are doing squats, bench press, or anything in
-                  between, we've got you covered!
-                </p>
-              </div>
-              <img src={weightsFive} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Weight Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Some of the best weight machines you will find anywhere
-                  including a brand new Rogue belt squat machine!
-                </p>
-              </div>
-              <img src={weightsTwo} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Cable Machines
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Get creative with our great selection of cable machines!
-                  Everything you need to expand your workout routine!
-                </p>
-              </div>
-              <img src={weightsOne} alt="" />
-            </div>
-          </div>
+          <CardContainer
+            cards={[
+              {
+                image: cardioOne,
+                alt: "Cardio One",
+                title: "Treadmills",
+                description: "Brand new treadmills!",
+              },
+              {
+                image: cardioOne,
+                alt: "Cardio Two",
+                title: "Elipticals",
+                description: "Brand new elipticals!",
+              },
+              {
+                image: cardioOne,
+                alt: "Cardio Three",
+                title: "Stairmasters and More",
+                description: "Plenty of options to get a sweat going your way!",
+              },
+            ]}
+          />
         </div>
       )
       break
     case "crossfit":
       content = (
         <div>
-          CrossFit Content
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
+          <CardContainer
+            cards={[
+              {
+                image: crossfitOne,
+                alt: "Crossfit One",
+                title: "Group Classes",
+                description: "Team up and push it to the limit!",
+              },
+              {
+                image: crossfitTwo,
+                alt: "Crossfit Two",
+                title: "Rowing Machines & Airdyne Bikes",
+                description: "Everything you need to crank up the intensity!",
+              },
+              {
+                image: crossfitThree,
+                alt: "Crossfit Three",
+                title: "Bumper Plates & Kettlebells",
+                description:
+                  "Power cleans, turkish getups, and everything else!",
+              },
+            ]}
+          />
         </div>
       )
       break
     case "kids-class":
       content = (
         <div className="">
-          <div className="flex max-h-[65vh] bg-grayish">
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Ages 4-15
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Kids of all ages and all skill levels will be enouraged and
-                  challenged by our program!
-                </p>
-              </div>
-              <img src={kidsOne} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Self-Defense
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Our classes are designed to prepare kids for life and martial
-                  arts competition!
-                </p>
-              </div>
-              <img src={kidsTwo} alt="" />
-            </div>
-            <div className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2">
-              <div>
-                <p className="text-center font-bold text-[1.2rem] p-1">
-                  Confidence
-                </p>
-                <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
-                <p className="text-center p-2">
-                  Kids will learn to remain composed even when things get
-                  difficult!
-                </p>
-              </div>
-              <img src={kidsThree} alt="" />
-            </div>
-          </div>
+          <CardContainer
+            cards={[
+              {
+                image: kidsOne,
+                alt: "Kids One",
+                title: "Ages 4-15",
+                description: "All ages and all skill levels welcome!",
+              },
+              {
+                image: kidsTwo,
+                alt: "Kids One",
+                title: "Self-Defense",
+                description: "Prepare kids for life and competition!",
+              },
+              {
+                image: kidsThree,
+                alt: "Kids One",
+                title: "Confidence",
+                description: "Remain composed even when things get difficult!",
+              },
+            ]}
+          />
         </div>
       )
       break
     case "adult-mma":
       content = (
         <div>
-          adult mmaS Content
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
+          <CardContainer
+            cards={[
+              {
+                image: mmaTwo,
+                alt: "MMA One",
+                title: "Technique and Toughness",
+                description: "Skilled training partners to challenge you!",
+              },
+              {
+                image: mmaThree,
+                alt: "MMA One",
+                title: "Elite Coaching",
+                description:
+                  "Learn from Scott Sheeley, one of the world's best coaches!",
+              },
+              {
+                image: mmaFour,
+                alt: "MMA One",
+                title: "State-of-the-Art",
+                description:
+                  "Bags, over 2,000sq ft of mats, and a full-sized octagon!",
+              },
+            ]}
+          />
         </div>
       )
       break
     case "bjj":
       content = (
         <div>
-          bjj Content
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
-          <p>a;lsdkfj</p>
+          <CardContainer
+            cards={[
+              {
+                image: bjjThree,
+                alt: "BJJ Three",
+                title: "Fun",
+                description:
+                  "Stay fit and blow off some steam with the gentle art!",
+              },
+              {
+                image: bjjTwo,
+                alt: "BJJ Two",
+                title: "Competition Training",
+                description: "Stay sharp so you can dominate in competition!",
+              },
+              {
+                image: bjjOne,
+                alt: "BJJ One",
+                title: "Gi and No-Gi",
+                description: "Whichever you prefer, we've got you covered!",
+              },
+            ]}
+          />
         </div>
       )
       break
@@ -227,8 +222,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div>
       {/* Content Container */}
       <div
-        className={`transition-all duration-200 overflow-hidden ${
-          isOpen ? "h-[70vh] opacity-100" : "h-0 opacity-0"
+        className={`transition-opacity duration-500 overflow-hidden ${
+          isOpen ? "h-[65vh] opacity-100" : "h-0 opacity-0"
         }`}
       >
         {/* Content */}

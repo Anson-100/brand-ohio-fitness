@@ -84,6 +84,7 @@ const Fitness = ({}: Props) => {
             </div>
             {/* INFO */}
             <div className="col-span-7 flex flex-col my-2">
+              {/* DROPDOWN 1 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
                   className={`${isWeightsOpen ? "col-span-7" : "col-span-5"}`}
@@ -126,8 +127,7 @@ const Fitness = ({}: Props) => {
                       }}
                     >
                       <p className="w-2/3">
-                        Free weights, cable machines, and some of the latest and
-                        greatest in resistance training technology!
+                        Free weights, cable machines, and more!
                       </p>
                     </motion.div>
                   )}
@@ -160,8 +160,12 @@ const Fitness = ({}: Props) => {
                 isOpen={isWeightsOpen}
                 toggleDropdown={() => setWeightsOpen(!isWeightsOpen)}
               />
+
+              {/* DROPDOWN 2 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
-                <div className="col-span-5">
+                <div
+                  className={`${isCardioOpen ? "col-span-7" : "col-span-5"}`}
+                >
                   <motion.div
                     className=""
                     initial="hidden"
@@ -223,8 +227,12 @@ const Fitness = ({}: Props) => {
                 isOpen={isCardioOpen}
                 toggleDropdown={() => setCardioOpen(!isCardioOpen)}
               />
+
+              {/* DROPDOWN 3 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
-                <div className="col-span-5">
+                <div
+                  className={`${isCrossFitOpen ? "col-span-7" : "col-span-5"}`}
+                >
                   {" "}
                   <motion.div
                     className=""

@@ -78,7 +78,7 @@ const Home = ({ setSelectedPage }: Props) => {
                     onClick={() => setSelectedPage(SelectedPage.ContactUs)}
                     href={`#${SelectedPage.ContactUs}`}
                   >
-                    <p className="bg-lime rounded-md px-4 py-1 text-black font-dmsans font-bold text-[1.2rem] mt-5 hover:underline">
+                    <p className="bg-lime rounded-md px-4 py-1 text-black font-dmsans font-bold text-[1.2rem] mt-8 hover:underline">
                       Join Now!
                     </p>
                   </AnchorLink>

@@ -2,8 +2,8 @@ import { useState } from "react"
 import {
   Bars3Icon,
   XMarkIcon,
-  SunIcon,
-  MoonIcon,
+  // SunIcon,
+  // MoonIcon,
 } from "@heroicons/react/24/solid"
 import Link from "./Link"
 import { SelectedPage } from "@/shared/types"
@@ -24,17 +24,17 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const navbarBackground = isTopOfPage
     ? ""
     : "bg-black drop-shadow dark:bg-charcoal"
-  const [darkMode, setDarkMode] = useState(false)
+  // const [darkMode, setDarkMode] = useState(false)
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
+  // const toggleDarkMode = () => {
+  //   setDarkMode(!darkMode)
 
-    if (!darkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }
+  //   if (!darkMode) {
+  //     document.documentElement.classList.add("dark")
+  //   } else {
+  //     document.documentElement.classList.remove("dark")
+  //   }
+  // }
 
   return (
     <nav>
@@ -57,13 +57,13 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} gap-8`}>
                 <div className={`${flexBetween} gap-8 text-md`}>
-                  <button onClick={toggleDarkMode}>
+                  {/* <button onClick={toggleDarkMode}>
                     {darkMode ? (
                       <SunIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
                     ) : (
                       <MoonIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
                     )}
-                  </button>
+                  </button> */}
                   <Link
                     page="Home"
                     selectedPage={selectedPage}

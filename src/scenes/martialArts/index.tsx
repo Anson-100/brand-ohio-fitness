@@ -78,8 +78,10 @@ const MartialArts = ({}: Props) => {
                 </p>
               </motion.div>
             </div>
+
             {/* INFO */}
             <div className="col-span-7 flex flex-col my-2">
+              {/* DROPDOWN 1 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
                   className={`${isKidsClassOpen ? "col-span-7" : "col-span-5"}`}
@@ -101,7 +103,7 @@ const MartialArts = ({}: Props) => {
                     >
                       <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
                       <p className="scene-title text-[2rem] font-bold pr-1">
-                        Kids Martial Arts/Self-Defense
+                        Kids Martial Arts
                       </p>
                     </button>
                   </motion.div>
@@ -139,25 +141,17 @@ const MartialArts = ({}: Props) => {
                     />
                   </div>
                 )}
-                {/* <div
-                  className={`col-span-2 transform transition-transform duration-200 ${
-                    isKidsClassOpen ? "scale-0" : "scale-100"
-                  }`}
-                >
-                  <img
-                    className="object-cover border-[1px] border-lime rounded-md"
-                    src={weightsImg}
-                    alt="Weights"
-                  />
-                </div> */}
               </div>
               <Dropdown
                 section="kids-class"
                 isOpen={isKidsClassOpen}
                 toggleDropdown={() => setKidsClassOpen(!isKidsClassOpen)}
               />
+              {/* DROPDOWN 2 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
-                <div className="col-span-5">
+                <div
+                  className={`${isAdultMMAOpen ? "col-span-7" : "col-span-5"}`}
+                >
                   <motion.div
                     className=""
                     initial="hidden"
@@ -173,7 +167,7 @@ const MartialArts = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setAdultMMAOpen(!isAdultMMAOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                      <ChevronDoubleDownIcon className="h-[2rem] text-lime pr-1" />
                       <p className="scene-title text-[2rem] font-bold">
                         Adult MMA
                       </p>
@@ -192,19 +186,38 @@ const MartialArts = ({}: Props) => {
                       visible: { opacity: 1, x: 0 },
                     }}
                   >
-                    <p className="w-2/3">
-                      Hobbyists, amateurs, and professional fighters can train
-                      in a huge space and learn from legendary coach and
-                      competitor, Scott Sheeley!
-                    </p>
+                    {isAdultMMAOpen ? (
+                      ""
+                    ) : (
+                      <motion.div
+                        className=""
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ delay: 0.1, duration: 0.5 }}
+                        variants={{
+                          hidden: { opacity: 0, x: 50 },
+                          visible: { opacity: 1, x: 0 },
+                        }}
+                      >
+                        <p className="w-2/3">
+                          Hobbyists, amateurs, and professional fighters can
+                          train in a huge space and learn from the best!
+                        </p>
+                      </motion.div>
+                    )}
                   </motion.div>
                 </div>
                 <div className="col-span-2">
-                  <img
-                    className="object-cover border-[1px] border-lime rounded-md"
-                    src={mmaImg}
-                    alt="Adult-MMA"
-                  />
+                  {isAdultMMAOpen ? (
+                    ""
+                  ) : (
+                    <img
+                      className="object-cover border-[1px] border-lime rounded-md"
+                      src={mmaImg}
+                      alt="Adult-MMA"
+                    />
+                  )}
                 </div>
               </div>
               <Dropdown
@@ -212,8 +225,11 @@ const MartialArts = ({}: Props) => {
                 isOpen={isAdultMMAOpen}
                 toggleDropdown={() => setAdultMMAOpen(!isAdultMMAOpen)}
               />
+
+              {/* DROPDOWN 3 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
-                <div className="col-span-5">
+                <div className={`${isBJJOpen ? "col-span-7" : "col-span-5"}`}>
+                  {/* <div className="col-span-5"> */}
                   <motion.div
                     className=""
                     initial="hidden"
@@ -248,17 +264,37 @@ const MartialArts = ({}: Props) => {
                       visible: { opacity: 1, x: 0 },
                     }}
                   >
-                    <p className="w-2/3">
-                      Gi and no-gi classes offered multiple times per week!
-                    </p>
+                    {isBJJOpen ? (
+                      ""
+                    ) : (
+                      <motion.div
+                        className=""
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        variants={{
+                          hidden: { opacity: 0, x: 50 },
+                          visible: { opacity: 1, x: 0 },
+                        }}
+                      >
+                        <p className="w-2/3">
+                          Gi and no-gi classes offered multiple times per week!
+                        </p>
+                      </motion.div>
+                    )}
                   </motion.div>
                 </div>
                 <div className="col-span-2">
-                  <img
-                    className="object-cover border-[1px] border-lime rounded-md"
-                    src={bjjImg}
-                    alt="Crossfit"
-                  />
+                  {isBJJOpen ? (
+                    ""
+                  ) : (
+                    <img
+                      className="object-cover border-[1px] border-lime rounded-md"
+                      src={bjjImg}
+                      alt="Crossfit"
+                    />
+                  )}
                 </div>
               </div>
               <Dropdown

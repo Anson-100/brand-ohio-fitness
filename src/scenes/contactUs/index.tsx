@@ -24,6 +24,7 @@ const ContactUs = ({}: Props) => {
     "(min-height: 700px) and (min-width: 420px)"
   )
   const isAboveSmallWidth = useMediaQuery("(min-width:768px)")
+  const isNotShortScreen = useMediaQuery("(min-height:800px)")
 
   // const [isHoursOpen, setHoursOpen] = useState(false)
   // const [isLocationOpen, setLocationOpen] = useState(false)
@@ -69,7 +70,7 @@ const ContactUs = ({}: Props) => {
                       </p>
                     </motion.div>
 
-                    <div className="h-[1px] bg-lime mt-4 mb-8"></div>
+                    <div className="h-[1px] bg-lime mt-4 mb-8 w-full"></div>
                   </div>{" "}
                   <div className="mx-auto flex-1">
                     <motion.div
@@ -90,10 +91,10 @@ const ContactUs = ({}: Props) => {
                     </motion.div>
                   </div>{" "}
                   <div className="neon border-lime border-4 rounded-3xl py-2 w-5/6">
-                    <p className="twenty-four text-center font-bold text-[1.5rem]">
+                    <p className="twenty-four text-center font-bold text-[1.2rem] lg:text-[1.5rem]">
                       MEMBER ACCESS
                     </p>
-                    <p className="twenty-four font-rocksalt text-lime text-[3rem] text-center font-bold">
+                    <p className="twenty-four font-rocksalt text-lime text-[2rem] lg:text-[3rem] text-center font-bold">
                       24 / 7
                     </p>
                   </div>
@@ -263,12 +264,12 @@ const ContactUs = ({}: Props) => {
               }}
             >
               <p className="scene-title text-[2.5rem] font-bold">Contact Us</p>
+              <div className="h-[1px] bg-lime mt-3 mb-7 w-full"></div>
             </motion.div>
 
-            <div className="h-[1px] bg-lime mt-3 mb-7 w-2/3"></div>
             {isAboveSmallWidth ? (
               <motion.div
-                className=""
+                className="flex justify-center"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
@@ -278,7 +279,7 @@ const ContactUs = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="text-center text-lg w-2/3">
+                <p className="text-center text-lg w-2/3 mb-5">
                   Stop by or call anytime during staffed hours or hit us up on
                   facebook. We look forward to hearing from you!
                 </p>
@@ -287,11 +288,11 @@ const ContactUs = ({}: Props) => {
               ""
             )}
 
-            {isAboveSmallPhone ? (
+            {isAboveSmallPhone && isNotShortScreen ? (
               <img
                 src={contactImageMobile}
                 alt=""
-                className=" border-[1px] border-lime rounded-md my-5 w-2/3"
+                className=" border-[1px] border-lime rounded-md mb-5 w-2/3"
               />
             ) : (
               ""
