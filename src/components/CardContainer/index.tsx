@@ -31,7 +31,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
               <p className="text-center font-bold text-[1.2rem] p-1">
                 {card.title}
               </p>
-              <div className="h-[.4px] w-1/2 bg-lime mx-auto"></div>
+              <div className="h-[.4px] w-[40px] bg-lime mx-auto"></div>
               <p className="text-center p-2">{card.description}</p>
             </div>
           </div>

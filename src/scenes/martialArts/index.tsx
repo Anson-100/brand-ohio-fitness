@@ -1,16 +1,11 @@
-// import ActionButton from "@/shared/ActionButton"
-// import HText from "@/shared/HText"
 import { SelectedPage } from "@/shared/types"
-
 import { motion } from "framer-motion"
-
 import { useState } from "react"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid"
-
 import kidsClassImg from "@/assets/kids-class-img.jpg"
 import mmaImg from "@/assets/mma-img.jpg"
 import bjjImg from "@/assets/bjj-img.jpg"
@@ -70,11 +65,12 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="w-5/6">
-                  Embrace a world-class fitness experience here at Ohio Fitness
-                  & Martial Arts. Here you will find a comprehensive range of
-                  state-of-the art weightlifting and cardio equipment alongside
-                  a dedicated CrossFit zone for those who crave intensity. 24/7
+                <p className="w-4/6">
+                  Experience top-tier martial arts training at Ohio Fitness &
+                  Martial Arts. Our gym offers a unique mix: kids' classes for
+                  young martial artists, world-class adult MMA training, and
+                  Brazilian Jiu-Jitsu. Train with the best coaching, facilities
+                  and equipment, all under one roof!
                 </p>
               </motion.div>
             </div>
@@ -362,14 +358,14 @@ const MartialArts = ({}: Props) => {
                     </p>
                   </div>
 
-                  <p className="text-center mt-2">Build muscle and strength!</p>
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() =>
                       setKidsClassMobileOpen(!isKidsClassMobileOpen)
                     }
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">Skills for life!</p>
+                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
                   </button>
                   <DropdownMobile
                     section="kids-class-mobile"
@@ -399,12 +395,12 @@ const MartialArts = ({}: Props) => {
                     </p>
                   </div>
 
-                  <p className="text-center mt-2">Build muscle and strength!</p>
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() => setAdultMMAMobileOpen(!isAdultMMAMobileOpen)}
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">Elite training!</p>
+                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
                   </button>
                   <DropdownMobile
                     section="adult-mma-mobile"
@@ -434,12 +430,12 @@ const MartialArts = ({}: Props) => {
                     </p>
                   </div>
 
-                  <p className="text-center mt-2">Build muscle and strength!</p>
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() => setBJJMobileOpen(!isBJJMobileOpen)}
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">Gi and no-gi!</p>
+                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
                   </button>
                   <DropdownMobile
                     section="bjj-mobile"

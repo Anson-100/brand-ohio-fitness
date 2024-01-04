@@ -8,7 +8,6 @@ import {
 import Link from "./Link"
 import { SelectedPage } from "@/shared/types"
 import useMediaQuery from "@/hooks/useMediaQuery"
-// import ActionButton from "@/shared/ActionButton"
 
 type Props = {
   isTopOfPage: boolean
@@ -21,9 +20,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
   const isAboveSmallMobileScreen = useMediaQuery("(min-width: 400px)")
-  const navbarBackground = isTopOfPage
-    ? ""
-    : "bg-black drop-shadow dark:bg-charcoal"
+  const navbarBackground = isTopOfPage ? "" : "bg-black drop-shadow"
   // const [darkMode, setDarkMode] = useState(false)
 
   // const toggleDarkMode = () => {
@@ -84,9 +81,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-                  {/* <ActionButton setSelectedPage={setSelectedPage}>
-                    Contact Us
-                  </ActionButton> */}
                 </div>
               </div>
             ) : (
@@ -105,16 +99,15 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       </div>
-
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div
-          className={`fixed mt-[70px] top-0 right-0 w-3/4 z-40 bg-black drop-shadow-xl bg-opacity-90 py-8 rounded-bl-md transition-all duration-300 border-lime border-b-[1px] border-l-[1px]  ${
+          className={`mobile-menu fixed mt-[70px] top-0 right-0 w-3/4 z-40 bg-black drop-shadow-xl bg-opacity-80 py-8 rounded-bl-md transition-all duration-300 border-lime border-b-[1px] border-l-[1px]  ${
             isMenuToggled ? "h-auto" : "h-0"
           }`}
         >
           {/* MENU ITEMS */}
-          <div className="flex flex-col items-center gap-10 text-2xl">
+          <div className="flex flex-col items-center gap-10 text-2xl z-50">
             <Link
               page="Home"
               selectedPage={selectedPage}

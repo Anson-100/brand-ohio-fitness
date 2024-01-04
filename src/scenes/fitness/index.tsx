@@ -1,18 +1,11 @@
-// import ActionButton from "@/shared/ActionButton"
-// import HText from "@/shared/HText"
 import { SelectedPage } from "@/shared/types"
-
 import { motion } from "framer-motion"
-// import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic.png"
-// import Benefit from "./Benefit"
-
 import { useState } from "react"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid"
-
 import weightsImg from "@/assets/weights-img.jpg"
 import cardioImg from "@/assets/cardio-img.jpg"
 import crossfitImg from "@/assets/crossfit-img.jpg"
@@ -143,17 +136,6 @@ const Fitness = ({}: Props) => {
                     />
                   </div>
                 )}
-                {/* <div
-                  className={`col-span-2 transform transition-transform duration-200 ${
-                    isWeightsOpen ? "scale-0" : "scale-100"
-                  }`}
-                >
-                  <img
-                    className="object-cover border-[1px] border-lime rounded-md"
-                    src={weightsImg}
-                    alt="Weights"
-                  />
-                </div> */}
               </div>
               <Dropdown
                 section="weights"
@@ -353,12 +335,15 @@ const Fitness = ({}: Props) => {
                       Weights
                     </p>
                   </div>
-                  <p className="text-center mt-2">Build muscle and strength!</p>{" "}
+
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() => setWeightsMobileOpen(!isWeightsMobileOpen)}
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">
+                      Build muscle and strength!
+                    </p>{" "}
+                    <ChevronDoubleDownIcon className="h-[2rem] mx-auto text-lime" />
                   </button>
                   <DropdownMobile
                     section="weights-mobile"
@@ -389,14 +374,14 @@ const Fitness = ({}: Props) => {
                     </p>
                   </div>
 
-                  <p className="text-center mt-2">
-                    Stay toned and build endurance!
-                  </p>
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() => setCardioMobileOpen(!isCardioMobileOpen)}
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">
+                      Stay toned and build endurance!
+                    </p>
+                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
                   </button>
                   <DropdownMobile
                     section="cardio-mobile"
@@ -426,12 +411,12 @@ const Fitness = ({}: Props) => {
                     </p>
                   </div>
 
-                  <p className="text-center mt-2">Feel the intensity!</p>
                   <button
                     className="cursor-pointer mx-auto block"
                     onClick={() => setCrossFitMobileOpen(!isCrossFitMobileOpen)}
                   >
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
+                    <p className="text-center mt-2">Feel the intensity!</p>
+                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
                   </button>
                   <DropdownMobile
                     section="crossfit-mobile"

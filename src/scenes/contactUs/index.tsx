@@ -1,18 +1,13 @@
 import { useState } from "react"
-// import { useForm } from "react-hook-form"
 import { SelectedPage } from "@/shared/types"
 import { motion } from "framer-motion"
-// import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png"
-// import HText from "@/shared/HText"
 import useMediaQuery from "@/hooks/useMediaQuery"
+import DropdownContactMobile from "@/components/DropdownContactMobile"
 
 import contactImage from "@/assets/contact-class.jpg"
 import contactImageMobile from "@/assets/contact-class-mobile.jpg"
 import fbIcon from "@/assets/facebook.png"
-// import messengerIcon from "@/assets/messenger.png"
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid"
-
-import DropdownContactMobile from "@/components/DropdownContactMobile"
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void
@@ -25,9 +20,6 @@ const ContactUs = ({}: Props) => {
   )
   const isAboveSmallWidth = useMediaQuery("(min-width:768px)")
   const isNotShortScreen = useMediaQuery("(min-height:800px)")
-
-  // const [isHoursOpen, setHoursOpen] = useState(false)
-  // const [isLocationOpen, setLocationOpen] = useState(false)
 
   const [openDropdown, setOpenDropdown] = useState<
     "staffed-hours" | "contact-info" | null
@@ -85,8 +77,17 @@ const ContactUs = ({}: Props) => {
                       }}
                     >
                       <p className="text-[1.2rem] mb-10">
-                        Stop by or call anytime during staffed hours or message
-                        us on facebook. We look forward to hearing from you!
+                        Stop by or call anytime during staffed hours or{" "}
+                        <span className="hover:underline text-lime">
+                          <a
+                            href="https://www.facebook.com/ofma5425"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            message us on facebook.
+                          </a>
+                        </span>{" "}
+                        We look forward to hearing from you!
                       </p>
                     </motion.div>
                   </div>{" "}
@@ -99,7 +100,6 @@ const ContactUs = ({}: Props) => {
                     </p>
                   </div>
                 </div>
-                {/* <div className="h-[1px] bg-lime w-5"></div> */}
               </div>
               <div className="col-span-4 my-auto">
                 <div className="grid grid-rows-6 gap-10 ml-12">
@@ -163,19 +163,18 @@ const ContactUs = ({}: Props) => {
                         </p>
                         <div className="text-center flex flex-col items-center">
                           {" "}
-                          <p>(937) 599-5425</p>
+                          <p>(937) 599-5425</p>{" "}
                           <div className="flex items-center gap-2">
-                            {" "}
-                            <p>message us on</p>{" "}
                             <a
                               href="https://www.facebook.com/ofma5425"
                               target="_blank"
                               rel="noopener noreferrer"
+                              className="group flex items-center gap-2 border-[2px] border-charcoal hover:border-lime rounded-full mt-1 p-1"
                             >
                               <img
                                 src={fbIcon}
                                 alt="Facebook"
-                                className="cursor-pointer"
+                                className="group-hover:bg-lime rounded-full"
                               />
                             </a>
                           </div>
@@ -263,8 +262,10 @@ const ContactUs = ({}: Props) => {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="scene-title text-[2.5rem] font-bold">Contact Us</p>
-              <div className="h-[1px] bg-lime mt-3 mb-7 w-full"></div>
+              <p className="scene-title text-[2.5rem] font-bold mt-2">
+                Contact Us
+              </p>
+              <div className="h-[1px] bg-lime mt-3 mb-5 w-full"></div>
             </motion.div>
 
             {isAboveSmallWidth ? (
@@ -350,24 +351,6 @@ const ContactUs = ({}: Props) => {
                 24 / 7
               </p>
             </div>
-            {/* <div className="w-5/6 sm:w-full flex flex-col items-center fixed bottom-0 bg-black">
-              <div className="h-[1px] bg-lime w-full sm:w-2/3"></div>
-              <div className="flex gap-16 items-center">
-                <a href="tel:9375995425">
-                  <PhoneIcon className="h-[3rem] m-2" />
-                </a>
-                <button>
-                  <img
-                    onClick={() =>
-                      window.open("https://www.facebook.com/ofma5425", "_blank")
-                    }
-                    src={messengerIcon}
-                    alt="chat with us on messenger"
-                    className="h-[3rem] bg-black"
-                  />
-                </button>
-              </div>
-            </div> */}
           </div>
         )}
       </div>

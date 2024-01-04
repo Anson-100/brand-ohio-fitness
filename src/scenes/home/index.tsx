@@ -1,10 +1,9 @@
 import useMediaQuery from "@/hooks/useMediaQuery"
-// import ActionButton from "@/shared/ActionButton"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { SelectedPage } from "@/shared/types"
-import legPress from "@/assets/leg press2.jpg"
 import { motion } from "framer-motion"
 
+import legPress from "@/assets/leg press2.jpg"
 type Props = {
   setSelectedPage: (value: SelectedPage) => void
 }
@@ -151,10 +150,10 @@ const Home = ({ setSelectedPage }: Props) => {
                 }}
               >
                 <p className="text-[1.2rem] sm:w-5/6">
-                  Welcome to the top gym in the area! Gear up for success in our
-                  state-of-the-art facility, backed by an incredible community.
-                  Members enjoy 24/7 access to our gym so join us and unleash
-                  your best self!
+                  Welcome to Ohio Fitness & Martial Arts, the top gym in the
+                  area! Gear up for success in our state-of-the-art facility,
+                  backed by an incredible community. Members enjoy 24/7 access
+                  to our gym so join us and unleash your best self!
                 </p>
               </motion.div>
               {isAboveMobileScreens ? (

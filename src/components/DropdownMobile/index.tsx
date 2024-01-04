@@ -5,7 +5,11 @@ import Carousel from "../Carousel"
 import weightsOne from "@/assets/weights1.jpg"
 import weightsTwo from "@/assets/weights2.jpg"
 import weightsThree from "@/assets/weights3.jpg"
-import cardioOne from "@/assets/cardio 1.jpg"
+// import cardioOne from "@/assets/cardio 1.jpg"
+import cardioTwo from "@/assets/cardio 2.jpg"
+import cardioThree from "@/assets/cardio 3.jpg"
+import cardioFour from "@/assets/cardio 4.jpg"
+
 import crossfitOne from "@/assets/crossfit1.jpg"
 import crossfitTwo from "@/assets/crossfit2.jpg"
 import crossfitThree from "@/assets/crossfit3.jpg"
@@ -16,7 +20,8 @@ import kidsThree from "@/assets/kids3.jpg"
 // import mmaOne from "@/assets/mma1.jpg"
 import mmaTwo from "@/assets/mma2.jpg"
 import mmaThree from "@/assets/mma3.jpg"
-import mmaFour from "@/assets/mma4.jpg"
+// import mmaFour from "@/assets/mma4.jpg"
+import cageThree from "@/assets/cage 3.jpg"
 import bjjOne from "@/assets/bjj1.jpg"
 import bjjTwo from "@/assets/bjj2.jpg"
 import bjjThree from "@/assets/bjj3.jpg"
@@ -95,22 +100,22 @@ const DropdownMobile: React.FC<DropdownProps> = ({
           <Carousel
             slides={[
               {
-                image: cardioOne,
-                alt: "Cardio One",
+                image: cardioThree,
+                alt: "Cardio Two",
                 title: "Treadmills",
                 description: "Brand new treadmills!",
               },
               {
-                image: cardioOne,
+                image: cardioTwo,
                 alt: "Cardio Two",
                 title: "Elipticals",
                 description: "Brand new elipticals!",
               },
               {
-                image: cardioOne,
+                image: cardioFour,
                 alt: "Cardio Three",
-                title: "Stairmasters and More",
-                description: "Plenty of options to get a sweat going your way!",
+                title: "Rowing Machines & Airdyne Bikes",
+                description: "Feel the intensity!",
               },
             ]}
           />
@@ -193,9 +198,9 @@ const DropdownMobile: React.FC<DropdownProps> = ({
                   "Learn from Scott Sheeley, one of the world's best coaches!",
               },
               {
-                image: mmaFour,
+                image: cageThree,
                 alt: "MMA One",
-                title: "State-of-the-Art",
+                title: "Cutting-Edge",
                 description:
                   "Bags, over 2,000sq ft of mats, and a full-sized octagon!",
               },

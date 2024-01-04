@@ -5,7 +5,10 @@ import weightsOne from "@/assets/weights1.jpg"
 import weightsTwo from "@/assets/weights2.jpg"
 import weightsThree from "@/assets/weights3.jpg"
 // import weightsFive from "@/assets/weights5.jpg"
-import cardioOne from "@/assets/cardio 1.jpg"
+// import cardioOne from "@/assets/cardio 1.jpg"
+import cardioTwo from "@/assets/cardio 2.jpg"
+import cardioThree from "@/assets/cardio 3.jpg"
+import cardioFour from "@/assets/cardio 4.jpg"
 import crossfitOne from "@/assets/crossfit1.jpg"
 import crossfitTwo from "@/assets/crossfit2.jpg"
 import crossfitThree from "@/assets/crossfit3.jpg"
@@ -15,7 +18,8 @@ import kidsTwo from "@/assets/kids2.jpg"
 import kidsThree from "@/assets/kids3.jpg"
 import mmaTwo from "@/assets/mma2.jpg"
 import mmaThree from "@/assets/mma3.jpg"
-import mmaFour from "@/assets/mma4.jpg"
+// import mmaFour from "@/assets/mma4.jpg"
+import cageThree from "@/assets/cage 3.jpg"
 import bjjOne from "@/assets/bjj1.jpg"
 import bjjTwo from "@/assets/bjj2.jpg"
 import bjjThree from "@/assets/bjj3.jpg"
@@ -27,7 +31,7 @@ type DropdownProps = {
     | "crossfit"
     | "kids-class"
     | "adult-mma"
-    | "bjj" // Identifier for the section
+    | "bjj"
   isOpen: boolean // State to control if the dropdown is open
   toggleDropdown: () => void // Function to toggle the dropdown state
 }
@@ -63,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: weightsThree,
                 alt: "Weights Three",
                 title: "Free Weights",
-                description: "Dumbells and barbells galore!",
+                description: "Barbells, dumbells, kettlebells, and more!",
               },
             ]}
           />
@@ -76,21 +80,21 @@ const Dropdown: React.FC<DropdownProps> = ({
           <CardContainer
             cards={[
               {
-                image: cardioOne,
+                image: cardioThree,
                 alt: "Cardio One",
                 title: "Treadmills",
                 description: "Brand new treadmills!",
               },
               {
-                image: cardioOne,
+                image: cardioTwo,
                 alt: "Cardio Two",
                 title: "Elipticals",
                 description: "Brand new elipticals!",
               },
               {
-                image: cardioOne,
+                image: cardioFour,
                 alt: "Cardio Three",
-                title: "Stairmasters and More",
+                title: "Rowing Machines & Airdyne Bikes",
                 description: "Plenty of options to get a sweat going your way!",
               },
             ]}
@@ -168,15 +172,15 @@ const Dropdown: React.FC<DropdownProps> = ({
               },
               {
                 image: mmaThree,
-                alt: "MMA One",
+                alt: "Cage Three",
                 title: "Elite Coaching",
                 description:
                   "Learn from Scott Sheeley, one of the world's best coaches!",
               },
               {
-                image: mmaFour,
+                image: cageThree,
                 alt: "MMA One",
-                title: "State-of-the-Art",
+                title: "World-Class Facility",
                 description:
                   "Bags, over 2,000sq ft of mats, and a full-sized octagon!",
               },
@@ -191,11 +195,10 @@ const Dropdown: React.FC<DropdownProps> = ({
           <CardContainer
             cards={[
               {
-                image: bjjThree,
-                alt: "BJJ Three",
-                title: "Fun",
-                description:
-                  "Stay fit and blow off some steam with the gentle art!",
+                image: bjjOne,
+                alt: "BJJ One",
+                title: "Gi and No-Gi",
+                description: "Whichever you prefer, we've got you covered!",
               },
               {
                 image: bjjTwo,
@@ -203,11 +206,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 title: "Competition Training",
                 description: "Stay sharp so you can dominate in competition!",
               },
+
               {
-                image: bjjOne,
-                alt: "BJJ One",
-                title: "Gi and No-Gi",
-                description: "Whichever you prefer, we've got you covered!",
+                image: bjjThree,
+                alt: "BJJ Three",
+                title: "Fun",
+                description:
+                  "Stay fit and blow off some steam with the gentle art!",
               },
             ]}
           />

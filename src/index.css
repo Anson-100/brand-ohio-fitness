@@ -18,21 +18,14 @@ body,
 }
 
 /* LANDING PAGE STYLING */
-#home {
-  /* background-image: url(./assets/bg-landing-beta.png);
-  background-size: cover;
-  background-position: center; */
-}
 .logo,
 .scene-title {
   text-shadow: 4px 4px 4px black;
 }
 
-/* FITNESS PAGE STYLING */
-#fitness {
-  /* background-image: url(./assets/bg-fitness.png);
-  background-size: cover;
-  background-position: center; */
+/* NAVBAR STYLING */
+.mobile-menu {
+  backdrop-filter: blur(5px);
 }
 
 /* FITNESS DROPDOWN STYLING */
@@ -51,18 +44,16 @@ body,
 }
 
 /* CONTACT US PAGE STYLING  */
-#contactus {
-  /* height: calc(100svh - 72px); */
-}
-
-/* .twenty-four {
-  text-shadow: 0px 0px 20px #33fe12;
-} */
-
 .neon {
   box-shadow: 0px 0px 20px #33fe12;
 }
 
 .contact-main {
   height: calc(100vh - 4.5rem);
+}
+
+/* CAROUSEL STYLING */
+
+.slides {
+  transition: transform 0.5s ease;
 }
