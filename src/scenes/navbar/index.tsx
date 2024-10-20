@@ -1,11 +1,16 @@
 import { useState } from "react"
+import Link from "./Link"
+import LinkMobile from "./LinkMobile"
+
 import {
   Bars3Icon,
   XMarkIcon,
-  // SunIcon,
-  // MoonIcon,
+  HomeIcon,
+  FireIcon,
+  ArrowTrendingUpIcon,
+  PaperAirplaneIcon,
 } from "@heroicons/react/24/solid"
-import Link from "./Link"
+
 import { SelectedPage } from "@/shared/types"
 import useMediaQuery from "@/hooks/useMediaQuery"
 
@@ -20,7 +25,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
   const isAboveSmallMobileScreen = useMediaQuery("(min-width: 400px)")
-  const navbarBackground = isTopOfPage ? "" : "bg-black drop-shadow"
+  const navbarBackground = isTopOfPage ? "" : "bg-zinc-900"
   // const [darkMode, setDarkMode] = useState(false)
 
   // const toggleDarkMode = () => {
@@ -36,24 +41,28 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   return (
     <nav>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-4 md:py-6 transition-all duration-300`}
+        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full md:pt-4 py-2 md:pb-0 border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
             {/* <img alt="logo" src={Logo} /> */}
             {isAboveSmallMobileScreen ? (
-              <p className="text-lime text-bold text-md">
+              <p className=" font-bold text-md pb-3">
                 Ohio Fitness & Martial Arts
               </p>
             ) : (
-              <p className="text-lime text-bold text-md">OF&MA</p>
+              <div>
+                {" "}
+                <p className="text-gray-100 text-bold text-md">Ohio Fitness</p>
+                <p>& Martial Arts</p>
+              </div>
             )}
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} gap-8`}>
-                <div className={`${flexBetween} gap-8 text-md`}>
+                <div className={`${flexBetween} gap-4 text-md`}>
                   {/* <button onClick={toggleDarkMode}>
                     {darkMode ? (
                       <SunIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
@@ -66,6 +75,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
+
                   <Link
                     page="Fitness"
                     selectedPage={selectedPage}
@@ -85,7 +95,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               </div>
             ) : (
               <button
-                className="rounded-full bg-lime p-2"
+                className="rounded-full bg-zinc-300 p-2"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 {" "}
@@ -102,35 +112,50 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div
-          className={`mobile-menu fixed mt-[70px] top-0 right-0 w-3/4 z-40 bg-black drop-shadow-xl bg-opacity-80 py-8 rounded-bl-md transition-all duration-300 border-lime border-b-[1px] border-l-[1px]  ${
+          className={`mobile-menu fixed mt-[50px] top-0 right-0 w-3/4 z-40  bg-zinc-800 rounded-l-md transition-all duration-300  ${
             isMenuToggled ? "h-auto" : "h-0"
           }`}
         >
           {/* MENU ITEMS */}
-          <div className="flex flex-col items-center gap-10 text-2xl z-50">
-            <Link
+          <div className="flex flex-col items-center text-xl z-50">
+            <LinkMobile
               page="Home"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              toggleMenu={() => setIsMenuToggled(false)}
+              Icon={HomeIcon}
             />
-            <Link
+            <div className="w-full h-[1px] bg-gray-700 m-auto " />
+
+            <LinkMobile
               page="Fitness"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              toggleMenu={() => setIsMenuToggled(false)}
+              Icon={ArrowTrendingUpIcon}
             />
-            <Link
+            <div className="w-full h-[1px] bg-gray-700 m-auto " />
+
+            <LinkMobile
               page="Martial Arts"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              toggleMenu={() => setIsMenuToggled(false)}
+              Icon={FireIcon}
             />
-            <Link
+            <div className="w-full h-[1px] bg-gray-700 m-auto " />
+
+            <LinkMobile
               page="Contact Us"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
+              toggleMenu={() => setIsMenuToggled(false)}
+              Icon={PaperAirplaneIcon}
             />
           </div>
         </div>
       )}
+      {/* <div className="w-full h-4 bg-zinc-950"></div> */}
     </nav>
   )
 }

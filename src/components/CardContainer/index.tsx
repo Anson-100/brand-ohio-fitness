@@ -15,11 +15,11 @@ type CardContainerProps = {
 
 const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
   return (
-    <div className="flex max-h-[65vh] bg-charcoal rounded-lg">
+    <div className="flex max-h-[65vh] ">
       {cards.map((card, index) => (
         <div
           key={index}
-          className="dropdown-section bg-black col-span-1 overflow-hidden flex-1 m-2 relative w-full h-full rounded-md"
+          className="col-span-1 overflow-hidden flex-1 m-2 relative w-full h-full bg-zinc-900 border-[1px] border-zinc-700 rounded-sm"
         >
           <img
             className="w-full h-full object-cover"
@@ -27,12 +27,10 @@ const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
             alt={card.title}
           />
           <div className="absolute inset-0 flex flex-col justify-end items-center">
-            <div className="bg-black m-2 rounded-lg bg-opacity-60 w-5/6">
-              <p className="text-center font-bold text-[1.2rem] p-1">
-                {card.title}
-              </p>
-              <div className="h-[.4px] w-[40px] bg-lime mx-auto"></div>
-              <p className="text-center p-2">{card.description}</p>
+            <div className="bg-zinc-950 bg-opacity-80 w-full backdrop-blur-sm p-2">
+              <p className="font-bold  text-gray-50">{card.title}</p>
+
+              <p className=" text-gray-400">{card.description}</p>
             </div>
           </div>
         </div>

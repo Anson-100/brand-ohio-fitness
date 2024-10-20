@@ -58,7 +58,7 @@ const Carousel = ({ slides }: CarouselProps) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="viewport overflow-hidden m-auto h-full border-2 border-gold rounded-xl relative">
+      <div className="viewport overflow-hidden m-auto h-full border-[1px] border-zinc-700 relative">
         {currentSlide > 0 && (
           <ArrowLeftIcon
             className="w-10 h-10 text-black bg-white rounded-full bg-opacity-50 hover:cursor-pointer z-10 absolute top-1/2 left-2 transform -translate-y-1/2"
@@ -75,16 +75,18 @@ const Carousel = ({ slides }: CarouselProps) => {
               className="slide flex-shrink-0 w-full h-full relative"
             >
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover border-[1px] border-zinc-700"
                 src={slide.image}
                 alt={slide.alt}
               />
-              <div className="absolute inset-0 flex flex-col justify-end items-center p-4">
-                <div className="bg-black p-2 rounded-lg bg-opacity-60">
-                  <h2 className="text-2xl text-white font-bold text-center">
+              <div className="absolute inset-0 flex flex-col justify-end items-center">
+                <div className="bg-zinc-950 p-2 bg-opacity-60 backdrop-blur-sm w-full">
+                  <h2 className="text-lg text-gray-100 font-bold text-center">
                     {slide.title}
                   </h2>
-                  <p className="text-white text-center">{slide.description}</p>
+                  <p className="text-gray-400 text-center">
+                    {slide.description}
+                  </p>
                 </div>
               </div>
             </div>

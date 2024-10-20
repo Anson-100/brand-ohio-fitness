@@ -12,23 +12,58 @@ body,
   height: 100%;
   width: 100%;
   font-family: "DM Sans", sans-serif;
-  background-color: black;
-  @apply text-white;
-  @apply transition duration-500 ease-in-out;
+  color: #f3f4f6;
+  background-color: #09090b;
+  @apply text-text;
 }
 
-/* LANDING PAGE STYLING */
-.logo,
+/* LANDING PAGE STYLING =============================================================================================*/
+/* .logo,
 .scene-title {
   text-shadow: 4px 4px 4px black;
+} */
+
+/* In your global CSS file or a custom CSS file */
+.text-gradient {
+  background: linear-gradient(to right, #f4f4f5, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* NAVBAR STYLING */
+.the-one {
+  position: relative;
+  display: inline-block; /* Adjust as needed */
+  transition: background-image 0.1s ease;
+}
+
+.the-one::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background-image: linear-gradient(to right, #3b82f6, #2dd4bf);
+  filter: blur(8px);
+  border-radius: 4px; /* Adjust as needed */
+  transition: opacity 0.3s ease;
+}
+
+.the-one:hover::after {
+  opacity: 0; /* Hides the pseudo-element shadow */
+}
+
+/* NAVBAR STYLING ==========================================================================================*/
 .mobile-menu {
   backdrop-filter: blur(5px);
 }
 
-/* FITNESS DROPDOWN STYLING */
+.nav-bg {
+  backdrop-filter: blur(12px);
+}
+
+/* FITNESS DROPDOWN STYLING =====================================================================================*/
 .dropdown-button {
   border: solid 0.5px transparent;
   border-radius: 5px;
@@ -43,7 +78,7 @@ body,
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* CONTACT US PAGE STYLING  */
+/* CONTACT US PAGE STYLING  =======================================================================*/
 .neon {
   box-shadow: 0px 0px 20px #33fe12;
 }
@@ -52,8 +87,62 @@ body,
   height: calc(100vh - 4.5rem);
 }
 
-/* CAROUSEL STYLING */
+/* CAROUSEL STYLING ===================================================================================================*/
 
 .slides {
   transition: transform 0.5s ease;
+}
+
+/* ERROR PAGE STYLING ===================================================================================================*/
+
+.error-body {
+  height: 95vh;
+}
+
+.error-div {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-header {
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.green-line {
+  background-color: #33fe12;
+  width: 50%;
+  height: 1px;
+}
+
+.error-message {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.error-link {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.error-link:hover {
+  color: #33fe12;
 }

@@ -5,7 +5,10 @@ import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid"
+import {
+  ChevronDoubleDownIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/solid"
 import kidsClassImg from "@/assets/kids-class-img.jpg"
 import mmaImg from "@/assets/mma-img.jpg"
 import bjjImg from "@/assets/bjj-img.jpg"
@@ -27,7 +30,7 @@ const MartialArts = ({}: Props) => {
   return (
     <section
       id="martialarts"
-      className="mx-auto min-h-[100svh] pt-[4.5rem] pb-[4rem]"
+      className="mx-auto min-h-[100svh] pt-[6rem] pb-[4rem]"
     >
       <div className="h-full w-5/6 mx-auto">
         {isAboveMediumScreens ? (
@@ -45,15 +48,13 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="logo text-[1.5rem] text-lime font-rocksalt">
-                  explore
-                </p>
-                <p className="scene-title lg:text-[3.5rem] text-[3rem]  font-bold">
+                <p className="scene-title text-[2rem] font-bold">
                   Martial Arts
                 </p>
               </motion.div>
 
-              <div className="bg-lime h-[1px] max-w-[300px] mt-5 mb-10"></div>
+              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-10"></div>
+
               <motion.div
                 className=""
                 initial="hidden"
@@ -97,13 +98,18 @@ const MartialArts = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setKidsClassOpen(!isKidsClassOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
-                      <p className="scene-title text-[2rem] font-bold pr-1">
+                      {isKidsClassOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-semibold pr-1">
                         Kids Martial Arts
                       </p>
                     </button>
                   </motion.div>
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
+
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
                   {isKidsClassOpen ? (
                     ""
                   ) : (
@@ -111,11 +117,11 @@ const MartialArts = ({}: Props) => {
                       className=""
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, amount: 0.5 }}
+                      viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.5 }}
                       variants={{
-                        hidden: { opacity: 0, x: 50 },
-                        visible: { opacity: 1, x: 0 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
                     >
                       <p className="w-2/3">
@@ -131,7 +137,7 @@ const MartialArts = ({}: Props) => {
                 ) : (
                   <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={kidsClassImg}
                       alt="kids-class"
                     />
@@ -163,53 +169,45 @@ const MartialArts = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setAdultMMAOpen(!isAdultMMAOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime pr-1" />
-                      <p className="scene-title text-[2rem] font-bold">
-                        Adult MMA
+                      {isAdultMMAOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-bold">
+                        Adult MMA/IT Fight Team
                       </p>
                     </button>
                   </motion.div>
 
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
-                  <motion.div
-                    className=""
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
-                    variants={{
-                      hidden: { opacity: 0, x: 50 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                  >
-                    {isAdultMMAOpen ? (
-                      ""
-                    ) : (
-                      <motion.div
-                        className=""
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ delay: 0.1, duration: 0.5 }}
-                        variants={{
-                          hidden: { opacity: 0, x: 50 },
-                          visible: { opacity: 1, x: 0 },
-                        }}
-                      >
-                        <p className="w-2/3">
-                          Hobbyists, amateurs, and professional fighters can
-                          train in a huge space and learn from the best!
-                        </p>
-                      </motion.div>
-                    )}
-                  </motion.div>
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
+                  {isAdultMMAOpen ? (
+                    ""
+                  ) : (
+                    <motion.div
+                      className=""
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                    >
+                      <p className="w-2/3">
+                        Hobbyists, amateurs, and professional fighters can train
+                        in a huge space and learn from the best!
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
                 <div className="col-span-2">
                   {isAdultMMAOpen ? (
                     ""
                   ) : (
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={mmaImg}
                       alt="Adult-MMA"
                     />
@@ -225,7 +223,6 @@ const MartialArts = ({}: Props) => {
               {/* DROPDOWN 3 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div className={`${isBJJOpen ? "col-span-7" : "col-span-5"}`}>
-                  {/* <div className="col-span-5"> */}
                   <motion.div
                     className=""
                     initial="hidden"
@@ -241,54 +238,46 @@ const MartialArts = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setBJJOpen(!isBJJOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
-                      <p className="scene-title text-[2rem] font-bold">
+                      {isBJJOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-bold">
                         Brazilian Jiu-Jitsu
                       </p>
                     </button>
                   </motion.div>
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
 
-                  <motion.div
-                    className=""
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    variants={{
-                      hidden: { opacity: 0, x: 50 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                  >
-                    {isBJJOpen ? (
-                      ""
-                    ) : (
-                      <motion.div
-                        className=""
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
-                        variants={{
-                          hidden: { opacity: 0, x: 50 },
-                          visible: { opacity: 1, x: 0 },
-                        }}
-                      >
-                        <p className="w-2/3">
-                          Gi and no-gi classes offered multiple times per week!
-                        </p>
-                      </motion.div>
-                    )}
-                  </motion.div>
+                  {isBJJOpen ? (
+                    ""
+                  ) : (
+                    <motion.div
+                      className=""
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ delay: 0.2, duration: 0.3 }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                    >
+                      <p className="w-2/3">
+                        Gi and no-gi classes offered multiple times per week!
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
                 <div className="col-span-2">
                   {isBJJOpen ? (
                     ""
                   ) : (
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={bjjImg}
-                      alt="Crossfit"
+                      alt="Brazilian Jiu-Jitsu"
                     />
                   )}
                 </div>
@@ -303,22 +292,7 @@ const MartialArts = ({}: Props) => {
         ) : (
           <div>
             {/* MOBILE HEADER */}
-            <motion.div
-              className=""
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.4 }}
-              variants={{
-                hidden: { opacity: 0, x: -50 },
-                visible: { opacity: 1, x: 0 },
-              }}
-            >
-              {" "}
-              <p className="font-rocksalt text-center text-lime text-[1.3rem]">
-                explore
-              </p>
-            </motion.div>
+
             <motion.div
               className=""
               initial="hidden"
@@ -330,14 +304,14 @@ const MartialArts = ({}: Props) => {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="scene-title text-center font-bold text-[2.5rem]">
+              <p className="scene-title text-center font-bold text-[1.75rem]">
                 Martial Arts
               </p>
             </motion.div>
 
             <div className="h-[1px] w-4/6 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
 
-            {/* MOBILE MARTIAL ARTS INFO */}
+            {/* MOBILE MARTIAL ARTS INFO ==================================================================*/}
             <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
               <motion.div
                 className=""
@@ -350,22 +324,26 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      Kids Martial Arts
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full"
                     onClick={() =>
                       setKidsClassMobileOpen(!isKidsClassMobileOpen)
                     }
                   >
-                    <p className="text-center mt-2">Skills for life!</p>
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
+                    <div className="mb-2">
+                      <p className="text-[1.2rem] text-left font-bold">
+                        Kids Martial Arts
+                      </p>
+                      <p className="mt-2 text-gray-300 text-left">
+                        Skills for life!
+                      </p>
+                    </div>
+                    {isKidsClassMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    )}
                   </button>
                   <DropdownMobile
                     section="kids-class-mobile"
@@ -376,6 +354,7 @@ const MartialArts = ({}: Props) => {
                   />
                 </div>
               </motion.div>
+
               <motion.div
                 className=""
                 initial="hidden"
@@ -387,20 +366,24 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      Adult MMA
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2 ">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full"
                     onClick={() => setAdultMMAMobileOpen(!isAdultMMAMobileOpen)}
                   >
-                    <p className="text-center mt-2">Elite training!</p>
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
+                    <div className="mb-2">
+                      <p className="text-[1.2rem] text-left font-bold">
+                        Adult MMA
+                      </p>
+                      <p className="mt-2 text-left text-gray-300">
+                        Elite training!
+                      </p>
+                    </div>
+                    {isAdultMMAMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    )}
                   </button>
                   <DropdownMobile
                     section="adult-mma-mobile"
@@ -411,6 +394,7 @@ const MartialArts = ({}: Props) => {
                   />
                 </div>
               </motion.div>
+
               <motion.div
                 className=""
                 initial="hidden"
@@ -422,20 +406,24 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      Brazilian Jiu-Jitsu
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2 ">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full"
                     onClick={() => setBJJMobileOpen(!isBJJMobileOpen)}
                   >
-                    <p className="text-center mt-2">Gi and no-gi!</p>
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
+                    <div className="mb-2">
+                      <p className="text-[1.2rem] text-left font-bold">
+                        Brazilian Jiu-Jitsu
+                      </p>
+                      <p className="mt-2 text-gray-300 text-left">
+                        Gi and no-gi!
+                      </p>
+                    </div>
+                    {isBJJMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    )}
                   </button>
                   <DropdownMobile
                     section="bjj-mobile"

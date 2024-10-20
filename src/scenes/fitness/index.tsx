@@ -5,7 +5,10 @@ import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid"
+import {
+  ChevronDoubleDownIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/solid"
 import weightsImg from "@/assets/weights-img.jpg"
 import cardioImg from "@/assets/cardio-img.jpg"
 import crossfitImg from "@/assets/crossfit-img.jpg"
@@ -28,7 +31,7 @@ const Fitness = ({}: Props) => {
   return (
     <section
       id="fitness"
-      className="mx-auto min-h-[100svh] pt-[4.5rem] pb-[4rem]"
+      className="mx-auto min-h-[100svh] pt-[6rem] pb-[4rem]"
     >
       <div className="h-full w-5/6 mx-auto">
         {isAboveMediumScreens ? (
@@ -46,15 +49,10 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="logo text-[1.5rem] text-lime font-rocksalt">
-                  discover
-                </p>
-                <p className="scene-title lg:text-[3.5rem] text-[3rem]  font-bold">
-                  Fitness
-                </p>
+                <p className="scene-title text-[2rem]  font-bold">Fitness</p>
               </motion.div>
 
-              <div className="bg-lime h-[1px] max-w-[200px] mt-5 mb-10"></div>
+              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-10"></div>
 
               <motion.div
                 className=""
@@ -67,7 +65,7 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="w-4/6">
+                <p className="w-4/6 text-gray-100">
                   Embrace a world-class fitness experience here at Ohio Fitness
                   & Martial Arts. Here you will find a comprehensive range of
                   cutting-edge weightlifting and cardio equipment alongside a
@@ -75,7 +73,7 @@ const Fitness = ({}: Props) => {
                 </p>
               </motion.div>
             </div>
-            {/* INFO */}
+            {/* INFO========================================================================================= */}
             <div className="col-span-7 flex flex-col my-2">
               {/* DROPDOWN 1 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
@@ -97,14 +95,18 @@ const Fitness = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setWeightsOpen(!isWeightsOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
-                      <p className="scene-title text-[2rem] font-bold pr-1">
+                      {isWeightsOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-semibold pr-1">
                         Weights
                       </p>
                     </button>
                   </motion.div>
 
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
                   {isWeightsOpen ? (
                     ""
                   ) : (
@@ -113,10 +115,10 @@ const Fitness = ({}: Props) => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.5 }}
-                      transition={{ duration: 0.5 }}
+                      transition={{ duration: 0.3 }}
                       variants={{
-                        hidden: { opacity: 0, x: 50 },
-                        visible: { opacity: 1, x: 0 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
                     >
                       <p className="w-2/3">
@@ -130,7 +132,7 @@ const Fitness = ({}: Props) => {
                 ) : (
                   <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={weightsImg}
                       alt="Weights"
                     />
@@ -153,10 +155,10 @@ const Fitness = ({}: Props) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
                     variants={{
-                      hidden: { opacity: 0, x: 50 },
-                      visible: { opacity: 1, x: 0 },
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1 },
                     }}
                   >
                     {" "}
@@ -164,14 +166,18 @@ const Fitness = ({}: Props) => {
                       className="flex items-center cursor-pointer"
                       onClick={() => setCardioOpen(!isCardioOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
-                      <p className="scene-title text-[2rem] font-bold">
+                      {isCardioOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-bold">
                         Cardio
                       </p>
                     </button>
                   </motion.div>
 
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
                   {isCardioOpen ? (
                     ""
                   ) : (
@@ -180,10 +186,10 @@ const Fitness = ({}: Props) => {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.5 }}
-                      transition={{ delay: 0.1, duration: 0.5 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
                       variants={{
-                        hidden: { opacity: 0, x: 50 },
-                        visible: { opacity: 1, x: 0 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
                     >
                       <p className="w-2/3">
@@ -197,7 +203,7 @@ const Fitness = ({}: Props) => {
                 ) : (
                   <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={cardioImg}
                       alt="Cardio"
                     />
@@ -223,21 +229,25 @@ const Fitness = ({}: Props) => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
                     variants={{
-                      hidden: { opacity: 0, x: 50 },
-                      visible: { opacity: 1, x: 0 },
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1 },
                     }}
                   >
                     <button
                       className="flex items-center cursor-pointer"
                       onClick={() => setCrossFitOpen(!isCrossFitOpen)}
                     >
-                      <ChevronDoubleDownIcon className="h-[2rem] text-lime" />
-                      <p className="scene-title text-[2rem] font-bold">
-                        CrossFit
+                      {isCrossFitOpen ? (
+                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      ) : (
+                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
+                      )}
+                      <p className="scene-title text-[1.3rem] font-bold">
+                        Personal Training/Group Classes
                       </p>
                     </button>
                   </motion.div>
-                  <div className="bg-lime h-[1px] w-full mt-3 mb-5"></div>
+                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
                   {isCrossFitOpen ? (
                     ""
                   ) : (
@@ -245,11 +255,11 @@ const Fitness = ({}: Props) => {
                       className=""
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, amount: 0.5 }}
+                      viewport={{ once: true, amount: 0.3 }}
                       transition={{ delay: 0.2, duration: 0.5 }}
                       variants={{
-                        hidden: { opacity: 0, x: 50 },
-                        visible: { opacity: 1, x: 0 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
                     >
                       <p className="w-2/3">
@@ -264,7 +274,7 @@ const Fitness = ({}: Props) => {
                 ) : (
                   <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-lime rounded-md"
+                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
                       src={crossfitImg}
                       alt="Crossfit"
                     />
@@ -280,22 +290,7 @@ const Fitness = ({}: Props) => {
           </div>
         ) : (
           <div>
-            {/* HEADER */}
-            <motion.div
-              className=""
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.4 }}
-              variants={{
-                hidden: { opacity: 0, x: -50 },
-                visible: { opacity: 1, x: 0 },
-              }}
-            >
-              <p className="font-rocksalt text-center text-lime text-[1.3rem]">
-                discover
-              </p>
-            </motion.div>
+            {/* MOBILE=============================================================================================================*/}
             <motion.div
               className=""
               initial="hidden"
@@ -308,14 +303,14 @@ const Fitness = ({}: Props) => {
               }}
             >
               {" "}
-              <p className="scene-title text-center font-bold text-[2.5rem]">
+              <p className="scene-title text-center font-bold text-gray-100 text-[1.75rem]">
                 Fitness
               </p>
             </motion.div>
 
-            <div className="h-[1px] w-2/3 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
+            <div className="h-[1px] w-2/3 sm:w-1/3 bg-gradient-theme mx-auto mt-3 mb-7"></div>
 
-            {/* MOBILE FITNESS INFO */}
+            {/* MOBILE FITNESS INFO ============================================================*/}
             <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
               <motion.div
                 className=""
@@ -328,22 +323,26 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      Weights
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full "
                     onClick={() => setWeightsMobileOpen(!isWeightsMobileOpen)}
                   >
-                    <p className="text-center mt-2">
-                      Build muscle and strength!
-                    </p>{" "}
-                    <ChevronDoubleDownIcon className="h-[2rem] mx-auto text-lime" />
+                    {" "}
+                    <div className="mb-2">
+                      {" "}
+                      <p className="text-[1.2rem] text-left font-bold">
+                        Weights
+                      </p>
+                      <p className="mt-2 text-gray-300">
+                        Build muscle and strength!
+                      </p>{" "}
+                    </div>
+                    {isWeightsMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem]  text-zinc-theme  " />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem]  text-zinc-theme  " />
+                    )}
                   </button>
                   <DropdownMobile
                     section="weights-mobile"
@@ -366,22 +365,24 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      Cardio
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full"
                     onClick={() => setCardioMobileOpen(!isCardioMobileOpen)}
                   >
-                    <p className="text-center mt-2">
-                      Stay toned and build endurance!
-                    </p>
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
+                    <div className="mb-2">
+                      <p className="text-[1.2rem] text-left font-bold">
+                        Cardio
+                      </p>
+                      <p className="mt-2 text-gray-300">
+                        Stay toned and build endurance!
+                      </p>
+                    </div>
+                    {isCardioMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    )}
                   </button>
                   <DropdownMobile
                     section="cardio-mobile"
@@ -392,6 +393,7 @@ const Fitness = ({}: Props) => {
                   />
                 </div>
               </motion.div>
+
               <motion.div
                 className=""
                 initial="hidden"
@@ -403,20 +405,22 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-lime bg-black rounded-xl p-2">
-                  <div className="flex items-center">
-                    {" "}
-                    <p className="text-[1.5rem] font-bold text-center w-full bg-charcoal rounded-lg border-lime border-[1px]">
-                      CrossFit
-                    </p>
-                  </div>
-
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
-                    className="cursor-pointer mx-auto block"
+                    className="cursor-pointer flex justify-between w-full"
                     onClick={() => setCrossFitMobileOpen(!isCrossFitMobileOpen)}
                   >
-                    <p className="text-center mt-2">Feel the intensity!</p>
-                    <ChevronDoubleDownIcon className="h-[2rem] text-lime mx-auto" />
+                    <div className="mb-2">
+                      <p className="text-[1.2rem] text-left font-bold">
+                        CrossFit
+                      </p>
+                      <p className="mt-2 text-gray-300">Feel the intensity!</p>
+                    </div>
+                    {isCrossFitMobileOpen ? (
+                      <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    ) : (
+                      <ChevronDownIcon className="h-[1.5rem] text-zinc-theme" />
+                    )}
                   </button>
                   <DropdownMobile
                     section="crossfit-mobile"
