@@ -53,21 +53,19 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: weightsOne,
                 alt: "Weights One",
                 title: "Cable Machines",
-                description:
-                  "Everything you need to expand your workout routine!",
+                description: "",
               },
               {
                 image: weightsTwo,
                 alt: "Weights Two",
                 title: "Weight Machines",
-                description:
-                  "The latest and greatest such as this Rogue belt-squat machine!",
+                description: "",
               },
               {
                 image: weightsThree,
                 alt: "Weights Three",
                 title: "Free Weights",
-                description: "Barbells, dumbells, kettlebells, and more!",
+                description: "",
               },
             ]}
           />
@@ -83,19 +81,19 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: cardioThree,
                 alt: "Cardio One",
                 title: "Treadmills",
-                description: "Brand new treadmills!",
+                description: "",
               },
               {
                 image: cardioTwo,
                 alt: "Cardio Two",
                 title: "Elipticals",
-                description: "Brand new elipticals!",
+                description: "",
               },
               {
                 image: cardioFour,
                 alt: "Cardio Three",
                 title: "Rowing Machines & Airdyne Bikes",
-                description: "Plenty of options to get a sweat going your way!",
+                description: "",
               },
             ]}
           />
@@ -111,20 +109,19 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: crossfitOne,
                 alt: "Crossfit One",
                 title: "Group Classes",
-                description: "Team up and push it to the limit!",
+                description: "",
               },
               {
                 image: crossfitTwo,
                 alt: "Crossfit Two",
-                title: "Rowing Machines & Airdyne Bikes",
-                description: "Everything you need to crank up the intensity!",
+                title: "Plenty of Space",
+                description: "",
               },
               {
                 image: crossfitThree,
                 alt: "Crossfit Three",
                 title: "Bumper Plates & Kettlebells",
-                description:
-                  "Power cleans, turkish getups, and everything else!",
+                description: "",
               },
             ]}
           />
@@ -140,19 +137,19 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: kidsOne,
                 alt: "Kids One",
                 title: "Ages 4-15",
-                description: "All ages and all skill levels welcome!",
+                description: "All ages and all skill levels welcome",
               },
               {
                 image: kidsTwo,
                 alt: "Kids One",
                 title: "Self-Defense",
-                description: "Prepare kids for life and competition!",
+                description: "Prepare kids for life and competition",
               },
               {
                 image: kidsThree,
                 alt: "Kids One",
                 title: "Confidence",
-                description: "Remain composed even when things get difficult!",
+                description: "Remain composed even when things get difficult",
               },
             ]}
           />
@@ -168,21 +165,21 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: mmaTwo,
                 alt: "MMA One",
                 title: "Technique and Toughness",
-                description: "Skilled training partners to challenge you!",
+                description: "Skilled training partners to challenge you",
               },
               {
                 image: mmaThree,
                 alt: "Cage Three",
                 title: "Elite Coaching",
                 description:
-                  "Learn from Scott Sheeley, one of the world's best coaches!",
+                  "Learn from Scott Sheeley, one of the world's best coaches",
               },
               {
                 image: cageThree,
                 alt: "MMA One",
                 title: "World-Class Facility",
                 description:
-                  "Bags, over 2,000sq ft of mats, and a full-sized octagon!",
+                  "Bags, over 2,000sq ft of mats, and a full-size octagon",
               },
             ]}
           />
@@ -198,13 +195,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 image: bjjOne,
                 alt: "BJJ One",
                 title: "Gi and No-Gi",
-                description: "Whichever you prefer, we've got you covered!",
+                description: "Whichever you prefer, we've got you covered",
               },
               {
                 image: bjjTwo,
                 alt: "BJJ Two",
                 title: "Competition Training",
-                description: "Stay sharp so you can dominate in competition!",
+                description: "Stay sharp so you can dominate in competition",
               },
 
               {
@@ -212,7 +209,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 alt: "BJJ Three",
                 title: "Fun",
                 description:
-                  "Stay fit and blow off some steam with the gentle art!",
+                  "Stay fit and blow off some steam with the gentle art",
               },
             ]}
           />

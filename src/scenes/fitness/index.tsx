@@ -33,9 +33,9 @@ const Fitness = ({}: Props) => {
       id="fitness"
       className="mx-auto min-h-[100svh] pt-[6rem] pb-[4rem]"
     >
-      <div className="h-full w-5/6 mx-auto">
+      <div className="h-full w-[90%] md:w-5/6 mx-auto">
         {isAboveMediumScreens ? (
-          <div className="grid grid-cols-10 w-full">
+          <div className="grid grid-cols-10 w-full mt-5">
             {/* HEADER */}
             <div className="col-span-3 mt-[10vh]">
               <motion.div
@@ -52,7 +52,7 @@ const Fitness = ({}: Props) => {
                 <p className="scene-title text-[2rem]  font-bold">Fitness</p>
               </motion.div>
 
-              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-10"></div>
+              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-8"></div>
 
               <motion.div
                 className=""
@@ -66,15 +66,14 @@ const Fitness = ({}: Props) => {
                 }}
               >
                 <p className="w-4/6 text-gray-100">
-                  Embrace a world-class fitness experience here at Ohio Fitness
-                  & Martial Arts. Here you will find a comprehensive range of
-                  cutting-edge weightlifting and cardio equipment alongside a
-                  dedicated CrossFit zone for those who crave intensity.
+                  Experience top-level fitness at Ohio Fitness & Martial Arts,
+                  featuring cutting-edge weightlifting, cardio equipment, and
+                  personal training
                 </p>
               </motion.div>
             </div>
             {/* INFO========================================================================================= */}
-            <div className="col-span-7 flex flex-col my-2">
+            <div className="col-span-7 flex flex-col lg:gap-2 my-2">
               {/* DROPDOWN 1 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
@@ -122,7 +121,7 @@ const Fitness = ({}: Props) => {
                       }}
                     >
                       <p className="w-2/3">
-                        Free weights, cable machines, and more!
+                        free weights, cable machines, and more
                       </p>
                     </motion.div>
                   )}
@@ -192,9 +191,7 @@ const Fitness = ({}: Props) => {
                         visible: { opacity: 1 },
                       }}
                     >
-                      <p className="w-2/3">
-                        Treadmills, ellipticals, and a StairMaster!
-                      </p>
+                      <p className="w-2/3">treadmills, elipticals, and more</p>
                     </motion.div>
                   )}
                 </div>
@@ -263,8 +260,8 @@ const Fitness = ({}: Props) => {
                       }}
                     >
                       <p className="w-2/3">
-                        Fully dedicated crossfit zone with airdyne bikes,
-                        kettlebells, bumper weights, and more!
+                        certified trainers, small group classes, flexible
+                        scheduling
                       </p>
                     </motion.div>
                   )}
@@ -290,7 +287,7 @@ const Fitness = ({}: Props) => {
           </div>
         ) : (
           <div>
-            {/* MOBILE=============================================================================================================*/}
+            {/* MOBILE SECTION=============================================================================================================*/}
             <motion.div
               className=""
               initial="hidden"
@@ -303,12 +300,12 @@ const Fitness = ({}: Props) => {
               }}
             >
               {" "}
-              <p className="scene-title text-center font-bold text-gray-100 text-[1.75rem]">
+              <p className="scene-title text-center font-bold text-gray-100 text-[1.5rem]">
                 Fitness
               </p>
             </motion.div>
 
-            <div className="h-[1px] w-2/3 sm:w-1/3 bg-gradient-theme mx-auto mt-3 mb-7"></div>
+            <div className="h-[1px] w-1/3 sm:w-1/3 bg-gradient-theme mx-auto mt-3 mb-7"></div>
 
             {/* MOBILE FITNESS INFO ============================================================*/}
             <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
@@ -335,7 +332,7 @@ const Fitness = ({}: Props) => {
                         Weights
                       </p>
                       <p className="mt-2 text-gray-300">
-                        Build muscle and strength!
+                        build muscle and strength
                       </p>{" "}
                     </div>
                     {isWeightsMobileOpen ? (
@@ -375,7 +372,7 @@ const Fitness = ({}: Props) => {
                         Cardio
                       </p>
                       <p className="mt-2 text-gray-300">
-                        Stay toned and build endurance!
+                        stay toned and build endurance
                       </p>
                     </div>
                     {isCardioMobileOpen ? (
@@ -412,9 +409,11 @@ const Fitness = ({}: Props) => {
                   >
                     <div className="mb-2">
                       <p className="text-[1.2rem] text-left font-bold">
-                        CrossFit
+                        Personal Training
                       </p>
-                      <p className="mt-2 text-gray-300">Feel the intensity!</p>
+                      <p className="mt-2 text-gray-300">
+                        expert coaching by certified trainers
+                      </p>
                     </div>
                     {isCrossFitMobileOpen ? (
                       <ChevronDoubleDownIcon className="h-[1.5rem] text-zinc-theme" />

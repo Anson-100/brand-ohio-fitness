@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "./Link"
 import LinkMobile from "./LinkMobile"
+import ITLogo from "@/assets/it logo (nr).png"
 
 import {
   Bars3Icon,
@@ -25,18 +26,20 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
   const isAboveSmallMobileScreen = useMediaQuery("(min-width: 400px)")
-  const navbarBackground = isTopOfPage ? "" : "bg-zinc-900"
-  // const [darkMode, setDarkMode] = useState(false)
+  const navbarBackground = isTopOfPage ? "bg-zinc-900" : "bg-zinc-900"
 
-  // const toggleDarkMode = () => {
-  //   setDarkMode(!darkMode)
+  const menuRef = useRef<HTMLDivElement>(null)
 
-  //   if (!darkMode) {
-  //     document.documentElement.classList.add("dark")
-  //   } else {
-  //     document.documentElement.classList.remove("dark")
-  //   }
-  // }
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuToggled(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
     <nav>
@@ -46,16 +49,16 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            {/* <img alt="logo" src={Logo} /> */}
             {isAboveSmallMobileScreen ? (
-              <p className=" font-bold text-md pb-3">
-                Ohio Fitness & Martial Arts
-              </p>
+              // <p className=" font-bold text-md md:pb-3">
+              //   Ohio Fitness & Martial Arts
+              // </p>
+              <img src={ITLogo} alt="IT Logo" className="h-14 pb-4" />
             ) : (
               <div>
-                {" "}
-                <p className="text-gray-100 text-bold text-md">Ohio Fitness</p>
-                <p>& Martial Arts</p>
+                {/* <p className="text-gray-100 text-bold text-md">Ohio Fitness</p>
+                <p>& Martial Arts</p> */}
+                <img src={ITLogo} alt="" />
               </div>
             )}
 
@@ -63,19 +66,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} gap-8`}>
                 <div className={`${flexBetween} gap-4 text-md`}>
-                  {/* <button onClick={toggleDarkMode}>
-                    {darkMode ? (
-                      <SunIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
-                    ) : (
-                      <MoonIcon className="h-6 w-6 text-gray-400 dark:text-gray-400-dark" />
-                    )}
-                  </button> */}
                   <Link
                     page="Home"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-
                   <Link
                     page="Fitness"
                     selectedPage={selectedPage}
@@ -98,7 +93,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 className="rounded-full bg-zinc-300 p-2"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
-                {" "}
                 {!isMenuToggled ? (
                   <Bars3Icon className="w-6 text-black" />
                 ) : (
@@ -112,12 +106,13 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div
-          className={`mobile-menu fixed mt-[50px] top-0 right-0 w-3/4 z-40  bg-zinc-800 rounded-l-md transition-all duration-300  ${
+          ref={menuRef}
+          className={`mobile-menu fixed mt-[50px] top-0 right-0 w-3/4 sm:w-1/3 z-40 bg-zinc-800 rounded-l-md transition-all duration-300 ${
             isMenuToggled ? "h-auto" : "h-0"
           }`}
         >
           {/* MENU ITEMS */}
-          <div className="flex flex-col items-center text-xl z-50">
+          <div className="flex flex-col items-center text-lg z-50">
             <LinkMobile
               page="Home"
               selectedPage={selectedPage}
@@ -155,7 +150,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       )}
-      {/* <div className="w-full h-4 bg-zinc-950"></div> */}
     </nav>
   )
 }

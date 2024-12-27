@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   mode: "jit",
   darkMode: "class",
@@ -8,10 +8,8 @@ module.exports = {
       colors: {
         text: "#f4f4f5",
         lime: "#2bd410",
-
         "emerald-theme": "#059669",
         "zinc-theme": "#a1a1aa",
-
         "gray-500": "#5E0000",
         "primary-100": "#FFE1E0",
         "primary-300": "#FFA6A3",
@@ -22,7 +20,6 @@ module.exports = {
         "gray-20-dark": "#272727",
         "gray-50-dark": "#3D3D3D",
         "gray-100-dark": "#555555",
-
         "primary-100-dark": "#1F1C1B",
         "primary-300-dark": "#63302F",
         "primary-500-dark": "#8B4442",
@@ -47,7 +44,10 @@ module.exports = {
       xs: "480px",
       sm: "768px",
       md: "1060px",
+      ml: "1200px",
+      ml2: "1260px",
       lg: "1480px",
+      se: { raw: "(max-width: 376px) and (max-height: 700px)" },
     },
   },
   plugins: [],

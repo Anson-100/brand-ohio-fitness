@@ -32,7 +32,7 @@ const MartialArts = ({}: Props) => {
       id="martialarts"
       className="mx-auto min-h-[100svh] pt-[6rem] pb-[4rem]"
     >
-      <div className="h-full w-5/6 mx-auto">
+      <div className="h-full w-[90%] md:w-5/6 mx-auto">
         {isAboveMediumScreens ? (
           <div className="grid grid-cols-10  mt-5">
             {/* HEADER */}
@@ -53,7 +53,7 @@ const MartialArts = ({}: Props) => {
                 </p>
               </motion.div>
 
-              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-10"></div>
+              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-8"></div>
 
               <motion.div
                 className=""
@@ -68,16 +68,14 @@ const MartialArts = ({}: Props) => {
               >
                 <p className="w-4/6">
                   Experience top-tier martial arts training at Ohio Fitness &
-                  Martial Arts. Our gym offers a unique mix: kids' classes for
-                  young martial artists, world-class adult MMA training, and
-                  Brazilian Jiu-Jitsu. Train with the best coaching, facilities
-                  and equipment, all under one roof!
+                  Martial Arts: kids' classes, adult MMA, and Brazilian
+                  Jiu-Jitsu
                 </p>
               </motion.div>
             </div>
 
             {/* INFO */}
-            <div className="col-span-7 flex flex-col my-2">
+            <div className="col-span-7 flex flex-col lg:gap-2 my-2">
               {/* DROPDOWN 1 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
@@ -127,7 +125,7 @@ const MartialArts = ({}: Props) => {
                       <p className="w-2/3">
                         A fun, safe, and structured environment for your kids to
                         build confidence, learn self-defense, and
-                        situational-awareness!
+                        situational-awareness
                       </p>
                     </motion.div>
                   )}
@@ -197,7 +195,7 @@ const MartialArts = ({}: Props) => {
                     >
                       <p className="w-2/3">
                         Hobbyists, amateurs, and professional fighters can train
-                        in a huge space and learn from the best!
+                        in a huge space and learn from the best
                       </p>
                     </motion.div>
                   )}
@@ -265,7 +263,7 @@ const MartialArts = ({}: Props) => {
                       }}
                     >
                       <p className="w-2/3">
-                        Gi and no-gi classes offered multiple times per week!
+                        Gi and no-gi classes offered multiple times per week
                       </p>
                     </motion.div>
                   )}
@@ -291,7 +289,7 @@ const MartialArts = ({}: Props) => {
           </div>
         ) : (
           <div>
-            {/* MOBILE HEADER */}
+            {/* MOBILE SECTION------------------------------------------------------------------------------------------- */}
 
             <motion.div
               className=""
@@ -304,12 +302,12 @@ const MartialArts = ({}: Props) => {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="scene-title text-center font-bold text-[1.75rem]">
+              <p className="scene-title text-center font-bold text-[1.5rem]">
                 Martial Arts
               </p>
             </motion.div>
 
-            <div className="h-[1px] w-4/6 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
+            <div className="h-[1px] w-1/3 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
 
             {/* MOBILE MARTIAL ARTS INFO ==================================================================*/}
             <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
@@ -336,7 +334,7 @@ const MartialArts = ({}: Props) => {
                         Kids Martial Arts
                       </p>
                       <p className="mt-2 text-gray-300 text-left">
-                        Skills for life!
+                        Skills for life
                       </p>
                     </div>
                     {isKidsClassMobileOpen ? (
@@ -376,7 +374,7 @@ const MartialArts = ({}: Props) => {
                         Adult MMA
                       </p>
                       <p className="mt-2 text-left text-gray-300">
-                        Elite training!
+                        Elite training
                       </p>
                     </div>
                     {isAdultMMAMobileOpen ? (
@@ -416,7 +414,7 @@ const MartialArts = ({}: Props) => {
                         Brazilian Jiu-Jitsu
                       </p>
                       <p className="mt-2 text-gray-300 text-left">
-                        Gi and no-gi!
+                        Gi and no-gi
                       </p>
                     </div>
                     {isBJJMobileOpen ? (

@@ -1,5 +1,6 @@
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { SelectedPage } from "@/shared/types"
+import ITLogo from "@/assets/it logo (nr).png"
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void
@@ -7,22 +8,28 @@ type Props = {
 
 const Footer = ({ setSelectedPage }: Props) => {
   return (
-    <footer className="bg-zinc-900">
-      <div className="w-full flex flex-col pb-4">
+    <footer className="bg-zinc-950">
+      <div className="w-full flex flex-col items-center pb-4">
         {" "}
         <AnchorLink
-          className="z-10 w-full bg-zinc-800 hover:bg-zinc-800 py-3 text-center text-gray-400 hover:text-gray-300"
+          className="z-10 w-full bg-zinc-900 hover:bg-zinc-800 py-3 text-center text-gray-400 hover:text-gray-300"
           onClick={() => setSelectedPage(SelectedPage.Home)}
           href={`#${SelectedPage.Home}`}
         >
           back to top
         </AnchorLink>
-        <p className="logo text-2xl font-dmsans font-bold text-gray-50 text-center mt-4">
-          Ohio Fitness & Martial Arts
-        </p>
-        <p className="text-center text-gray-400">
-          ©2024 Ohio Fitness & Martial Arts. All Rights Reserved.
-        </p>
+        <div className="flex flex-col items-center gap-4">
+          <img src={ITLogo} alt="IT Logo" className="w-16 mt-6" />{" "}
+          <div className="flex flex-col ">
+            {" "}
+            <p className="logo text-xl font-dmsans font-bold text-gray-50 text-center ">
+              Ohio Fitness & Martial Arts
+            </p>
+            <p className="text-center text-gray-400">
+              ©2024 Ohio Fitness & Martial Arts. All Rights Reserved.
+            </p>
+          </div>
+        </div>
         {/* <div className="flex mx-auto gap-5 mb-3">
           <div>
             <p>304 E Lake Avenue</p>

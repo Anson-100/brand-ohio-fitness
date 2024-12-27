@@ -81,7 +81,7 @@ const Carousel = ({ slides }: CarouselProps) => {
               />
               <div className="absolute inset-0 flex flex-col justify-end items-center">
                 <div className="bg-zinc-950 p-2 bg-opacity-60 backdrop-blur-sm w-full">
-                  <h2 className="text-lg text-gray-100 font-bold text-center">
+                  <h2 className="text-lg text-gray-100 font-bold">
                     {slide.title}
                   </h2>
                   <p className="text-gray-400 text-center">

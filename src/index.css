@@ -30,30 +30,6 @@ body,
   -webkit-text-fill-color: transparent;
 }
 
-.the-one {
-  position: relative;
-  display: inline-block; /* Adjust as needed */
-  transition: background-image 0.1s ease;
-}
-
-.the-one::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: -2px;
-  bottom: -2px;
-  z-index: -1;
-  background-image: linear-gradient(to right, #3b82f6, #2dd4bf);
-  filter: blur(8px);
-  border-radius: 4px; /* Adjust as needed */
-  transition: opacity 0.3s ease;
-}
-
-.the-one:hover::after {
-  opacity: 0; /* Hides the pseudo-element shadow */
-}
-
 /* NAVBAR STYLING ==========================================================================================*/
 .mobile-menu {
   backdrop-filter: blur(5px);
