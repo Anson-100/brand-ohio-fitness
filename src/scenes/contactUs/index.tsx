@@ -45,7 +45,7 @@ const ContactUs = ({}: Props) => {
             <div className="grid grid-cols-12 my-auto">
               {" "}
               {/* 24/7 */}
-              <div className="col-span-3 flex items-center mr-5 ">
+              <div className="col-span-4 flex items-center mr-5 ">
                 <div className="w-full h-5/6 flex flex-col justify-beginning">
                   <div className="mr-auto">
                     <motion.div
@@ -79,7 +79,7 @@ const ContactUs = ({}: Props) => {
                         visible: { opacity: 1, x: 0 },
                       }}
                     >
-                      <p className=" mb-10">
+                      <p className="w-3/4 mb-10">
                         Stop by or call anytime during staffed hours or{" "}
                         <span className="hover:underline text-blue-400">
                           <a
@@ -97,8 +97,8 @@ const ContactUs = ({}: Props) => {
                 </div>
               </div>
               {/* CONTENT SECTION=============================================================================== */}
-              <div className="col-span-9 my-auto">
-                <div className="grid grid-rows-8 gap-4 ml-12 text-gray-100">
+              <div className="col-span-8 my-auto">
+                <div className="grid grid-rows-8 gap-6 ml-12 text-gray-100">
                   {/* Location======================================================================== */}
                   <div className="flex items-center row-span-2 bg-zinc-900 border-zinc-700 border-[1px] rounded-sm">
                     <motion.div
@@ -235,7 +235,7 @@ const ContactUs = ({}: Props) => {
                           </p>
                         </div>
 
-                        <p className="w-1/2 ml2:w-1/3 lg:w-1/4 my-auto text-center text-2xl">
+                        <p className="w-1/2 ml2:w-1/3 lg:w-1/4 my-auto text-2xl">
                           24 / 7
                         </p>
                       </div>

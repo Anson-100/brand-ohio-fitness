@@ -12,10 +12,10 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
 
   return (
     <AnchorLink
-      className={`pb-4 pt-1 px-3   border-b-[2px] ${
+      className={`pb-4 pt-1 px-3 border-b-[3px] ${
         selectedPage === lowerCasePage
-          ? " border-b-[2px] border-emerald-theme"
-          : "text-zinc-300 border-transparent hover:border-zinc-500"
+          ? " border-b-[3px] border-emerald-theme"
+          : "text-zinc-300 border-transparent hover:border-zinc-700"
       }
         
       `}

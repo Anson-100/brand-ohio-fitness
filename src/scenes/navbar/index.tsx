@@ -14,6 +14,7 @@ import {
 
 import { SelectedPage } from "@/shared/types"
 import useMediaQuery from "@/hooks/useMediaQuery"
+import LogoLink from "@/components/LogoLink"
 
 type Props = {
   isTopOfPage: boolean
@@ -53,7 +54,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               // <p className=" font-bold text-md md:pb-3">
               //   Ohio Fitness & Martial Arts
               // </p>
-              <img src={ITLogo} alt="IT Logo" className="h-14 pb-4" />
+              <img src={ITLogo} alt="IT Logo" className="h-12 pb-2" />
             ) : (
               <div>
                 {/* <p className="text-gray-100 text-bold text-md">Ohio Fitness</p>
@@ -71,6 +72,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
+                  {/* <div className="h-6 w-[1px] bg-zinc-400"></div> */}
                   <Link
                     page="Fitness"
                     selectedPage={selectedPage}
