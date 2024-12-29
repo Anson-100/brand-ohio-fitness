@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react"
-import Link from "./Link"
+import { Link, useLocation } from "react-router-dom"
+import LinkDesktop from "./LinkDesktop"
 import LinkMobile from "./LinkMobile"
-import ITLogo from "@/assets/it logo (nr).png"
+
+import LogoLink from "@/components/LogoLink"
 
 import {
   Bars3Icon,
@@ -14,7 +16,6 @@ import {
 
 import { SelectedPage } from "@/shared/types"
 import useMediaQuery from "@/hooks/useMediaQuery"
-import LogoLink from "@/components/LogoLink"
 
 type Props = {
   isTopOfPage: boolean
@@ -30,6 +31,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const navbarBackground = isTopOfPage ? "bg-zinc-900" : "bg-zinc-900"
 
   const menuRef = useRef<HTMLDivElement>(null)
+  const location = useLocation() // Get the current route
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,52 +44,70 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
+  // Check if the current route is `/waivers`
+  const isWaiversPage = location.pathname === "/waivers"
+
   return (
     <nav>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full md:pt-4 py-2 md:pb-0 border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80`}
+        className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full  border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            {isAboveSmallMobileScreen ? (
-              // <p className=" font-bold text-md md:pb-3">
-              //   Ohio Fitness & Martial Arts
-              // </p>
-              <img src={ITLogo} alt="IT Logo" className="h-12 pb-2" />
-            ) : (
-              <div>
-                {/* <p className="text-gray-100 text-bold text-md">Ohio Fitness</p>
-                <p>& Martial Arts</p> */}
-                <img src={ITLogo} alt="" />
-              </div>
-            )}
+            <LogoLink />
 
             {/* RIGHT SIDE */}
-            {isAboveMediumScreens ? (
+            {isWaiversPage ? (
+              // Simplified Navbar for Waivers Page
+              <div>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setSelectedPage(SelectedPage.Home)
+                    sessionStorage.setItem("selectedPage", "home")
+                  }}
+                  className="font-quest text-text-supporting py-2 px-6 bg-bg-supporting hover:bg-bg-dark rounded-lg"
+                >
+                  Home
+                </Link>
+              </div>
+            ) : isAboveMediumScreens ? (
+              // Full Navbar for Main Pages
               <div className={`${flexBetween} gap-8`}>
-                <div className={`${flexBetween} gap-4 text-md`}>
-                  <Link
+                <div
+                  className={`${flexBetween} gap-4 text-md bg-zinc-900 my-1 px-4 rounded-md`}
+                >
+                  <LinkDesktop
                     page="Home"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-                  {/* <div className="h-6 w-[1px] bg-zinc-400"></div> */}
-                  <Link
+                  <LinkDesktop
                     page="Fitness"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-                  <Link
+                  <LinkDesktop
                     page="Martial Arts"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
-                  <Link
+                  <LinkDesktop
                     page="Contact Us"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
+                  <div className="h-6 w-[1px] mb-1 bg-zinc-600"></div>
+                  <Link
+                    to="/waivers"
+                    onClick={() => {
+                      sessionStorage.setItem("selectedPage", "waivers")
+                    }}
+                    className="py-2 px-3 m-2 bg-zinc-700 hover:bg-zinc-600 rounded-md"
+                  >
+                    Waivers
+                  </Link>
                 </div>
               </div>
             ) : (
@@ -105,6 +125,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       </div>
+
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div
@@ -122,8 +143,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               toggleMenu={() => setIsMenuToggled(false)}
               Icon={HomeIcon}
             />
-            <div className="w-full h-[1px] bg-gray-700 m-auto " />
-
+            <div className="w-full h-[1px] bg-gray-700 m-auto" />
             <LinkMobile
               page="Fitness"
               selectedPage={selectedPage}
@@ -131,8 +151,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               toggleMenu={() => setIsMenuToggled(false)}
               Icon={ArrowTrendingUpIcon}
             />
-            <div className="w-full h-[1px] bg-gray-700 m-auto " />
-
+            <div className="w-full h-[1px] bg-gray-700 m-auto" />
             <LinkMobile
               page="Martial Arts"
               selectedPage={selectedPage}
@@ -140,8 +159,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               toggleMenu={() => setIsMenuToggled(false)}
               Icon={FireIcon}
             />
-            <div className="w-full h-[1px] bg-gray-700 m-auto " />
-
+            <div className="w-full h-[1px] bg-gray-700 m-auto" />
             <LinkMobile
               page="Contact Us"
               selectedPage={selectedPage}

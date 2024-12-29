@@ -7,14 +7,14 @@ type Props = {
   setSelectedPage: (value: SelectedPage) => void
 }
 
-const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
+const LinkDesktop = ({ page, selectedPage, setSelectedPage }: Props) => {
   const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage
 
   return (
     <AnchorLink
-      className={`pb-4 pt-1 px-3 border-b-[3px] ${
+      className={`mt-1 pb-1 px-3 border-b-[1px] ${
         selectedPage === lowerCasePage
-          ? " border-b-[3px] border-emerald-theme"
+          ? " border-b-[1px] border-emerald-theme"
           : "text-zinc-300 border-transparent hover:border-zinc-700"
       }
         
@@ -27,4 +27,4 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
   )
 }
 
-export default Link
+export default LinkDesktop

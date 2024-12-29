@@ -4,8 +4,11 @@ import Home from "@/scenes/home"
 import MartialArts from "@/scenes/martialArts"
 import Fitness from "@/scenes/fitness"
 import ContactUs from "@/scenes/contactUs"
+import Waivers from "@/scenes/waivers"
+
 import Footer from "@/scenes/footer"
 import { useEffect, useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { SelectedPage } from "@/shared/types"
 
 function App() {
@@ -28,20 +31,35 @@ function App() {
   }, [])
 
   return (
-    <div className="app bg-black dark:bg-grayish">
-      <Navbar
-        isTopOfPage={isTopOfPage}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-      />
-      <Home setSelectedPage={setSelectedPage} />
-      <Fitness setSelectedPage={setSelectedPage} />
-      <MartialArts setSelectedPage={setSelectedPage} />
-      <ContactUs setSelectedPage={setSelectedPage} />
+    <Router>
+      <div className="app bg-black dark:bg-grayish">
+        <Navbar
+          isTopOfPage={isTopOfPage}
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+        />
 
-      <div className="h-[5rem] bg-zinc-950 w-full"></div>
-      <Footer setSelectedPage={setSelectedPage} />
-    </div>
+        <Routes>
+          {/* Main Scrollable Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Home setSelectedPage={setSelectedPage} />
+                <Fitness setSelectedPage={setSelectedPage} />
+                <MartialArts setSelectedPage={setSelectedPage} />
+                <ContactUs setSelectedPage={setSelectedPage} />
+                <div className="h-[5rem] bg-zinc-950 w-full"></div>
+                <Footer setSelectedPage={setSelectedPage} />
+              </>
+            }
+          />
+
+          {/* Standalone Route for Waivers */}
+          <Route path="/waivers" element={<Waivers />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
