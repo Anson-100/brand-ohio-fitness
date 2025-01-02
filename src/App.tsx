@@ -49,7 +49,7 @@ function App() {
                 <Fitness setSelectedPage={setSelectedPage} />
                 <MartialArts setSelectedPage={setSelectedPage} />
                 <ContactUs setSelectedPage={setSelectedPage} />
-                <div className="h-[5rem] bg-zinc-950 w-full"></div>
+
                 <Footer setSelectedPage={setSelectedPage} />
               </>
             }

@@ -18,11 +18,11 @@ const Footer = ({ setSelectedPage }: Props) => {
         >
           back to top
         </AnchorLink>
-        <div className="flex flex-col items-center gap-4">
-          <img src={ITLogo} alt="IT Logo" className="w-16 mt-6" />{" "}
+        <div className="flex flex-col items-center gap-6 py-2">
+          <img src={ITLogo} alt="IT Logo" className="w-20 mt-6" />{" "}
           <div className="flex flex-col ">
             {" "}
-            <p className="logo text-xl font-dmsans font-bold text-gray-50 text-center ">
+            <p className="logo text-xl font-dmsans font-bold text-gray-50 text-center mb-2">
               Ohio Fitness & Martial Arts
             </p>
             <p className="text-center text-gray-400">
@@ -30,19 +30,6 @@ const Footer = ({ setSelectedPage }: Props) => {
             </p>
           </div>
         </div>
-        {/* <div className="flex mx-auto gap-5 mb-3">
-          <div>
-            <p>304 E Lake Avenue</p>
-            <p>Bellefontaine, OH 43311</p>
-            <p>(behind TP Lanes)</p>
-          </div>
-          <div>
-            <p>Mon, Wed, Fri</p>
-            <p>Morning: 8am-12pm</p>
-            <p>Evening: 4pm-8:30pm</p>
-          </div>
-        </div>
-        <p className="underline text-center">(937) 599-5425</p> */}
       </div>
     </footer>
   )

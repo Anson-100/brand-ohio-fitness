@@ -60,14 +60,14 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
             {/* RIGHT SIDE */}
             {isWaiversPage ? (
               // Simplified Navbar for Waivers Page
-              <div>
+              <div className="p-4">
                 <Link
                   to="/"
                   onClick={() => {
                     setSelectedPage(SelectedPage.Home)
                     sessionStorage.setItem("selectedPage", "home")
                   }}
-                  className="font-quest text-text-supporting py-2 px-6 bg-bg-supporting hover:bg-bg-dark rounded-lg"
+                  className="py-2 px-3 m-2 bg-zinc-700 hover:bg-zinc-600 rounded-md"
                 >
                   Home
                 </Link>
@@ -76,7 +76,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               // Full Navbar for Main Pages
               <div className={`${flexBetween} gap-8`}>
                 <div
-                  className={`${flexBetween} gap-4 text-md bg-zinc-900 my-1 px-4 rounded-md`}
+                  className={`${flexBetween} gap-4 text-md bg-zinc-900 my-1 pl-4 pr-2 rounded-lg`}
                 >
                   <LinkDesktop
                     page="Home"
@@ -104,7 +104,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     onClick={() => {
                       sessionStorage.setItem("selectedPage", "waivers")
                     }}
-                    className="py-2 px-3 m-2 bg-zinc-700 hover:bg-zinc-600 rounded-md"
+                    className="py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md border-[1px] border-zinc-700 text-zinc-300 hover:text-zinc-100"
                   >
                     Waivers
                   </Link>

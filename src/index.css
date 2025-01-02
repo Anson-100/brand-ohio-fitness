@@ -13,15 +13,18 @@ body,
   width: 100%;
   font-family: "DM Sans", sans-serif;
   color: #f3f4f6;
-  background-color: #09090b;
+  background: linear-gradient(to right, #09090b, #27272a);
+
   @apply text-text;
 }
 
 /* LANDING PAGE STYLING =============================================================================================*/
-/* .logo,
-.scene-title {
-  text-shadow: 4px 4px 4px black;
-} */
+.zinc-shadow {
+  box-shadow:
+    0 2px 4px #27272a1a,
+    /* zinc-900 with 10% opacity */ 0 3px 6px #52525b14,
+    /* zinc-700 with 8% opacity */ 0 1px 2px #a1a1aa0d; /* zinc-400 with 5% opacity */
+}
 
 /* In your global CSS file or a custom CSS file */
 .text-gradient {

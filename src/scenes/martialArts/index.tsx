@@ -16,6 +16,7 @@ import bjjImg from "@/assets/bjj-img.jpg"
 type Props = {
   setSelectedPage: (value: SelectedPage) => void
 }
+
 const MartialArts = ({}: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)")
 
@@ -30,13 +31,13 @@ const MartialArts = ({}: Props) => {
   return (
     <section
       id="martialarts"
-      className="mx-auto min-h-[100svh] pt-[6rem] pb-[4rem]"
+      className="mx-auto min-h-[100svh] pt-[7rem] pb-[4rem]"
     >
       <div className="h-full w-[90%] md:w-5/6 mx-auto">
         {isAboveMediumScreens ? (
-          <div className="grid grid-cols-10  mt-5">
+          <div className="grid grid-cols-10 w-full mt-5">
             {/* HEADER */}
-            <div className="col-span-3 mt-[10vh]">
+            <div className="col-span-3 mt-[10vh] flex flex-col gap-6 text-gray-100">
               <motion.div
                 className=""
                 initial="hidden"
@@ -48,15 +49,13 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="scene-title text-[2rem] font-bold">
+                <p className=" text-[2rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
                   Martial Arts
                 </p>
               </motion.div>
 
-              <div className="bg-gradient-theme h-[1px] max-w-[150px] mt-5 mb-8"></div>
-
               <motion.div
-                className=""
+                className="text-gray-200 text-base lg:text-lg"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
@@ -68,8 +67,8 @@ const MartialArts = ({}: Props) => {
               >
                 <p className="w-4/6">
                   Experience top-tier martial arts training at Ohio Fitness &
-                  Martial Arts: kids' classes, adult MMA, and Brazilian
-                  Jiu-Jitsu
+                  Martial Arts, featuring kids' classes, adult MMA, and
+                  Brazilian Jiu-Jitsu.
                 </p>
               </motion.div>
             </div>
@@ -82,7 +81,7 @@ const MartialArts = ({}: Props) => {
                   className={`${isKidsClassOpen ? "col-span-7" : "col-span-5"}`}
                 >
                   <motion.div
-                    className=""
+                    className="group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
@@ -93,30 +92,31 @@ const MartialArts = ({}: Props) => {
                     }}
                   >
                     <button
-                      className="flex items-center cursor-pointer"
+                      className="group flex flex-col cursor-pointer w-full"
                       onClick={() => setKidsClassOpen(!isKidsClassOpen)}
                     >
-                      {isKidsClassOpen ? (
-                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      ) : (
-                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      )}
-                      <p className="scene-title text-[1.3rem] font-semibold pr-1">
-                        Kids Martial Arts
-                      </p>
+                      <div className="flex items-center">
+                        {isKidsClassOpen ? (
+                          <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        ) : (
+                          <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        )}
+                        <p className="scene-title text-[1.3rem] font-semibold pr-1">
+                          Kids Martial Arts
+                        </p>
+                      </div>
+
+                      <div className="bg-zinc-600 h-[1px] w-full mt-3 mb-5 group-hover:bg-zinc-500"></div>
                     </button>
                   </motion.div>
 
-                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
-                  {isKidsClassOpen ? (
-                    ""
-                  ) : (
+                  {!isKidsClassOpen && (
                     <motion.div
                       className=""
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ duration: 0.3 }}
                       variants={{
                         hidden: { opacity: 0 },
                         visible: { opacity: 1 },
@@ -125,19 +125,18 @@ const MartialArts = ({}: Props) => {
                       <p className="w-2/3">
                         A fun, safe, and structured environment for your kids to
                         build confidence, learn self-defense, and
-                        situational-awareness
+                        situational-awareness.
                       </p>
                     </motion.div>
                   )}
                 </div>
-                {isKidsClassOpen ? (
-                  ""
-                ) : (
+
+                {!isKidsClassOpen && (
                   <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
+                      className="object-cover zinc-shadow rounded-sm"
                       src={kidsClassImg}
-                      alt="kids-class"
+                      alt="Kids Martial Arts"
                     />
                   </div>
                 )}
@@ -147,47 +146,49 @@ const MartialArts = ({}: Props) => {
                 isOpen={isKidsClassOpen}
                 toggleDropdown={() => setKidsClassOpen(!isKidsClassOpen)}
               />
+
               {/* DROPDOWN 2 */}
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div
                   className={`${isAdultMMAOpen ? "col-span-7" : "col-span-5"}`}
                 >
                   <motion.div
-                    className=""
+                    className="group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
+                    transition={{ duration: 0.5 }}
                     variants={{
                       hidden: { opacity: 0, x: 50 },
                       visible: { opacity: 1, x: 0 },
                     }}
                   >
                     <button
-                      className="flex items-center cursor-pointer"
+                      className="group flex flex-col cursor-pointer w-full"
                       onClick={() => setAdultMMAOpen(!isAdultMMAOpen)}
                     >
-                      {isAdultMMAOpen ? (
-                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      ) : (
-                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      )}
-                      <p className="scene-title text-[1.3rem] font-bold">
-                        Adult MMA/IT Fight Team
-                      </p>
+                      <div className="flex items-center">
+                        {isAdultMMAOpen ? (
+                          <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        ) : (
+                          <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        )}
+                        <p className="scene-title text-[1.3rem] font-semibold pr-1">
+                          Adult MMA/IT Fight Team
+                        </p>
+                      </div>
+
+                      <div className="bg-zinc-600 h-[1px] w-full mt-3 mb-5 group-hover:bg-zinc-500"></div>
                     </button>
                   </motion.div>
 
-                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
-                  {isAdultMMAOpen ? (
-                    ""
-                  ) : (
+                  {!isAdultMMAOpen && (
                     <motion.div
                       className=""
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.5 }}
-                      transition={{ delay: 0.1, duration: 0.3 }}
+                      transition={{ duration: 0.3 }}
                       variants={{
                         hidden: { opacity: 0 },
                         visible: { opacity: 1 },
@@ -195,22 +196,21 @@ const MartialArts = ({}: Props) => {
                     >
                       <p className="w-2/3">
                         Hobbyists, amateurs, and professional fighters can train
-                        in a huge space and learn from the best
+                        in a huge space and learn from the best.
                       </p>
                     </motion.div>
                   )}
                 </div>
-                <div className="col-span-2">
-                  {isAdultMMAOpen ? (
-                    ""
-                  ) : (
+
+                {!isAdultMMAOpen && (
+                  <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
+                      className="object-cover zinc-shadow rounded-sm"
                       src={mmaImg}
-                      alt="Adult-MMA"
+                      alt="Adult MMA"
                     />
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
               <Dropdown
                 section="adult-mma"
@@ -222,63 +222,63 @@ const MartialArts = ({}: Props) => {
               <div className="h-1/3 grid grid-cols-7 my-2">
                 <div className={`${isBJJOpen ? "col-span-7" : "col-span-5"}`}>
                   <motion.div
-                    className=""
+                    className="group"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
+                    transition={{ duration: 0.5 }}
                     variants={{
                       hidden: { opacity: 0, x: 50 },
                       visible: { opacity: 1, x: 0 },
                     }}
                   >
                     <button
-                      className="flex items-center cursor-pointer"
+                      className="group flex flex-col cursor-pointer w-full"
                       onClick={() => setBJJOpen(!isBJJOpen)}
                     >
-                      {isBJJOpen ? (
-                        <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      ) : (
-                        <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-theme" />
-                      )}
-                      <p className="scene-title text-[1.3rem] font-bold">
-                        Brazilian Jiu-Jitsu
-                      </p>
+                      <div className="flex items-center">
+                        {isBJJOpen ? (
+                          <ChevronDoubleDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        ) : (
+                          <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
+                        )}
+                        <p className="scene-title text-[1.3rem] font-semibold pr-1">
+                          Brazilian Jiu-Jitsu
+                        </p>
+                      </div>
+
+                      <div className="bg-zinc-600 h-[1px] w-full mt-3 mb-5 group-hover:bg-zinc-500"></div>
                     </button>
                   </motion.div>
-                  <div className="bg-gradient-theme h-[1px] w-full mt-3 mb-5"></div>
 
-                  {isBJJOpen ? (
-                    ""
-                  ) : (
+                  {!isBJJOpen && (
                     <motion.div
                       className=""
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.5 }}
-                      transition={{ delay: 0.2, duration: 0.3 }}
+                      transition={{ duration: 0.3 }}
                       variants={{
                         hidden: { opacity: 0 },
                         visible: { opacity: 1 },
                       }}
                     >
                       <p className="w-2/3">
-                        Gi and no-gi classes offered multiple times per week
+                        Gi and no-gi classes offered multiple times per week.
                       </p>
                     </motion.div>
                   )}
                 </div>
-                <div className="col-span-2">
-                  {isBJJOpen ? (
-                    ""
-                  ) : (
+
+                {!isBJJOpen && (
+                  <div className="col-span-2">
                     <img
-                      className="object-cover border-[1px] border-emerald-theme rounded-sm"
+                      className="object-cover zinc-shadow rounded-sm"
                       src={bjjImg}
                       alt="Brazilian Jiu-Jitsu"
                     />
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
               <Dropdown
                 section="bjj"
@@ -289,10 +289,9 @@ const MartialArts = ({}: Props) => {
           </div>
         ) : (
           <div>
-            {/* MOBILE SECTION------------------------------------------------------------------------------------------- */}
-
+            {/* MOBILE SECTION */}
             <motion.div
-              className=""
+              className="flex items-center justify-center mb-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -302,15 +301,13 @@ const MartialArts = ({}: Props) => {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="scene-title text-center font-bold text-[1.5rem]">
+              <p className="mx-auto font-bold text-gray-100 text-[1.5rem] inline-block border-b-[1px] border-emerald-theme pb-2">
                 Martial Arts
               </p>
             </motion.div>
 
-            <div className="h-[1px] w-1/3 sm:w-1/3 bg-lime mx-auto mt-3 mb-7"></div>
-
-            {/* MOBILE MARTIAL ARTS INFO ==================================================================*/}
             <div className="flex flex-col gap-3 sm:w-2/3 mx-auto">
+              {/* MOBILE DROPDOWNS */}
               <motion.div
                 className=""
                 initial="hidden"
@@ -333,8 +330,8 @@ const MartialArts = ({}: Props) => {
                       <p className="text-[1.2rem] text-left font-bold">
                         Kids Martial Arts
                       </p>
-                      <p className="mt-2 text-gray-300 text-left">
-                        Skills for life
+                      <p className="mt-2 text-gray-300">
+                        Build confidence and skills for life.
                       </p>
                     </div>
                     {isKidsClassMobileOpen ? (
@@ -364,7 +361,7 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2 ">
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setAdultMMAMobileOpen(!isAdultMMAMobileOpen)}
@@ -373,8 +370,8 @@ const MartialArts = ({}: Props) => {
                       <p className="text-[1.2rem] text-left font-bold">
                         Adult MMA
                       </p>
-                      <p className="mt-2 text-left text-gray-300">
-                        Elite training
+                      <p className="mt-2 text-gray-300">
+                        Train like a professional.
                       </p>
                     </div>
                     {isAdultMMAMobileOpen ? (
@@ -404,7 +401,7 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2 ">
+                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setBJJMobileOpen(!isBJJMobileOpen)}
@@ -413,8 +410,8 @@ const MartialArts = ({}: Props) => {
                       <p className="text-[1.2rem] text-left font-bold">
                         Brazilian Jiu-Jitsu
                       </p>
-                      <p className="mt-2 text-gray-300 text-left">
-                        Gi and no-gi
+                      <p className="mt-2 text-gray-300">
+                        Gi and no-gi training.
                       </p>
                     </div>
                     {isBJJMobileOpen ? (
