@@ -36,7 +36,7 @@ const LinkMobile = ({
       href={`#${lowerCasePage}`}
       onClick={handleClick}
     >
-      {PageIcon && <PageIcon className="h-6 w-6 mr-3" />}{" "}
+      {PageIcon && <PageIcon className="h-6 w-6 mr-4" />}{" "}
       {/* Render icon if provided */}
       {page}
     </AnchorLink>

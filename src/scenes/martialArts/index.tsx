@@ -33,7 +33,7 @@ const MartialArts = ({}: Props) => {
       id="martialarts"
       className="mx-auto min-h-[100svh] pt-[7rem] pb-[4rem]"
     >
-      <div className="h-full w-[90%] md:w-5/6 mx-auto">
+      <div className="h-full w-[95%] md:w-5/6 mx-auto">
         {isAboveMediumScreens ? (
           <div className="grid grid-cols-10 w-full mt-5">
             {/* HEADER */}

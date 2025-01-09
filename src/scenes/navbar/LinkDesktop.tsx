@@ -12,7 +12,7 @@ const LinkDesktop = ({ page, selectedPage, setSelectedPage }: Props) => {
 
   return (
     <AnchorLink
-      className={`mt-1 pb-1 px-3 border-b-[1px] ${
+      className={`mt-1 pb-1 px-1 mx-2 border-b-[1px] ${
         selectedPage === lowerCasePage
           ? " border-b-[1px] border-emerald-theme"
           : "text-zinc-300 border-transparent hover:border-zinc-700"

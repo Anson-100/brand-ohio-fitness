@@ -1,5 +1,7 @@
 import React, { useState } from "react"
-import useMediaQuery from "@/hooks/useMediaQuery"
+import MartialArts from "./martialArts"
+import Fitness from "./fitness"
+
 import {
   ChevronDownIcon,
   ChevronDoubleDownIcon,
@@ -14,7 +16,6 @@ interface PolicyItem {
 
 const Waivers: React.FC = () => {
   const [isOpen, setIsOpen] = useState<Record<string, boolean>>({})
-  const isAboveMd = useMediaQuery("(min-width: 1060px)")
 
   const toggleOpen = (id: string): void => {
     setIsOpen(prevState => ({
@@ -26,156 +27,95 @@ const Waivers: React.FC = () => {
   const PolicyItems: PolicyItem[] = [
     {
       id: "policy1",
-      question: "Abstract",
-      answer:
-        "Welcome to Cool English! Your privacy matters to us. This Privacy Policy explains how we handle your data when you use our site. Please take a moment to review it to understand how we treat your information.",
+      question: "Martial Arts Waiver (Kids and Adults)",
+      answer: () => <MartialArts />, // Renders the Martial Arts waiver
     },
     {
       id: "policy2",
-      question: "Data Collection",
-      answer: () => (
-        <span>
-          Enjoy an enhanced English teaching experience with our website! Your
-          browsing habits, preferences, and activities outside of our site
-          remain completely private and untouched.
-        </span>
-      ),
-    },
-    {
-      id: "policy3",
-      question: "Token Storage",
-      answer:
-        "Our site may save a single authentication token in your browser's local storage. This token ensures smooth access to specific features or services. It's securely stored on your device and isn't shared with any external servers or third parties.",
-    },
-    {
-      id: "policy4",
-      question: "Third Party Links",
-      answer: () => (
-        <span>
-          Cool English doesn't link to third-party websites. We're not
-          responsible for the content or practices of any third-party sites you
-          may visit through external links.
-        </span>
-      ),
-    },
-    {
-      id: "policy5",
-      question: "Changes to this Privacy Policy",
-      answer:
-        "We might make changes to this Privacy Policy occasionally. Don't worry, any updates will be posted here, with the effective date adjusted accordingly. Feel free to check back here every now and then for any changes.",
+      question: "Fitness Waiver",
+      answer: () => <Fitness />, // Renders the Fitness waiver here
     },
   ]
-
   return (
     <section
       id="waivers"
-      className="flex flex-col items-center min-h-[100svh] py-16 w-5/6 md:w-3/4 lg:w-2/3 mx-auto"
+      className="flex flex-col items-center min-h-[100svh] py-16 w-[90%] md:w-5/6  mx-auto"
     >
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        }}
-      >
-        <div className="mx-auto font-montserrat text-center p-4 pb-8 ss:pb-4 sm:pb-8 py-8 xs:pt-6 pt-12 md:pt-0 md:py-16 flex flex-col gap-4">
-          <h1 className="text-xl md:text-3xl text-text-primary font-semibold">
+      <div className="mt-[10vh] mr-auto flex flex-col gap-6 text-gray-100 mb-8 md:mb-16">
+        <motion.div
+          className=""
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <p className="md:text-[2rem] text-[1.5rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
             Waivers
-          </h1>
-        </div>
-      </motion.div>
+          </p>
+        </motion.div>
 
-      {isAboveMd ? (
-        <div className="w-full flex flex-col gap-4 font-quest text-gray-200 text-base md:text-lg">
-          {PolicyItems.map(item => (
-            <div key={item.id} className="flex flex-col">
-              <button
-                onClick={() => toggleOpen(item.id)}
-                className="flex items-center justify-between w-full text-left px-2 py-4"
+        <motion.div
+          className="text-gray-200 text-base lg:text-lg"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <p className="w-4/6"></p>
+        </motion.div>
+      </div>
+      <div className="w-full h-[1px] bg-neutral-600"></div>
+
+      {/* WAIVERS======================================================= */}
+
+      <div className="w-full flex flex-col  font-quest text-gray-200 text-base md:text-lg">
+        {PolicyItems.map(item => (
+          <div key={item.id} className="flex flex-col">
+            <button
+              onClick={() => toggleOpen(item.id)}
+              className="flex items-center justify-between w-full text-left py-6 px-4"
+            >
+              <span
+                className={`${
+                  isOpen[item.id] ? "text-gray-400" : "text-gray-200"
+                } transition-all duration-200`}
               >
-                <span
-                  className={`${
-                    isOpen[item.id]
-                      ? "text-text-supporting"
-                      : "text-text-secondary"
-                  } transition-all duration-200`}
+                {item.question}
+              </span>
+              {isOpen[item.id] ? (
+                <ChevronDoubleDownIcon className="w-5 h-5" />
+              ) : (
+                <ChevronDownIcon className="w-5 h-5" />
+              )}
+            </button>
+            <AnimatePresence>
+              {isOpen[item.id] && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                 >
-                  {item.question}
-                </span>
-                {isOpen[item.id] ? (
-                  <ChevronDoubleDownIcon className="w-5 h-5" />
-                ) : (
-                  <ChevronDownIcon className="w-5 h-5" />
-                )}
-              </button>
-              <AnimatePresence>
-                {isOpen[item.id] && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                  >
-                    <p className="pb-4 pl-4 px-2">
-                      {typeof item.answer === "function"
-                        ? item.answer()
-                        : item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <div className="w-full h-[1px] bg-neutral-600"></div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="w-full flex flex-col gap-4 font-quest text-gray-200 text-base pt-4 landscape-mobile:text-sm">
-          {PolicyItems.map(item => (
-            <div key={item.id} className="flex flex-col">
-              <button
-                onClick={() => toggleOpen(item.id)}
-                className="flex items-center justify-between w-full text-left px-2 py-2 gap-8"
-              >
-                <span
-                  className={`${
-                    isOpen[item.id]
-                      ? "text-text-supporting"
-                      : "text-text-secondary"
-                  } transition-all duration-200`}
-                >
-                  {item.question}
-                </span>
-                {isOpen[item.id] ? (
-                  <ChevronDoubleDownIcon className="w-5 h-5 text-text-secondary" />
-                ) : (
-                  <ChevronDownIcon className="w-5 h-5 text-text-supporting" />
-                )}
-              </button>
-              <AnimatePresence>
-                {isOpen[item.id] && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-2 pt-2 px-2 text-text-secondary">
-                      {typeof item.answer === "function"
-                        ? item.answer()
-                        : item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <div className="w-full h-[1px] bg-neutral-600"></div>
-            </div>
-          ))}
-        </div>
-      )}
+                  <p className="pb-4 pl-4 px-2">
+                    {typeof item.answer === "function"
+                      ? item.answer()
+                      : item.answer}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div className="w-full h-[1px] bg-neutral-600"></div>
+          </div>
+        ))}
+      </div>
     </section>
   )
 }

@@ -12,6 +12,7 @@ import {
   FireIcon,
   ArrowTrendingUpIcon,
   PaperAirplaneIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/solid"
 
 import { SelectedPage } from "@/shared/types"
@@ -27,7 +28,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between"
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
-  const isAboveSmallMobileScreen = useMediaQuery("(min-width: 400px)")
+
   const navbarBackground = isTopOfPage ? "bg-zinc-900" : "bg-zinc-900"
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -50,7 +51,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   return (
     <nav>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full  border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80`}
+        className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full  border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80 h-[4.5rem]`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
@@ -67,7 +68,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage(SelectedPage.Home)
                     sessionStorage.setItem("selectedPage", "home")
                   }}
-                  className="py-2 px-3 m-2 bg-zinc-700 hover:bg-zinc-600 rounded-md"
+                  className="py-[10px] px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-zinc-300 hover:text-zinc-100"
                 >
                   Home
                 </Link>
@@ -104,7 +105,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     onClick={() => {
                       sessionStorage.setItem("selectedPage", "waivers")
                     }}
-                    className="py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md border-[1px] border-zinc-700 text-zinc-300 hover:text-zinc-100"
+                    className="py-2 px-4 m-2 bg-yellow-800 hover:bg-yellow-700 rounded-md  text-zinc-300 hover:text-zinc-100"
                   >
                     Waivers
                   </Link>
@@ -116,9 +117,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 {!isMenuToggled ? (
-                  <Bars3Icon className="w-6 text-black" />
+                  <Bars3Icon className="w-6 text-zinc-900" />
                 ) : (
-                  <XMarkIcon className="w-6 text-black" />
+                  <XMarkIcon className="w-6 text-zinc-900" />
                 )}
               </button>
             )}
@@ -130,43 +131,73 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       {!isAboveMediumScreens && isMenuToggled && (
         <div
           ref={menuRef}
-          className={`mobile-menu fixed mt-[50px] top-0 right-0 w-3/4 sm:w-1/3 z-40 bg-zinc-800 rounded-l-md transition-all duration-300 ${
+          className={`mobile-menu fixed mt-[60px] top-0 right-0 w-3/4 sm:w-1/3 z-40 bg-zinc-800 rounded-l-md transition-all duration-300 zinc-shadow ${
             isMenuToggled ? "h-auto" : "h-0"
           }`}
         >
           {/* MENU ITEMS */}
           <div className="flex flex-col items-center text-lg z-50">
-            <LinkMobile
-              page="Home"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              toggleMenu={() => setIsMenuToggled(false)}
-              Icon={HomeIcon}
-            />
-            <div className="w-full h-[1px] bg-gray-700 m-auto" />
-            <LinkMobile
-              page="Fitness"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              toggleMenu={() => setIsMenuToggled(false)}
-              Icon={ArrowTrendingUpIcon}
-            />
-            <div className="w-full h-[1px] bg-gray-700 m-auto" />
-            <LinkMobile
-              page="Martial Arts"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              toggleMenu={() => setIsMenuToggled(false)}
-              Icon={FireIcon}
-            />
-            <div className="w-full h-[1px] bg-gray-700 m-auto" />
-            <LinkMobile
-              page="Contact Us"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              toggleMenu={() => setIsMenuToggled(false)}
-              Icon={PaperAirplaneIcon}
-            />
+            {isWaiversPage ? (
+              // Simplified Mobile Menu for Waivers Page
+              <Link
+                to="/"
+                onClick={() => {
+                  setSelectedPage(SelectedPage.Home)
+                  sessionStorage.setItem("selectedPage", "home")
+                  setIsMenuToggled(false)
+                }}
+                className="py-3 px-4 m-2 w-full text-center bg-zinc-700 hover:bg-zinc-600 rounded-md text-zinc-100"
+              >
+                Home
+              </Link>
+            ) : (
+              // Full Mobile Menu for Main Pages
+              <>
+                <LinkMobile
+                  page="Home"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                  toggleMenu={() => setIsMenuToggled(false)}
+                  Icon={HomeIcon}
+                />
+                <div className="w-full h-[1px] bg-gray-700 m-auto" />
+                <LinkMobile
+                  page="Fitness"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                  toggleMenu={() => setIsMenuToggled(false)}
+                  Icon={ArrowTrendingUpIcon}
+                />
+                <div className="w-full h-[1px] bg-gray-700 m-auto" />
+                <LinkMobile
+                  page="Martial Arts"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                  toggleMenu={() => setIsMenuToggled(false)}
+                  Icon={FireIcon}
+                />
+                <div className="w-full h-[1px] bg-gray-700 m-auto" />
+                <LinkMobile
+                  page="Contact Us"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                  toggleMenu={() => setIsMenuToggled(false)}
+                  Icon={PaperAirplaneIcon}
+                />
+                <div className="w-full h-[1px] bg-gray-700 m-auto" />
+                <Link
+                  to="/waivers"
+                  onClick={() => {
+                    sessionStorage.setItem("selectedPage", "waivers")
+                    setIsMenuToggled(false)
+                  }}
+                  className="py-8 px-4 bg-yellow-800 w-full pl-10 flex items-center rounded-bl-md text-zinc-300"
+                >
+                  <DocumentTextIcon className="h-6 w-6 mr-4" />
+                  <p>Waivers</p>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

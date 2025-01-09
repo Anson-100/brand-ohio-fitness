@@ -19,7 +19,7 @@ const Footer = ({ setSelectedPage }: Props) => {
           back to top
         </AnchorLink>
         <div className="flex flex-col items-center gap-6 py-2">
-          <img src={ITLogo} alt="IT Logo" className="w-20 mt-6" />{" "}
+          <img src={ITLogo} alt="IT Logo" className="w-16 md:w-20 mt-6" />{" "}
           <div className="flex flex-col ">
             {" "}
             <p className="logo text-xl font-dmsans font-bold text-gray-50 text-center mb-2">

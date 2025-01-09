@@ -5,6 +5,7 @@ import MartialArts from "@/scenes/martialArts"
 import Fitness from "@/scenes/fitness"
 import ContactUs from "@/scenes/contactUs"
 import Waivers from "@/scenes/waivers"
+import LineGradient from "@/components/LineGradient"
 
 import Footer from "@/scenes/footer"
 import { useEffect, useState } from "react"
@@ -46,8 +47,13 @@ function App() {
             element={
               <>
                 <Home setSelectedPage={setSelectedPage} />
+                <LineGradient />
                 <Fitness setSelectedPage={setSelectedPage} />
+                <LineGradient />
+
                 <MartialArts setSelectedPage={setSelectedPage} />
+                <LineGradient />
+
                 <ContactUs setSelectedPage={setSelectedPage} />
 
                 <Footer setSelectedPage={setSelectedPage} />

@@ -20,10 +20,7 @@ body,
 
 /* LANDING PAGE STYLING =============================================================================================*/
 .zinc-shadow {
-  box-shadow:
-    0 2px 4px #27272a1a,
-    /* zinc-900 with 10% opacity */ 0 3px 6px #52525b14,
-    /* zinc-700 with 8% opacity */ 0 1px 2px #a1a1aa0d; /* zinc-400 with 5% opacity */
+  box-shadow: 1px 1px 2px #09090b;
 }
 
 /* In your global CSS file or a custom CSS file */
