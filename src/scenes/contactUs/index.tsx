@@ -181,7 +181,7 @@ const ContactUs = ({}: Props) => {
               <div className="flex justify-between p-2 md:p-4 w-full">
                 <div className="flex items-center">
                   <UsersIcon className="h-6 md:h-8 mr-2 md:mr-4" />
-                  <p className="text-base md:text-lg font-bold ml-4 ">
+                  <p className="text-base md:text-lg font-bold">
                     Member Access
                   </p>
                 </div>

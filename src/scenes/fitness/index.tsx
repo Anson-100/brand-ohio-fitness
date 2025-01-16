@@ -294,7 +294,7 @@ const Fitness = ({}: Props) => {
           <div>
             {/* MOBILE SECTION=============================================================================================================*/}
             <motion.div
-              className="flex items-center justify-center mb-8"
+              className="flex items-center justify-center mb-8 w-2/3 mx-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -305,7 +305,7 @@ const Fitness = ({}: Props) => {
               }}
             >
               {" "}
-              <p className="scene-title mx-auto font-bold text-gray-100 text-[1.5rem] inline-block border-b-[1px] border-emerald-theme pb-2">
+              <p className="font-bold text-gray-100 text-[1.5rem] border-b-[1px] border-emerald-theme pb-2">
                 Fitness
               </p>
             </motion.div>

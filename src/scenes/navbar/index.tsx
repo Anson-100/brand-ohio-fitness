@@ -49,9 +49,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const isWaiversPage = location.pathname === "/waivers"
 
   return (
-    <nav>
+    <nav className="">
       <div
-        className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full  border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80 h-[4.5rem]`}
+        className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full max-w-full border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80 h-[4.5rem]`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
@@ -131,7 +131,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       {!isAboveMediumScreens && isMenuToggled && (
         <div
           ref={menuRef}
-          className={`mobile-menu fixed mt-[60px] top-0 right-0 w-3/4 sm:w-1/3 z-40 bg-zinc-800 rounded-l-md transition-all duration-300 zinc-shadow ${
+          className={`mobile-menu fixed mt-[60px] top-0 right-0 w-3/4 max-w-[350px] sm:w-1/3 z-40 bg-zinc-800 rounded-l-md transition-all duration-300 zinc-shadow ${
             isMenuToggled ? "h-auto" : "h-0"
           }`}
         >

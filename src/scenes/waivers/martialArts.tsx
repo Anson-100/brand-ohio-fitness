@@ -13,20 +13,50 @@ const MartialArts: React.FC = () => {
     emergencyContactName: "",
     emergencyContactPhone: "",
     agreeToTerms: false,
+    medicalConsentInitials: "", // For the Medical Consent section
+    physicalContactInitials: "", // For the Physical Contact section
+    riskAcknowledgmentInitials: "", // For the Risk Acknowledgment section
+    arbitrationInitials: "", // For the Arbitration and Indemnification section
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target
-    setFormData({
-      ...formData,
+
+    setFormData(prevData => ({
+      ...prevData,
       [name]: type === "checkbox" ? checked : value,
-    })
+    }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form Data Submitted:", formData)
-    // Add data submission logic here
+
+    // Basic validation to ensure all fields are filled and checkboxes are checked
+    const allFieldsFilled = Object.entries(formData).every(([value]) =>
+      typeof value === "boolean" ? value === true : value.trim() !== ""
+    )
+
+    if (!allFieldsFilled) {
+      alert("Please fill out all fields and agree to the terms.")
+      return
+    }
+
+    // Data submission logic (replace with your actual endpoint)
+    try {
+      const response = await fetch("https://your-api-endpoint.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) throw new Error("Submission failed")
+      alert("Form successfully submitted!")
+    } catch (error) {
+      alert("An error occurred while submitting the form. Please try again.")
+      console.error("Error:", error)
+    }
   }
 
   return (
@@ -194,6 +224,143 @@ const MartialArts: React.FC = () => {
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
           </div>
+        </div>
+        {/* Collapsible Clauses Section with Summary and Detailed Description */}
+        <div className="mt-8 space-y-6">
+          {/* Medical Treatment Consent */}
+          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
+            <summary className="flex justify-between items-center cursor-pointer">
+              <span className="font-semibold text-lg">
+                Medical Treatment Consent
+              </span>
+              <span className="group-open:rotate-180 transition-transform">
+                &#9662;
+              </span>
+            </summary>
+            <p className="mt-4 text-sm text-gray-300 font-semibold">
+              *Summary:* I authorize the martial arts center to seek medical
+              treatment on my behalf in case of an emergency.
+            </p>
+            <p className="mt-4 text-sm text-gray-400">
+              I understand that the instructors may seek emergency medical
+              assistance if necessary. This consent includes contacting
+              emergency medical services and authorizing necessary treatment,
+              even if I cannot be reached. I acknowledge that I am responsible
+              for any medical expenses incurred as a result of treatment
+              administered during training or while present at the facility.
+            </p>
+            <label className="block mt-4 text-sm font-medium">
+              Initial Here to Consent
+            </label>
+            <input
+              type="text"
+              name="medicalConsentInitials"
+              value={formData.medicalConsentInitials}
+              onChange={handleChange}
+              required
+              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            />
+          </details>
+
+          {/* Physical Contact Consent */}
+          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
+            <summary className="flex justify-between items-center cursor-pointer">
+              <span className="font-semibold text-lg">
+                Physical Contact Consent
+              </span>
+              <span className="group-open:rotate-180 transition-transform">
+                &#9662;
+              </span>
+            </summary>
+            <p className="mt-4 text-sm text-gray-300 font-semibold">
+              *Summary:* I consent to physical contact as part of martial arts
+              training under appropriate supervision.
+            </p>
+            <p className="mt-4 text-sm text-gray-400">
+              Martial arts involves physical contact, including drills,
+              sparring, and self-defense techniques that may result in contact
+              with various parts of the body. I acknowledge that such contact is
+              inherent to training and consent to participate with the
+              understanding that all contact will be controlled and respectful.
+            </p>
+            <label className="block mt-4 text-sm font-medium">
+              Initial Here to Consent
+            </label>
+            <input
+              type="text"
+              name="physicalContactInitials"
+              value={formData.physicalContactInitials}
+              onChange={handleChange}
+              required
+              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            />
+          </details>
+
+          {/* Risk Acknowledgment */}
+          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
+            <summary className="flex justify-between items-center cursor-pointer">
+              <span className="font-semibold text-lg">Risk Acknowledgment</span>
+              <span className="group-open:rotate-180 transition-transform">
+                &#9662;
+              </span>
+            </summary>
+            <p className="mt-4 text-sm text-gray-300 font-semibold">
+              *Summary:* I acknowledge the risks associated with martial arts
+              training, including minor and serious injuries.
+            </p>
+            <p className="mt-4 text-sm text-gray-400">
+              I understand that martial arts training involves physical activity
+              that can lead to injuries, such as bruises, sprains, fractures,
+              and more serious injuries. I accept these risks and agree to take
+              personal responsibility for my safety during training, reporting
+              any unsafe conditions or injuries immediately to the staff.
+            </p>
+            <label className="block mt-4 text-sm font-medium">
+              Initial Here to Acknowledge
+            </label>
+            <input
+              type="text"
+              name="riskAcknowledgmentInitials"
+              value={formData.riskAcknowledgmentInitials}
+              onChange={handleChange}
+              required
+              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            />
+          </details>
+
+          {/* Arbitration and Indemnification */}
+          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
+            <summary className="flex justify-between items-center cursor-pointer">
+              <span className="font-semibold text-lg">
+                Arbitration and Indemnification
+              </span>
+              <span className="group-open:rotate-180 transition-transform">
+                &#9662;
+              </span>
+            </summary>
+            <p className="mt-4 text-sm text-gray-300 font-semibold">
+              *Summary:* I agree to resolve disputes through binding arbitration
+              and release the center from liability.
+            </p>
+            <p className="mt-4 text-sm text-gray-400">
+              I agree to resolve any disputes or claims related to my
+              participation in martial arts training through binding arbitration
+              rather than litigation. I also release the martial arts center,
+              its instructors, and staff from liability for any injuries, except
+              in cases of criminal misconduct.
+            </p>
+            <label className="block mt-4 text-sm font-medium">
+              Initial Here to Consent
+            </label>
+            <input
+              type="text"
+              name="arbitrationInitials"
+              value={formData.arbitrationInitials}
+              onChange={handleChange}
+              required
+              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            />
+          </details>
         </div>
 
         {/* Terms Agreement Checkbox */}

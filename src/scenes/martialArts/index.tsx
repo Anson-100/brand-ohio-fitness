@@ -291,7 +291,7 @@ const MartialArts = ({}: Props) => {
           <div>
             {/* MOBILE SECTION */}
             <motion.div
-              className="flex items-center justify-center mb-8"
+              className="flex items-center justify-center mb-8 w-2/3 mx-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -301,7 +301,7 @@ const MartialArts = ({}: Props) => {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="mx-auto font-bold text-gray-100 text-[1.5rem] inline-block border-b-[1px] border-emerald-theme pb-2">
+              <p className="font-bold text-gray-100 text-[1.5rem] border-b-[1px] border-emerald-theme pb-2">
                 Martial Arts
               </p>
             </motion.div>
