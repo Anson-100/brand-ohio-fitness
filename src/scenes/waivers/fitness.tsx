@@ -26,6 +26,11 @@ const Fitness: React.FC = () => {
     // Add your data submission logic here
   }
 
+  const clauseStyling =
+    "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
+  const checkboxStyling =
+    "mr-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-all"
+
   return (
     <section className="flex justify-center items-center rounded-lg bg-gray-900 text-white sm:py-12">
       <form
@@ -141,6 +146,110 @@ const Fitness: React.FC = () => {
               required
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
+          </div>
+        </div>
+        {/* ASSUMPTION OF RISK CLAUSE============================================================= */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold ">Assumption of Risk</h2>
+          <p className="mt-2 text-base">
+            By using the facility, the participant acknowledges that they do so
+            at their own risk. The participant waives any claims for injury,
+            damage, loss, or theft of property related to the use of any area
+            within the facility, including parking areas. Additionally, the
+            participant assumes full responsibility for any injuries or losses
+            sustained by themselves, their guests, or family members while using
+            the facility.
+          </p>
+
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              id="assumptionOfRisk"
+              name="assumptionOfRisk"
+              required
+              className={`${checkboxStyling}`}
+            />
+            <label htmlFor="assumptionOfRisk" className="text-sm">
+              I acknowledge and accept the Assumption of Risk clause.
+            </label>
+          </div>
+        </div>
+        {/* AWARENESS OF STRENUOUS ACTIVITY============================================== */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold ">
+            Awareness of Strenuous Activity
+          </h2>
+          <p className="mt-2 text-base">
+            The participant acknowledges and understands that activities such as
+            weight training, aerobics, cardiovascular training, and martial arts
+            involve inherent risks. These activities may pose hazards to certain
+            individuals and could result in injury to themselves, other members,
+            or guests.
+          </p>
+
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              id="awarenessOfStrenuousActivity"
+              name="awarenessOfStrenuousActivity"
+              required
+              className={`${checkboxStyling}`}
+            />
+            <label htmlFor="awarenessOfStrenuousActivity" className="text-sm">
+              I acknowledge and accept the Awareness of Strenuous Activity
+              clause.
+            </label>
+          </div>
+        </div>
+        {/* RELEASE OF LIABILITY CLAUSE ======================================================= */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold ">Release of Liability</h2>
+          <p className="mt-2 text-base">
+            In consideration for permission to enter and use the facilities at{" "}
+            <strong>Ohio Fitness and IT Martial Arts Center</strong>, the
+            participant assumes all risks of injury while on the premises. The
+            participant further agrees to release and not pursue legal action
+            against <strong>Ohio Fitness and IT Martial Arts Center</strong>,
+            its agents, employees, associates, or any affiliated parties for any
+            claims, damages, costs, or causes of action that may arise from
+            injuries or damages sustained while on the premises.
+          </p>
+
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              id="releaseOfLiability"
+              name="releaseOfLiability"
+              required
+              className={`${checkboxStyling}`}
+            />
+            <label htmlFor="releaseOfLiability" className="text-sm">
+              I acknowledge and accept the Release of Liability clause.
+            </label>
+          </div>
+        </div>
+        {/* TAILGAITING CLAUSE============================================================ */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold ">Unauthorized Access Policy</h2>
+          <p className="mt-2 text-base">
+            Members may not bring guests, share scan cards, or let others in
+            without written consent from the facility (via our Facebook business
+            page). Violations will result in a{" "}
+            <strong>one-day visit fee</strong> and may lead to{" "}
+            <strong>membership suspension or cancellation</strong>.
+          </p>
+
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              id="unauthorizedAccess"
+              name="unauthorizedAccess"
+              required
+              className={`${checkboxStyling}`}
+            />
+            <label htmlFor="unauthorizedAccess" className="text-sm">
+              I acknowledge and accept the Unauthorized Access Policy.
+            </label>
           </div>
         </div>
 
