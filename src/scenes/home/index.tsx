@@ -51,7 +51,7 @@ const Home = ({ setSelectedPage }: Props) => {
               </p>
             </motion.div>
             {/* BUTTONS========================================================================= */}
-            <div className="md:flex flex-col md:flex-row gap-6 mt-6 mx-auto md:m-0 hidden">
+            <div className="md:flex flex-col md:flex-row gap-2 mt-6 mx-auto md:m-0 hidden">
               <AnchorLink
                 className="zinc-shadow w-52 font-montserrat py-3 bg-emerald-700 hover:bg-emerald-theme flex items-center justify-center font-semibold text-gray-100 active:translate-y-[1px] active:translate-x-[1px] mr-1 rounded-md"
                 onClick={() => setSelectedPage(SelectedPage.ContactUs)}

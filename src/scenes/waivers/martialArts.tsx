@@ -1,68 +1,68 @@
 import React, { useState } from "react"
+import { Controller, useForm } from "react-hook-form"
 
-const MartialArts: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    dateOfBirth: "",
-    isGuardian: false,
-    childName: "",
-    childDateOfBirth: "",
-    emergencyContactName: "",
-    emergencyContactPhone: "",
-    agreeToTerms: false,
-    medicalConsentInitials: "", // For the Medical Consent section
-    physicalContactInitials: "", // For the Physical Contact section
-    riskAcknowledgmentInitials: "", // For the Risk Acknowledgment section
-    arbitrationInitials: "", // For the Arbitration and Indemnification section
-  })
+type FormData = {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  dateOfBirth: string
+  signingForChild: boolean
+  childFirstName?: string
+  childLastName?: string
+  childDateOfBirth?: string
+  emergencyContactName: string
+  emergencyContactPhone: string
+  assumptionOfRiskResponsibility: boolean
+  medicalTreatmentEmergencyCare: boolean
+  liabilityWaiverIndemnification: boolean
+  consentInstructionRules: boolean
+  agreeToTerms: boolean
+}
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
+const Fitness: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>()
 
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }))
-  }
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "success" | "error" | null
+  >(null)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    // Basic validation to ensure all fields are filled and checkboxes are checked
-    const allFieldsFilled = Object.entries(formData).every(([value]) =>
-      typeof value === "boolean" ? value === true : value.trim() !== ""
-    )
-
-    if (!allFieldsFilled) {
-      alert("Please fill out all fields and agree to the terms.")
-      return
-    }
-
-    // Data submission logic (replace with your actual endpoint)
+  const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("https://your-api-endpoint.com/submit", {
+      setSubmissionStatus(null) // Reset status
+
+      const response = await fetch("https://your-api-url.com/submit-waiver", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       })
 
-      if (!response.ok) throw new Error("Submission failed")
-      alert("Form successfully submitted!")
+      if (!response.ok) {
+        throw new Error("Failed to submit form") // Handle error
+      }
+
+      console.log("Form submitted successfully:", data)
+      setSubmissionStatus("success")
     } catch (error) {
-      alert("An error occurred while submitting the form. Please try again.")
-      console.error("Error:", error)
+      console.error("Form submission error:", error)
+      setSubmissionStatus("error")
     }
   }
+
+  const clauseStyling =
+    "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
+  const checkboxStyling = "w-5 h-5 accent-emerald-500 mr-2 cursor-pointer"
 
   return (
     <section className="flex justify-center items-center rounded-lg bg-gray-900 text-white sm:py-12">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg space-y-6"
       >
         <h2 className="text-3xl font-bold mb-4 text-center">
@@ -76,12 +76,12 @@ const MartialArts: React.FC = () => {
             <label className="block mb-2 text-sm font-medium">First Name</label>
             <input
               type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
+              {...register("firstName", { required: "First name is required" })}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
+            {errors.firstName && (
+              <p className="text-red-500 text-sm">{errors.firstName.message}</p>
+            )}
           </div>
 
           {/* Last Name */}
@@ -89,12 +89,12 @@ const MartialArts: React.FC = () => {
             <label className="block mb-2 text-sm font-medium">Last Name</label>
             <input
               type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
+              {...register("lastName", { required: "Last name is required" })}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
+            {errors.lastName && (
+              <p className="text-red-500 text-sm">{errors.lastName.message}</p>
+            )}
           </div>
         </div>
 
@@ -107,12 +107,18 @@ const MartialArts: React.FC = () => {
             </label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Invalid email format",
+                },
+              })}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Phone */}
@@ -120,14 +126,45 @@ const MartialArts: React.FC = () => {
             <label className="block mb-2 text-sm font-medium">
               Phone Number
             </label>
-            <input
-              type="tel"
+
+            <Controller
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+              control={control}
+              rules={{
+                required: "Phone number is required",
+                pattern: {
+                  value: /^\d{3}-\d{3}-\d{4}$/,
+                  message: "Format: 123-456-7890",
+                },
+              }}
+              render={({ field }) => (
+                <input
+                  type="tel"
+                  {...field}
+                  onChange={e => {
+                    let value = e.target.value.replace(/\D/g, "") // Remove non-numeric characters
+
+                    if (value.length > 3 && value.length <= 6) {
+                      value = `${value.slice(0, 3)}-${value.slice(3)}`
+                    } else if (value.length > 6) {
+                      value = `${value.slice(0, 3)}-${value.slice(
+                        3,
+                        6
+                      )}-${value.slice(6, 10)}`
+                    }
+
+                    field.onChange(value) // Update the field with formatted value
+                  }}
+                  maxLength={12}
+                  placeholder="123-456-7890"
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+              )}
             />
+
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone.message}</p>
+            )}
           </div>
         </div>
 
@@ -137,257 +174,362 @@ const MartialArts: React.FC = () => {
             Date of Birth
           </label>
           <input
-            type="date"
-            name="dateOfBirth"
-            value={formData.dateOfBirth}
-            onChange={handleChange}
-            required
+            type="text"
+            {...register("dateOfBirth", {
+              required: "Date of birth is required",
+              pattern: {
+                value: /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/,
+                message: "Format: MM/DD/YYYY",
+              },
+            })}
+            maxLength={10} // Prevents typing beyond MM/DD/YYYY
+            placeholder="MM/DD/YYYY"
             className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
           />
+          {errors.dateOfBirth && (
+            <p className="text-red-500 text-sm">{errors.dateOfBirth.message}</p>
+          )}
         </div>
-
-        {/* Guardian Checkbox */}
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="isGuardian"
-            checked={formData.isGuardian}
-            onChange={handleChange}
-            className="w-5 h-5 accent-emerald-500"
-          />
-          <label className="text-sm font-medium">
-            I am signing as the guardian of a child
-          </label>
-        </div>
-
-        {/* Conditional Child Fields */}
-        {formData.isGuardian && (
-          <div className="flex flex-col sm:flex-row gap-6">
-            {/* Child's Name */}
-            <div className="flex-1">
-              <label className="block mb-2 text-sm font-medium">
-                Child's Full Name
-              </label>
-              <input
-                type="text"
-                name="childName"
-                value={formData.childName}
-                onChange={handleChange}
-                required={formData.isGuardian}
-                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
-              />
-            </div>
-
-            {/* Child's Date of Birth */}
-            <div className="flex-1">
-              <label className="block mb-2 text-sm font-medium">
-                Child's Date of Birth
-              </label>
-              <input
-                type="date"
-                name="childDateOfBirth"
-                value={formData.childDateOfBirth}
-                onChange={handleChange}
-                required={formData.isGuardian}
-                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
-              />
-            </div>
-          </div>
-        )}
-
         {/* Emergency Contact Name and Phone (Side by Side) */}
         <div className="flex flex-col sm:flex-row gap-6">
+          {/* Emergency Contact Name */}
           <div className="flex-1">
             <label className="block mb-2 text-sm font-medium">
               Emergency Contact Name
             </label>
             <input
               type="text"
-              name="emergencyContactName"
-              value={formData.emergencyContactName}
-              onChange={handleChange}
-              required
+              {...register("emergencyContactName", {
+                required: "Emergency contact name is required",
+              })}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
             />
+            {errors.emergencyContactName && (
+              <p className="text-red-500 text-sm">
+                {errors.emergencyContactName.message}
+              </p>
+            )}
           </div>
 
+          {/* Emergency Contact Phone */}
           <div className="flex-1">
             <label className="block mb-2 text-sm font-medium">
               Emergency Contact Phone
             </label>
-            <input
-              type="tel"
+
+            <Controller
               name="emergencyContactPhone"
-              value={formData.emergencyContactPhone}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+              control={control}
+              rules={{
+                required: "Emergency contact phone is required",
+                pattern: {
+                  value: /^\d{3}-\d{3}-\d{4}$/,
+                  message: "Format: 123-456-7890",
+                },
+              }}
+              render={({ field }) => (
+                <input
+                  type="tel"
+                  {...field}
+                  onChange={e => {
+                    let value = e.target.value.replace(/\D/g, "") // Remove non-numeric characters
+
+                    if (value.length > 3 && value.length <= 6) {
+                      value = `${value.slice(0, 3)}-${value.slice(3)}`
+                    } else if (value.length > 6) {
+                      value = `${value.slice(0, 3)}-${value.slice(
+                        3,
+                        6
+                      )}-${value.slice(6, 10)}`
+                    }
+
+                    field.onChange(value) // Update the field with formatted value
+                  }}
+                  maxLength={12}
+                  placeholder="123-456-7890"
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+              )}
             />
+
+            {errors.emergencyContactPhone && (
+              <p className="text-red-500 text-sm">
+                {errors.emergencyContactPhone.message}
+              </p>
+            )}
           </div>
         </div>
-        {/* Collapsible Clauses Section with Summary and Detailed Description */}
-        <div className="mt-8 space-y-6">
-          {/* Medical Treatment Consent */}
-          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
-            <summary className="flex justify-between items-center cursor-pointer">
-              <span className="font-semibold text-lg">
-                Medical Treatment Consent
-              </span>
-              <span className="group-open:rotate-180 transition-transform">
-                &#9662;
-              </span>
-            </summary>
-            <p className="mt-4 text-sm text-gray-300 font-semibold">
-              *Summary:* I authorize the martial arts center to seek medical
-              treatment on my behalf in case of an emergency.
-            </p>
-            <p className="mt-4 text-sm text-gray-400">
-              I understand that the instructors may seek emergency medical
-              assistance if necessary. This consent includes contacting
-              emergency medical services and authorizing necessary treatment,
-              even if I cannot be reached. I acknowledge that I am responsible
-              for any medical expenses incurred as a result of treatment
-              administered during training or while present at the facility.
-            </p>
-            <label className="block mt-4 text-sm font-medium">
-              Initial Here to Consent
-            </label>
-            <input
-              type="text"
-              name="medicalConsentInitials"
-              value={formData.medicalConsentInitials}
-              onChange={handleChange}
-              required
-              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
-            />
-          </details>
+        {/* Checkbox for Signing on Behalf of a Child */}
+        <div className="mt-4 flex items-center">
+          <input
+            type="checkbox"
+            {...register("signingForChild")}
+            className="w-5 h-5 accent-emerald-500 mr-2 cursor-pointer"
+          />
+          <label className="text-sm font-medium">
+            I'm signing on behalf of a child
+          </label>
+        </div>
 
-          {/* Physical Contact Consent */}
-          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
-            <summary className="flex justify-between items-center cursor-pointer">
-              <span className="font-semibold text-lg">
-                Physical Contact Consent
-              </span>
-              <span className="group-open:rotate-180 transition-transform">
-                &#9662;
-              </span>
-            </summary>
-            <p className="mt-4 text-sm text-gray-300 font-semibold">
-              *Summary:* I consent to physical contact as part of martial arts
-              training under appropriate supervision.
-            </p>
-            <p className="mt-4 text-sm text-gray-400">
-              Martial arts involves physical contact, including drills,
-              sparring, and self-defense techniques that may result in contact
-              with various parts of the body. I acknowledge that such contact is
-              inherent to training and consent to participate with the
-              understanding that all contact will be controlled and respectful.
-            </p>
-            <label className="block mt-4 text-sm font-medium">
-              Initial Here to Consent
-            </label>
-            <input
-              type="text"
-              name="physicalContactInitials"
-              value={formData.physicalContactInitials}
-              onChange={handleChange}
-              required
-              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
-            />
-          </details>
+        {/* Child Information Fields (Only Show If Checkbox is Checked) */}
+        {watch("signingForChild") && (
+          <div className="mt-4 bg-gray-950 p-4 rounded-lg shadow-md">
+            {/* Child First Name & Last Name (Side by Side) */}
+            <div className="flex flex-col sm:flex-row gap-6">
+              <div className="flex-1">
+                <label className="block mb-2 text-sm font-medium">
+                  Child's First Name
+                </label>
+                <input
+                  type="text"
+                  {...register("childFirstName", {
+                    required: "Child's first name is required",
+                  })}
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+                {errors.childFirstName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.childFirstName.message}
+                  </p>
+                )}
+              </div>
 
-          {/* Risk Acknowledgment */}
-          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
-            <summary className="flex justify-between items-center cursor-pointer">
-              <span className="font-semibold text-lg">Risk Acknowledgment</span>
-              <span className="group-open:rotate-180 transition-transform">
-                &#9662;
-              </span>
-            </summary>
-            <p className="mt-4 text-sm text-gray-300 font-semibold">
-              *Summary:* I acknowledge the risks associated with martial arts
-              training, including minor and serious injuries.
-            </p>
-            <p className="mt-4 text-sm text-gray-400">
-              I understand that martial arts training involves physical activity
-              that can lead to injuries, such as bruises, sprains, fractures,
-              and more serious injuries. I accept these risks and agree to take
-              personal responsibility for my safety during training, reporting
-              any unsafe conditions or injuries immediately to the staff.
-            </p>
-            <label className="block mt-4 text-sm font-medium">
-              Initial Here to Acknowledge
-            </label>
-            <input
-              type="text"
-              name="riskAcknowledgmentInitials"
-              value={formData.riskAcknowledgmentInitials}
-              onChange={handleChange}
-              required
-              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
-            />
-          </details>
+              <div className="flex-1">
+                <label className="block mb-2 text-sm font-medium">
+                  Child's Last Name
+                </label>
+                <input
+                  type="text"
+                  {...register("childLastName", {
+                    required: "Child's last name is required",
+                  })}
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+                {errors.childLastName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.childLastName.message}
+                  </p>
+                )}
+              </div>
+            </div>
 
-          {/* Arbitration and Indemnification */}
-          <details className="group border border-gray-600 rounded-lg p-4 bg-gray-800">
-            <summary className="flex justify-between items-center cursor-pointer">
-              <span className="font-semibold text-lg">
-                Arbitration and Indemnification
-              </span>
-              <span className="group-open:rotate-180 transition-transform">
-                &#9662;
-              </span>
-            </summary>
-            <p className="mt-4 text-sm text-gray-300 font-semibold">
-              *Summary:* I agree to resolve disputes through binding arbitration
-              and release the center from liability.
-            </p>
-            <p className="mt-4 text-sm text-gray-400">
-              I agree to resolve any disputes or claims related to my
-              participation in martial arts training through binding arbitration
-              rather than litigation. I also release the martial arts center,
-              its instructors, and staff from liability for any injuries, except
-              in cases of criminal misconduct.
-            </p>
-            <label className="block mt-4 text-sm font-medium">
-              Initial Here to Consent
-            </label>
+            {/* Child Date of Birth */}
+            <div className="mt-4">
+              <label className="block mb-2 text-sm font-medium">
+                Child's Date of Birth
+              </label>
+              <input
+                type="text"
+                {...register("childDateOfBirth", {
+                  required: "Child's date of birth is required",
+                  pattern: {
+                    value: /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/,
+                    message: "Format: MM/DD/YYYY",
+                  },
+                })}
+                maxLength={10}
+                placeholder="MM/DD/YYYY"
+                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+              />
+              {errors.childDateOfBirth && (
+                <p className="text-red-500 text-sm">
+                  {errors.childDateOfBirth.message}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ASSUMPTION OF RISK & RESPONSIBILITY */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold">
+            Assumption of Risk & Responsibility
+          </h2>
+          <p className="mt-2 text-base">
+            By signing this waiver, I acknowledge that I, or my child, will be
+            participating in martial arts training, which involves physical
+            contact and carries risks, including soreness, bruises, strains, and
+            potentially serious injuries. I understand that safety is my
+            responsibility, and I will ensure that I, or my child, train with
+            awareness of personal limits, follow instructions from instructors,
+            and withdraw from any exercise that feels unsafe. I acknowledge that
+            I, or my child, have the right to withdraw from training at any time
+            if there is any concern for safety or well-being.
+          </p>
+          <div className="mt-3 flex items-center">
             <input
-              type="text"
-              name="arbitrationInitials"
-              value={formData.arbitrationInitials}
-              onChange={handleChange}
-              required
-              className="w-24 p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+              type="checkbox"
+              {...register("assumptionOfRiskResponsibility", {
+                required: "You must accept this policy",
+              })}
+              className={`${checkboxStyling}`}
             />
-          </details>
+            <label className="text-sm">
+              I acknowledge and accept the Assumption of Risk & Responsibility
+              policy.
+            </label>
+          </div>
+          {errors.assumptionOfRiskResponsibility && (
+            <p className="text-red-500 text-sm">
+              {errors.assumptionOfRiskResponsibility.message}
+            </p>
+          )}
+        </div>
+
+        {/* MEDICAL TREATMENT & EMERGENCY CARE */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold">
+            Medical Treatment & Emergency Care
+          </h2>
+          <p className="mt-2 text-base">
+            In the event of an injury, I authorize Ohio Fitness & IT Martial
+            Arts Center LLC and its instructors to seek emergency medical
+            treatment for me or my child. I understand that I am responsible for
+            all medical costs incurred. Instructors may provide basic first aid
+            if necessary. I have disclosed any relevant medical conditions or
+            allergies that could affect my or my child's ability to participate
+            safely.
+          </p>
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              {...register("medicalTreatmentEmergencyCare", {
+                required: "You must accept this clause",
+              })}
+              className={`${checkboxStyling}`}
+            />
+            <label className="text-sm">
+              I acknowledge and accept the Medical Treatment & Emergency Care
+              policy.
+            </label>
+          </div>
+          {errors.medicalTreatmentEmergencyCare && (
+            <p className="text-red-500 text-sm">
+              {errors.medicalTreatmentEmergencyCare.message}
+            </p>
+          )}
+        </div>
+
+        {/* LIABILITY WAIVER & INDEMNIFICATION */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold">
+            Liability Waiver & Indemnification
+          </h2>
+          <p className="mt-2 text-base">
+            I voluntarily assume all risks associated with participation in
+            martial arts training for myself or my child and release Ohio
+            Fitness & IT Martial Arts Center LLC, its instructors, staff, and
+            affiliates from any claims, injuries, or damages that may arise,
+            except in cases of criminal conduct. I understand that neither I nor
+            my child may hold the facility, instructors, or staff responsible
+            for injuries, accidents, or losses incurred during training or while
+            on the premises. If signing on behalf of a minor, I agree that I
+            will not pursue legal claims against the school, its instructors, or
+            its affiliates on behalf of my child, except in cases of criminal
+            conduct. Any disputes related to this waiver shall be resolved
+            through binding arbitration. If any clause in this agreement is
+            found to be invalid, the remainder shall remain in full effect. This
+            waiver applies indefinitely, including any past training before
+            signing.
+          </p>
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              {...register("liabilityWaiverIndemnification", {
+                required: "You must accept this policy",
+              })}
+              className={`${checkboxStyling}`}
+            />
+            <label className="text-sm">
+              I acknowledge and accept the Liability Waiver & Indemnification
+              policy.
+            </label>
+          </div>
+          {errors.liabilityWaiverIndemnification && (
+            <p className="text-red-500 text-sm">
+              {errors.liabilityWaiverIndemnification.message}
+            </p>
+          )}
+        </div>
+
+        {/* CONSENT TO INSTRUCTION & RULES */}
+        <div className={`${clauseStyling}`}>
+          <h2 className="text-lg font-semibold">
+            Consent to Instruction & Rules
+          </h2>
+          <p className="mt-2 text-base">
+            I consent to instruction for myself or my child from any qualified
+            instructor or assistant at Ohio Fitness & IT Martial Arts Center
+            LLC. I understand that martial arts training involves physical
+            contact, including partner drills, sparring, and grappling. I, or my
+            child, must follow all safety rules and conduct ourselves
+            respectfully during training. If I observe any unsafe behavior or
+            equipment issues, I will report it immediately. I understand and
+            agree that failure to follow rules may result in temporary or
+            permanent removal from training.
+          </p>
+          <div className="mt-3 flex items-center">
+            <input
+              type="checkbox"
+              {...register("consentInstructionRules", {
+                required: "You must accept this policy",
+              })}
+              className={`${checkboxStyling}`}
+            />
+            <label className="text-sm">
+              I acknowledge and accept the Consent to Instruction & Rules
+              policy.
+            </label>
+          </div>
+          {errors.consentInstructionRules && (
+            <p className="text-red-500 text-sm">
+              {errors.consentInstructionRules.message}
+            </p>
+          )}
         </div>
 
         {/* Terms Agreement Checkbox */}
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
-            name="agreeToTerms"
-            checked={formData.agreeToTerms}
-            onChange={handleChange}
-            required
-            className="w-5 h-5 accent-emerald-500"
+            {...register("agreeToTerms", {
+              required: "You must agree to the terms",
+            })}
+            className={`${checkboxStyling}`}
           />
           <label className="text-sm font-medium">
             I agree to the terms and conditions of this liability waiver.
           </label>
         </div>
-
+        {errors.agreeToTerms && (
+          <p className="text-red-500 text-sm">{errors.agreeToTerms.message}</p>
+        )}
+        {/* Submission Messages */}
+        {submissionStatus === "success" && (
+          <p className="text-center text-emerald-500 font-semibold">
+            Form submitted successfully!
+          </p>
+        )}
+        {submissionStatus === "error" && (
+          <p className="text-center text-red-500 font-semibold">
+            Error submitting form. Please try again.
+          </p>
+        )}
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full mt-6 py-3 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-all"
+          disabled={isSubmitting}
+          className={`w-full mt-6 py-3 font-semibold rounded-lg transition-all ${
+            isSubmitting
+              ? "bg-gray-600 cursor-not-allowed"
+              : "bg-emerald-700 hover:bg-emerald-600 text-white"
+          }`}
         >
-          Submit Waiver
+          {isSubmitting ? "Submitting..." : "Submit Waiver"}
         </button>
       </form>
     </section>
   )
 }
 
-export default MartialArts
+export default Fitness
