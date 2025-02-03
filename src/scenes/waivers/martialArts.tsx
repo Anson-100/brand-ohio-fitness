@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { Controller, useForm } from "react-hook-form"
+import SignaturePad from "./signaturePad"
 
 type FormData = {
+  waiverType: string
   firstName: string
   lastName: string
   email: string
@@ -18,6 +20,8 @@ type FormData = {
   liabilityWaiverIndemnification: boolean
   consentInstructionRules: boolean
   agreeToTerms: boolean
+  typedSignature: string // 👈 Add this!
+  signature: string | null // 👈 Added this field for the drawn signature
 }
 
 const Fitness: React.FC = () => {
@@ -35,25 +39,43 @@ const Fitness: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      setSubmissionStatus(null) // Reset status
+      setSubmissionStatus(null)
 
-      const response = await fetch("https://your-api-url.com/submit-waiver", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to submit form") // Handle error
+      // ✅ Prevent submission if signature is empty
+      if (!signature) {
+        alert("Please sign the form before submitting.")
+        return
       }
 
-      console.log("Form submitted successfully:", data)
+      const requestData = {
+        ...data,
+        waiverType: data.waiverType || "martial_arts",
+        typedSignature: data.typedSignature, // 👈 Include this
+        signature, // 👈 Ensure drawn signature is included in payload
+      }
+
+      const response = await fetch(
+        "https://t9psvrhzie.execute-api.us-east-2.amazonaws.com/waiver_initial_deploy/IT_liabilityWaivers",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(requestData),
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form")
+      }
+
+      console.log("Form submitted successfully:", requestData)
       setSubmissionStatus("success")
     } catch (error) {
       console.error("Form submission error:", error)
       setSubmissionStatus("error")
     }
   }
+
+  const [signature, setSignature] = useState<string | null>(null)
 
   const clauseStyling =
     "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
@@ -169,27 +191,45 @@ const Fitness: React.FC = () => {
         </div>
 
         {/* Date of Birth */}
-        <div>
+        <div className="flex-1">
           <label className="block mb-2 text-sm font-medium">
             Date of Birth
           </label>
-          <input
-            type="text"
-            {...register("dateOfBirth", {
+          <Controller
+            name="dateOfBirth"
+            control={control}
+            rules={{
               required: "Date of birth is required",
               pattern: {
                 value: /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/,
                 message: "Format: MM/DD/YYYY",
               },
-            })}
-            maxLength={10} // Prevents typing beyond MM/DD/YYYY
-            placeholder="MM/DD/YYYY"
-            className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            }}
+            render={({ field }) => (
+              <input
+                type="text"
+                {...field}
+                maxLength={10} // Prevents typing beyond MM/DD/YYYY
+                placeholder="MM/DD/YYYY"
+                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                onChange={e => {
+                  let value = e.target.value.replace(/\D/g, "") // Remove non-numeric characters
+
+                  // Insert slashes automatically
+                  if (value.length > 2)
+                    value = `${value.slice(0, 2)}/${value.slice(2)}`
+                  if (value.length > 5)
+                    value = `${value.slice(0, 5)}/${value.slice(5, 9)}`
+
+                  field.onChange(value) // Update field value
+                }}
+              />
+            )}
           />
-          {errors.dateOfBirth && (
-            <p className="text-red-500 text-sm">{errors.dateOfBirth.message}</p>
-          )}
         </div>
+        {errors.dateOfBirth && (
+          <p className="text-red-500 text-sm">{errors.dateOfBirth.message}</p>
+        )}
         {/* Emergency Contact Name and Phone (Side by Side) */}
         <div className="flex flex-col sm:flex-row gap-6">
           {/* Emergency Contact Name */}
@@ -273,7 +313,7 @@ const Fitness: React.FC = () => {
 
         {/* Child Information Fields (Only Show If Checkbox is Checked) */}
         {watch("signingForChild") && (
-          <div className="mt-4 bg-gray-950 p-4 rounded-lg shadow-md">
+          <div className="mt-4 flex flex-col gap-6 bg-gray-950 p-4 rounded-lg shadow-md">
             {/* Child First Name & Last Name (Side by Side) */}
             <div className="flex flex-col sm:flex-row gap-6">
               <div className="flex-1">
@@ -314,22 +354,40 @@ const Fitness: React.FC = () => {
             </div>
 
             {/* Child Date of Birth */}
-            <div className="mt-4">
+            <div className="flex-1">
               <label className="block mb-2 text-sm font-medium">
                 Child's Date of Birth
               </label>
-              <input
-                type="text"
-                {...register("childDateOfBirth", {
+              <Controller
+                name="childDateOfBirth"
+                control={control}
+                rules={{
                   required: "Child's date of birth is required",
                   pattern: {
                     value: /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/,
                     message: "Format: MM/DD/YYYY",
                   },
-                })}
-                maxLength={10}
-                placeholder="MM/DD/YYYY"
-                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                }}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    {...field}
+                    maxLength={10} // Prevents typing beyond MM/DD/YYYY
+                    placeholder="MM/DD/YYYY"
+                    className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                    onChange={e => {
+                      let value = e.target.value.replace(/\D/g, "") // Remove non-numeric characters
+
+                      // Insert slashes automatically
+                      if (value.length > 2)
+                        value = `${value.slice(0, 2)}/${value.slice(2)}`
+                      if (value.length > 5)
+                        value = `${value.slice(0, 5)}/${value.slice(5, 9)}`
+
+                      field.onChange(value) // Update field value
+                    }}
+                  />
+                )}
               />
               {errors.childDateOfBirth && (
                 <p className="text-red-500 text-sm">
@@ -488,22 +546,55 @@ const Fitness: React.FC = () => {
           )}
         </div>
 
-        {/* Terms Agreement Checkbox */}
-        <div className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            {...register("agreeToTerms", {
-              required: "You must agree to the terms",
-            })}
-            className={`${checkboxStyling}`}
-          />
-          <label className="text-sm font-medium">
-            I agree to the terms and conditions of this liability waiver.
-          </label>
+        {/* Terms Agreement Section */}
+        <div className="space-y-3">
+          {/* Checkbox for Agreement */}
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              {...register("agreeToTerms", {
+                required: "You must agree to the terms",
+              })}
+              className={`${checkboxStyling}`}
+            />
+            <label className="text-sm font-medium">
+              I agree to the terms and conditions of this liability waiver
+              (check box and sign first and last name below).
+            </label>
+          </div>
+          {errors.agreeToTerms && (
+            <p className="text-red-500 text-sm">
+              {errors.agreeToTerms.message}
+            </p>
+          )}
+
+          {/* Typed Signature Input */}
+          <div>
+            <input
+              type="text"
+              {...register("typedSignature", {
+                required: "You must type your full name to sign",
+                validate: value => {
+                  const firstName = watch("firstName")
+                  const lastName = watch("lastName")
+                  return (
+                    value.trim() === `${firstName} ${lastName}` ||
+                    "Name must match your first and last name"
+                  )
+                },
+              })}
+              placeholder="John Doe"
+              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+            />
+            {errors.typedSignature && (
+              <p className="text-red-500 text-sm">
+                {errors.typedSignature.message}
+              </p>
+            )}
+          </div>
         </div>
-        {errors.agreeToTerms && (
-          <p className="text-red-500 text-sm">{errors.agreeToTerms.message}</p>
-        )}
+        <SignaturePad onSave={setSignature} />
+
         {/* Submission Messages */}
         {submissionStatus === "success" && (
           <p className="text-center text-emerald-500 font-semibold">

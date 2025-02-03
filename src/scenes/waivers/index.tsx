@@ -85,13 +85,13 @@ const Waivers: React.FC = () => {
             >
               <span
                 className={`${
-                  isOpen[item.id] ? "text-gray-100" : "text-gray-100"
+                  isOpen[item.id] ? "text-gray-200" : "text-gray-200"
                 } transition-all duration-200`}
               >
                 {item.question}
               </span>
               {isOpen[item.id] ? (
-                <ChevronDoubleDownIcon className="w-5 h-5" />
+                <ChevronDoubleDownIcon className="w-5 h-5 text-gray-200" />
               ) : (
                 <ChevronDownIcon className="w-5 h-5" />
               )}

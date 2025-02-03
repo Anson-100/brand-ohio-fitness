@@ -10,12 +10,13 @@ type Props = {
 }
 
 const Home = ({ setSelectedPage }: Props) => {
+  const boxStyle =
+    "bg-gradient-to-br from-zinc-950 to-zinc-900 border border-l-zinc-800 border-t-zinc-800 border-r-zinc-900 border-b-zinc-900 rounded-b-lg shadow-lg"
   return (
-    <section
-      id="home"
-      className="py-[4.5rem] pt-[2rem] md:pt-[4.5rem] h-[100vh] pb-0"
-    >
-      <div className="h-full w-[90%] md:w-5/6 flex justify-center items-center mx-auto">
+    <section id="home" className="h-[100vh] pb-0 flex items-center relative">
+      <div
+        className={`h-full w-full md:w-5/6 flex justify-center items-center mx-auto `}
+      >
         {/* HEADER===================================================================================== */}
         <div className="flex flex-col md:flex-row w-full lg:w-5/6 h-full md:justify-between items-center m-auto mt-20 md:mt-0">
           <div className="flex flex-col md:gap-8 lg:w-1/2 lg:mx-auto ">

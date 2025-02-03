@@ -27,7 +27,8 @@ const Fitness = ({}: Props) => {
   const [isWeightsMobileOpen, setWeightsMobileOpen] = useState(false)
   const [isCardioMobileOpen, setCardioMobileOpen] = useState(false)
   const [isCrossFitMobileOpen, setCrossFitMobileOpen] = useState(false)
-
+  const boxStyle =
+    "bg-gradient-to-br from-zinc-800 to-zinc-800 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-md shadow-lg flex-col flex items-center items-center  rounded-sm p-2"
   return (
     <section
       id="fitness"
@@ -323,7 +324,7 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full "
                     onClick={() => setWeightsMobileOpen(!isWeightsMobileOpen)}
@@ -331,9 +332,7 @@ const Fitness = ({}: Props) => {
                     {" "}
                     <div className="mb-2">
                       {" "}
-                      <p className="text-[1.2rem] text-left font-bold">
-                        Weights
-                      </p>
+                      <p className="text-lg text-left font-bold">Weights</p>
                       <p className="mt-2 text-gray-300">
                         build muscle and strength
                       </p>{" "}
@@ -365,15 +364,13 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setCardioMobileOpen(!isCardioMobileOpen)}
                   >
                     <div className="mb-2">
-                      <p className="text-[1.2rem] text-left font-bold">
-                        Cardio
-                      </p>
+                      <p className="text-lg text-left font-bold">Cardio</p>
                       <p className="mt-2 text-gray-300">
                         stay toned and build endurance
                       </p>
@@ -405,13 +402,13 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setCrossFitMobileOpen(!isCrossFitMobileOpen)}
                   >
                     <div className="mb-2">
-                      <p className="text-[1.2rem] text-left font-bold">
+                      <p className="text-lg text-left font-bold">
                         Personal Training
                       </p>
                       <p className="mt-2 text-gray-300">

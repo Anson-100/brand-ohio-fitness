@@ -11,7 +11,6 @@ body,
 .app {
   height: 100%;
   width: 100%;
-
   font-family: "DM Sans", sans-serif;
   color: #f3f4f6;
   background: linear-gradient(to right, #09090b, #27272a);
@@ -19,6 +18,7 @@ body,
 }
 
 /* LANDING PAGE STYLING =============================================================================================*/
+
 .zinc-shadow {
   box-shadow: 1px 1px 2px #09090b;
 }

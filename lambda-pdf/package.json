@@ -1,0 +1,19 @@
+{
+  "name": "lambda-pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.738.0",
+    "@aws-sdk/client-s3": "^3.740.0",
+    "@aws-sdk/lib-dynamodb": "^3.738.0",
+    "fs": "^0.0.1-security",
+    "pdfkit": "^0.16.0"
+  }
+}

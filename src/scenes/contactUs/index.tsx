@@ -16,6 +16,8 @@ type Props = {
 }
 
 const ContactUs = ({}: Props) => {
+  const boxStyle =
+    "bg-gradient-to-br from-zinc-800 to-zinc-800 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-sm shadow-lg  flex items-center  h-24 md:h-32 "
   return (
     <section id="contactus" className="h-full ">
       <div className="md:pt-[7rem] pt-[3.5rem] w-[95%] md:w-5/6 mx-auto">
@@ -68,7 +70,7 @@ const ContactUs = ({}: Props) => {
           <div className="md:w-2/3 flex flex-col gap-3 md:gap-6 ml-0 md:ml-12 text-gray-100 h-full md:pt-[2rem]">
             {/* Location */}
             <motion.div
-              className="flex items-center bg-zinc-900 border-zinc-700 border-[1px] rounded-sm h-24 md:h-32"
+              className={`${boxStyle}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -80,33 +82,33 @@ const ContactUs = ({}: Props) => {
             >
               <div className="flex justify-between p-2 md:p-4 w-full">
                 <div className="flex items-center">
-                  <MapPinIcon className="h-6 md:h-8 mr-2 md:mr-4" />
+                  <MapPinIcon className="h-6 md:h-8 mr-2 md:mr-4 text-zinc-500" />
                   <p className="text-base md:text-lg font-bold">Location</p>
                 </div>
                 <a
                   href="https://maps.app.goo.gl/v3i3PgJ8XBt68VfS8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-2 bg-zinc-800 hover:bg-zinc-700 rounded-sm py-1 px-2"
+                  className="group flex items-center justify-between gap-2 hover:bg-zinc-700 rounded-sm py-1 px-2"
                 >
+                  <img
+                    src={iconMaps}
+                    alt="Google Maps Icon"
+                    title="Google Maps Icon"
+                    className="h-8"
+                  />
                   <div className="flex flex-col text-right">
                     <p>307 E Lake Ave</p>
                     <p>Bellefontaine, OH 43311</p>
                     <p>(behind TP Lanes)</p>
                   </div>
-                  <img
-                    src={iconMaps}
-                    alt="Google Maps Icon"
-                    title="Google Maps Icon"
-                    className="h-8 opacity-80 grayscale group-hover:grayscale-0"
-                  />
                 </a>
               </div>
             </motion.div>
 
             {/* Contact Info */}
             <motion.div
-              className="flex items-center bg-zinc-900 border-zinc-700 border-[1px] rounded-sm h-24 md:h-32"
+              className={`${boxStyle}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -118,30 +120,31 @@ const ContactUs = ({}: Props) => {
             >
               <div className="flex justify-between p-2 md:p-4 w-full">
                 <div className="flex items-center">
-                  <DevicePhoneMobileIcon className="h-6 md:h-8 mr-2 md:mr-4" />
+                  <DevicePhoneMobileIcon className="h-6 md:h-8 mr-2 md:mr-4 text-zinc-500" />
                   <p className="text-base md:text-lg font-bold">Contact Info</p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <p>(937) 599-5425</p>
+                  {" "}
                   <a
                     href="https://www.facebook.com/ofma5425"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 rounded-sm p-2"
+                    className="group flex items-center gap-2 hover:bg-zinc-700  rounded-sm p-2"
                   >
                     <img
                       src={iconfb2}
                       alt="Facebook"
-                      className="rounded-full h-8 grayscale group-hover:grayscale-0"
+                      className="rounded-full h-8 "
                     />
                   </a>
+                  <p>(937) 599-5425</p>
                 </div>
               </div>
             </motion.div>
 
             {/* Staffed Hours */}
             <motion.div
-              className="flex items-center bg-zinc-900 border-zinc-700 border-[1px] rounded-sm h-24 md:h-32"
+              className={`${boxStyle}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -153,7 +156,7 @@ const ContactUs = ({}: Props) => {
             >
               <div className="flex justify-between p-2 md:p-4 w-full">
                 <div className="flex items-center">
-                  <ClockIcon className="h-6 md:h-8 mr-2 md:mr-4" />
+                  <ClockIcon className="h-6 md:h-8 mr-2 md:mr-4 text-zinc-500" />
                   <p className="text-base md:text-lg font-bold">
                     Staffed Hours
                   </p>
@@ -168,7 +171,7 @@ const ContactUs = ({}: Props) => {
 
             {/* Member Access */}
             <motion.div
-              className="flex items-center bg-zinc-900 border-zinc-700 border-[1px] rounded-sm h-24 md:h-32"
+              className={`${boxStyle}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -180,7 +183,7 @@ const ContactUs = ({}: Props) => {
             >
               <div className="flex justify-between p-2 md:p-4 w-full">
                 <div className="flex items-center">
-                  <UsersIcon className="h-6 md:h-8 mr-2 md:mr-4" />
+                  <UsersIcon className="h-6 md:h-8 mr-2 md:mr-4 text-zinc-500" />
                   <p className="text-base md:text-lg font-bold">
                     Member Access
                   </p>

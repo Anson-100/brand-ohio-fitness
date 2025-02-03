@@ -27,7 +27,8 @@ const MartialArts = ({}: Props) => {
   const [isKidsClassMobileOpen, setKidsClassMobileOpen] = useState(false)
   const [isAdultMMAMobileOpen, setAdultMMAMobileOpen] = useState(false)
   const [isBJJMobileOpen, setBJJMobileOpen] = useState(false)
-
+  const boxStyle =
+    "bg-gradient-to-br from-zinc-800 to-zinc-800 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-md shadow-lg flex-col flex items-center items-center  rounded-sm p-2"
   return (
     <section
       id="martialarts"
@@ -291,7 +292,7 @@ const MartialArts = ({}: Props) => {
           <div>
             {/* MOBILE SECTION */}
             <motion.div
-              className="flex items-center justify-center mb-8 w-2/3 mx-auto"
+              className="flex items-center justify-center mb-8 mx-auto"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -319,7 +320,7 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() =>
@@ -327,7 +328,7 @@ const MartialArts = ({}: Props) => {
                     }
                   >
                     <div className="mb-2">
-                      <p className="text-[1.2rem] text-left font-bold">
+                      <p className="text-lg text-left font-bold">
                         Kids Martial Arts
                       </p>
                       <p className="mt-2 text-gray-300">
@@ -361,15 +362,13 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setAdultMMAMobileOpen(!isAdultMMAMobileOpen)}
                   >
                     <div className="mb-2">
-                      <p className="text-[1.2rem] text-left font-bold">
-                        Adult MMA
-                      </p>
+                      <p className="text-lg text-left font-bold">Adult MMA</p>
                       <p className="mt-2 text-gray-300">
                         Train like a professional.
                       </p>
@@ -401,13 +400,13 @@ const MartialArts = ({}: Props) => {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                <div className="items-center border-[1px] border-zinc-700 bg-zinc-900 rounded-sm p-2">
+                <div className={`${boxStyle}`}>
                   <button
                     className="cursor-pointer flex justify-between w-full"
                     onClick={() => setBJJMobileOpen(!isBJJMobileOpen)}
                   >
                     <div className="mb-2">
-                      <p className="text-[1.2rem] text-left font-bold">
+                      <p className="text-lg text-left font-bold">
                         Brazilian Jiu-Jitsu
                       </p>
                       <p className="mt-2 text-gray-300">
