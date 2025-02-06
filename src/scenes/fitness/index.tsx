@@ -32,8 +32,38 @@ const Fitness = ({}: Props) => {
   return (
     <section
       id="fitness"
-      className="mx-auto min-h-[100svh] pt-[7rem] pb-[4rem]"
+      className="mx-auto min-h-[100svh] pt-[7rem] pb-[4rem] relative isolate"
     >
+      {/* PATTERN DESIGN=========================================== */}
+      <svg
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-zinc-800 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
+      >
+        <defs>
+          <pattern
+            x="50%"
+            y={-1}
+            id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84"
+            width={200}
+            height={200}
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M.5 200V.5H200" fill="none" />
+          </pattern>
+        </defs>
+        <svg x="50%" y={-1} className="overflow-visible fill-zinc-950">
+          <path
+            d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
+            strokeWidth={0}
+          />
+        </svg>
+        <rect
+          fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)"
+          width="100%"
+          height="100%"
+          strokeWidth={0}
+        />
+      </svg>
       <div className="h-full w-[95%] md:w-5/6 mx-auto">
         {isAboveMediumScreens ? (
           <div className="grid grid-cols-10 w-full mt-5">
@@ -66,7 +96,7 @@ const Fitness = ({}: Props) => {
                   visible: { opacity: 1, x: 0 },
                 }}
               >
-                <p className="w-4/6">
+                <p className="w-4/6 text-gray-300">
                   Experience top-level fitness at Ohio Fitness & Martial Arts,
                   featuring cutting-edge weightlifting, cardio equipment, and
                   personal training
@@ -125,7 +155,7 @@ const Fitness = ({}: Props) => {
                         visible: { opacity: 1 },
                       }}
                     >
-                      <p className="w-2/3">
+                      <p className="w-2/3 text-gray-300">
                         free weights, cable machines, and more
                       </p>
                     </motion.div>
@@ -196,7 +226,9 @@ const Fitness = ({}: Props) => {
                         visible: { opacity: 1 },
                       }}
                     >
-                      <p className="w-2/3">Treadmills, ellipticals, and more</p>
+                      <p className="w-2/3 text-gray-300">
+                        Treadmills, ellipticals, and more
+                      </p>
                     </motion.div>
                   )}
                 </div>
@@ -244,7 +276,7 @@ const Fitness = ({}: Props) => {
                         ) : (
                           <ChevronDownIcon className="h-[1.2rem] pr-2 text-zinc-500 group-hover:text-zinc-400" />
                         )}
-                        <p className="scene-title text-[1.3rem] font-semibold pr-1">
+                        <p className="scene-title text-[1.3rem] font-semibold pr-1 ">
                           Personal Training/Group Classes
                         </p>
                       </div>
@@ -265,7 +297,7 @@ const Fitness = ({}: Props) => {
                         visible: { opacity: 1 },
                       }}
                     >
-                      <p className="w-2/3">
+                      <p className="w-2/3 text-gray-300">
                         Certified trainers, small group classes, flexible
                         scheduling
                       </p>

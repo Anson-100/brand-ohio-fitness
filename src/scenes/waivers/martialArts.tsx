@@ -24,7 +24,7 @@ type FormData = {
   signature: string | null // 👈 Added this field for the drawn signature
 }
 
-const Fitness: React.FC = () => {
+const martialArts: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -36,7 +36,7 @@ const Fitness: React.FC = () => {
   const [submissionStatus, setSubmissionStatus] = useState<
     "success" | "error" | null
   >(null)
-
+  const [signature, setSignature] = useState<string | null>(null)
   const onSubmit = async (data: FormData) => {
     try {
       setSubmissionStatus(null)
@@ -74,8 +74,6 @@ const Fitness: React.FC = () => {
       setSubmissionStatus("error")
     }
   }
-
-  const [signature, setSignature] = useState<string | null>(null)
 
   const clauseStyling =
     "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
@@ -623,4 +621,4 @@ const Fitness: React.FC = () => {
   )
 }
 
-export default Fitness
+export default martialArts

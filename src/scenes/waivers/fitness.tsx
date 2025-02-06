@@ -33,7 +33,8 @@ const Fitness: React.FC = () => {
   const [submissionStatus, setSubmissionStatus] = useState<
     "success" | "error" | null
   >(null)
-
+  const [signature, setSignature] = useState<string | null>(null)
+  // ONSUBMIT FUNCTION===============================================================================
   const onSubmit = async (data: FormData) => {
     try {
       setSubmissionStatus(null)
@@ -71,8 +72,6 @@ const Fitness: React.FC = () => {
       setSubmissionStatus("error")
     }
   }
-
-  const [signature, setSignature] = useState<string | null>(null)
 
   const clauseStyling =
     "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"

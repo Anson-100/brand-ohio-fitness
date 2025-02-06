@@ -28,28 +28,32 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
   return (
     <div className="flex flex-col items-center space-y-4">
       <h3 className="text-lg font-semibold">Sign Here</h3>
-      <div className="border-2 border-gray-300 rounded-md">
+      <div className="border border-gray-600 rounded-md">
         <SignatureCanvas
           ref={sigCanvas}
           penColor="black"
           canvasProps={{
             width: 400,
             height: 150,
-            style: { border: "2px solid black", backgroundColor: "white" },
+            style: {
+              backgroundColor: "#e5e7eb",
+              borderRadius: ".35rem",
+            },
           }}
-          onEnd={saveSignature} // Auto-save when user stops drawing
         />
       </div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 w-[400px] text-gray-100">
         <button
+          type="button" // ✅ Prevents form submission
           onClick={saveSignature}
-          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+          className="bg-green-700  px-4 py-2 rounded-md hover:bg-green-600 flex-1"
         >
           Save
         </button>
         <button
+          type="button" // ✅ Prevents form submission
           onClick={clearSignature}
-          className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+          className=" px-4 py-2 bg-gray-700 rounded-md hover:bg-gray-700 flex-1"
         >
           Clear
         </button>

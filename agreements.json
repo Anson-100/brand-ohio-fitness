@@ -1,6 +1,6 @@
 {
     
-    "fitness": [
+    "martialArts": [
       {
         "key": "assumptionOfRiskResponsibility",
         "title": "Assumption of Risk & Responsibility",
@@ -29,7 +29,7 @@
   
 
 
-    "martialArts": [
+    "fitness": [
       {
         "key": "assumptionOfRisk",
         "title": "Assumption of Risk",

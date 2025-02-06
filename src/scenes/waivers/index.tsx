@@ -39,8 +39,38 @@ const Waivers: React.FC = () => {
   return (
     <section
       id="waivers"
-      className="flex flex-col items-center min-h-[100svh] py-16 w-[90%] md:w-5/6  mx-auto"
+      className="flex flex-col items-center min-h-[100svh] py-16 w-[90%] md:w-5/6  mx-auto relative isolate"
     >
+      {/* BG DESIGN PATTERN================================== */}
+      <svg
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-zinc-950 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
+      >
+        <defs>
+          <pattern
+            x="50%"
+            y={-1}
+            id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84"
+            width={200}
+            height={200}
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M.5 200V.5H200" fill="none" />
+          </pattern>
+        </defs>
+        <svg x="50%" y={-1} className="overflow-visible fill-zinc-950">
+          <path
+            d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
+            strokeWidth={0}
+          />
+        </svg>
+        <rect
+          fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)"
+          width="100%"
+          height="100%"
+          strokeWidth={0}
+        />
+      </svg>
       <div className="mt-[10vh] mr-auto flex flex-col gap-6 text-gray-100 mb-8 md:mb-16">
         <motion.div
           className=""

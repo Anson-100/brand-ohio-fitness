@@ -1,16 +1,9 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb"
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
-import PDFDocument from "pdfkit"
-import fs from "fs"
 
-// Initialize AWS clients
+// Initialize AWS DynamoDB Client
 const dynamoClient = new DynamoDBClient({})
 const dynamoDB = DynamoDBDocumentClient.from(dynamoClient)
-const s3 = new S3Client({})
-
-// Bucket name
-const BUCKET_NAME = "gym-waivers"
 
 export const handler = async event => {
   try {
@@ -19,7 +12,7 @@ export const handler = async event => {
     const requestBody = JSON.parse(event.body)
     const waiverId = `waiver_${Date.now()}`
 
-    // Standardized structure for DynamoDB
+    // Constructing waiver item for DynamoDB
     const waiverItem = {
       waiverId,
       waiverType: requestBody.waiverType, // "fitness" or "martial_arts"
@@ -34,6 +27,7 @@ export const handler = async event => {
       emergencyContactPhone: requestBody.emergencyContactPhone,
       agreeToTerms: requestBody.agreeToTerms,
       typedSignature: requestBody.typedSignature,
+      signature: requestBody.signature, // Base64 encoded signature (saved for future use)
       waiverData: {}, // Holds waiver-specific fields
     }
 
@@ -67,7 +61,7 @@ export const handler = async event => {
     }
 
     console.log(
-      "Attempting to store in DynamoDB:",
+      "Storing waiver in DynamoDB:",
       JSON.stringify(waiverItem, null, 2)
     )
 
@@ -79,16 +73,6 @@ export const handler = async event => {
     )
 
     console.log("DynamoDB Put Response: Success")
-
-    // ✅ Generate PDF and Upload to S3
-    const pdfBuffer = await generatePDF(waiverItem)
-    await uploadToS3(
-      pdfBuffer,
-      waiverId,
-      requestBody.waiverType,
-      requestBody.firstName,
-      requestBody.lastName
-    )
 
     return {
       statusCode: 200,
@@ -117,60 +101,4 @@ export const handler = async event => {
       }),
     }
   }
-}
-
-// 🔹 Generate PDF from waiver data
-const generatePDF = async waiverData => {
-  return new Promise((resolve, reject) => {
-    const doc = new PDFDocument()
-    const buffers = []
-
-    doc.on("data", buffers.push.bind(buffers))
-    doc.on("end", () => {
-      resolve(Buffer.concat(buffers))
-    })
-
-    doc.fontSize(16).text("Liability Waiver", { align: "center" })
-    doc.moveDown()
-    doc.fontSize(12).text(`Waiver ID: ${waiverData.waiverId}`)
-    doc.text(`Type: ${waiverData.waiverType}`)
-    doc.text(`Name: ${waiverData.firstName} ${waiverData.lastName}`)
-    doc.text(`Email: ${waiverData.email}`)
-    doc.text(`Phone: ${waiverData.phone}`)
-    doc.text(`Date of Birth: ${waiverData.dateOfBirth}`)
-    doc.text(
-      `Emergency Contact: ${waiverData.emergencyContactName} (${waiverData.emergencyContactPhone})`
-    )
-    doc.text(`Agreement to Terms: ${waiverData.agreeToTerms ? "Yes" : "No"}`)
-
-    if (waiverData.typedSignature) {
-      doc.text(`Signed by: ${waiverData.typedSignature}`)
-    }
-
-    doc.end()
-  })
-}
-
-// 🔹 Upload PDF to S3
-const uploadToS3 = async (
-  pdfBuffer,
-  waiverId,
-  waiverType,
-  firstName,
-  lastName
-) => {
-  const fileName = `${
-    waiverType === "martial_arts" ? "MA" : "F"
-  }_${firstName}${lastName}_${waiverId}.pdf`
-
-  const params = {
-    Bucket: BUCKET_NAME,
-    Key: fileName,
-    Body: pdfBuffer,
-    ContentType: "application/pdf",
-  }
-
-  console.log(`Uploading PDF to S3: ${fileName}`)
-
-  await s3.send(new PutObjectCommand(params))
 }

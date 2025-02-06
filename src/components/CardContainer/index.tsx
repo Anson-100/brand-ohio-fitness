@@ -26,11 +26,24 @@ const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
             src={card.image}
             alt={card.title}
           />
-          <div className="absolute inset-0 flex flex-col justify-end items-center">
-            <div className="bg-zinc-950 bg-opacity-80 w-full backdrop-blur-sm p-2">
-              <p className="font-bold  text-gray-50">{card.title}</p>
-
-              <p className=" text-gray-400">{card.description}</p>
+          {/* PARENT==================== */}
+          <div className="absolute inset-0 flex flex-col justify-end">
+            <div className=" w-full p-2 flex flex-col ">
+              <div className="flex">
+                <div className="relative rounded-full flex bg-zinc-950 bg-opacity-70 backdrop-blur-sm px-3 py-1 text-sm/6 text-gray-100 ring-1 ring-white/10 mb-8 md:mb-0">
+                  <div>
+                    {card.title}{" "}
+                    <span aria-hidden="true" className="text-emerald-500">
+                      &rarr;
+                    </span>
+                  </div>
+                </div>{" "}
+              </div>
+              {/* DESCRIPTION STUFF========================= */}
+              <div className=" text-emerald-500 text-sm px-2">
+                <span aria-hidden="true" className="absolute inset-0" />
+                {card.description}
+              </div>
             </div>
           </div>
         </div>
