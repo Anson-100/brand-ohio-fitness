@@ -33,8 +33,8 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
           ref={sigCanvas}
           penColor="black"
           canvasProps={{
-            width: 400,
-            height: 150,
+            width: 300,
+            height: 200,
             style: {
               backgroundColor: "#e5e7eb",
               borderRadius: ".35rem",
@@ -42,7 +42,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
           }}
         />
       </div>
-      <div className="flex space-x-4 w-[400px] text-gray-100">
+      <div className="flex  gap-4 w-[300px] text-gray-100">
         <button
           type="button" // ✅ Prevents form submission
           onClick={saveSignature}

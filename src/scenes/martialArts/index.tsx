@@ -5,12 +5,7 @@ import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
-import {
-  ChevronDoubleDownIcon,
-  ChevronDownIcon,
-  PlusIcon,
-  MinusIcon,
-} from "@heroicons/react/24/solid"
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/solid"
 import kidsClassImg from "@/assets/kids-class-img.jpg"
 import mmaImg from "@/assets/mma-img.jpg"
 import bjjImg from "@/assets/bjj-img.jpg"
@@ -32,8 +27,8 @@ const MartialArts = ({ setSelectedPage }: Props) => {
   const boxMobileStyle =
     "bg-gradient-to-br from-zinc-800 to-zinc-900 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-md shadow-lg flex-col flex items-center items-center  rounded p-2"
 
-  const boxStyle =
-    "bg-gradient-to-br from-zinc-800 to-zinc-900 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-sm shadow-lg  flex items-center p-8"
+  // const boxStyle =
+  //   "bg-gradient-to-br from-zinc-800 to-zinc-900 border border-l-zinc-700 border-t-zinc-700 border-r-zinc-900 border-b-zinc-900 rounded-sm shadow-lg  flex items-center p-8"
   return (
     <section
       id="martialarts"

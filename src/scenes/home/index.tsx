@@ -5,7 +5,7 @@ import fbIcon from "@/assets/facebook.png"
 import useMediaQuery from "@/hooks/useMediaQuery"
 import { Link } from "react-router-dom"
 import Greeting from "./greeting"
-import { CheckCircleIcon } from "@heroicons/react/24/solid"
+// import { CheckCircleIcon } from "@heroicons/react/24/solid"
 
 import legPress from "@/assets/leg press2.jpg"
 // import heroImage from "@/assets/gym1.jpg"

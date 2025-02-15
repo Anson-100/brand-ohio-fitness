@@ -30,7 +30,7 @@ const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
           />
           {/* PARENT==================== */}
           <div className="absolute inset-0 flex flex-col justify-end">
-            <div className=" w-full p-2 flex flex-col ">
+            <div className=" w-full p-2 flex flex-col">
               <div className="flex">
                 <div className="relative rounded-full flex bg-zinc-950 bg-opacity-70 backdrop-blur-sm px-3 py-1 text-sm/6 text-gray-100 ring-1 ring-white/10 mb-8 md:mb-0">
                   <div className="flex gap-1 items-center">
@@ -43,9 +43,9 @@ const CardContainer: React.FC<CardContainerProps> = ({ cards }) => {
                 </div>{" "}
               </div>
               {/* DESCRIPTION STUFF========================= */}
-              <div className=" text-emerald-500 text-sm px-2">
+              {/* <div className=" text-gray-300 text-sm px-2">
                 {card.description}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

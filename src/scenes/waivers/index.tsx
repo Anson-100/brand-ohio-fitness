@@ -133,7 +133,7 @@ const Waivers: React.FC = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
-                  <p className="pb-4 pl-4 px-2">
+                  <p className="pb-4 ">
                     {typeof item.answer === "function"
                       ? item.answer()
                       : item.answer}

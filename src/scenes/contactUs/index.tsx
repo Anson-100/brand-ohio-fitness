@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 import iconMaps from "@/assets/iconMaps.png"
 import iconfb2 from "@/assets/2021_Facebook_icon.svg.png"
-import useMediaQuery from "@/hooks/useMediaQuery"
+// import useMediaQuery from "@/hooks/useMediaQuery"
 
 import {
   UsersIcon,

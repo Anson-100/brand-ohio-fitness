@@ -5,12 +5,7 @@ import useMediaQuery from "@/hooks/useMediaQuery"
 import Dropdown from "@/components/Dropdown"
 import DropdownMobile from "@/components/DropdownMobile"
 
-import {
-  ChevronDoubleDownIcon,
-  ChevronDownIcon,
-  PlusIcon,
-  MinusIcon,
-} from "@heroicons/react/24/solid"
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/solid"
 import weightsImg from "@/assets/weights-img.jpg"
 import cardioImg from "@/assets/cardio-img.jpg"
 import crossfitImg from "@/assets/crossfit-img.jpg"
