@@ -73,7 +73,7 @@ const Fitness: React.FC = () => {
     }
   }
 
-  const clauseStyling =
+  const policyStyling =
     "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
   const checkboxStyling = "w-5 h-5 accent-emerald-500 mr-2 cursor-pointer"
 
@@ -296,9 +296,9 @@ const Fitness: React.FC = () => {
             )}
           </div>
         </div>
-
-        {/* ASSUMPTION OF RISK CLAUSE */}
-        <div className={`${clauseStyling}`}>
+        {/* ============================================================================================== */}
+        {/* ASSUMPTION OF RISK policy */}
+        <div className={`${policyStyling}`}>
           <h2 className="text-lg font-semibold">Assumption of Risk</h2>
           <p className="mt-2 text-base">
             By using the facility, the participant acknowledges that they do so
@@ -313,12 +313,12 @@ const Fitness: React.FC = () => {
             <input
               type="checkbox"
               {...register("assumptionOfRisk", {
-                required: "You must accept this clause",
+                required: "You must accept this policy",
               })}
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Assumption of Risk clause.
+              I acknowledge and accept the Assumption of Risk policy.
             </label>
           </div>
           {errors.assumptionOfRisk && (
@@ -329,7 +329,7 @@ const Fitness: React.FC = () => {
         </div>
 
         {/* AWARENESS OF STRENUOUS ACTIVITY */}
-        <div className={`${clauseStyling}`}>
+        <div className={`${policyStyling}`}>
           <h2 className="text-lg font-semibold">
             Awareness of Strenuous Activity
           </h2>
@@ -344,13 +344,13 @@ const Fitness: React.FC = () => {
             <input
               type="checkbox"
               {...register("awarenessOfStrenuousActivity", {
-                required: "You must accept this clause",
+                required: "You must accept this policy",
               })}
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
               I acknowledge and accept the Awareness of Strenuous Activity
-              clause.
+              policy.
             </label>
           </div>
           {errors.awarenessOfStrenuousActivity && (
@@ -360,8 +360,8 @@ const Fitness: React.FC = () => {
           )}
         </div>
 
-        {/* RELEASE OF LIABILITY CLAUSE */}
-        <div className={`${clauseStyling}`}>
+        {/* RELEASE OF LIABILITY policy */}
+        <div className={`${policyStyling}`}>
           <h2 className="text-lg font-semibold">Release of Liability</h2>
           <p className="mt-2 text-base">
             In consideration for permission to enter and use the facilities at{" "}
@@ -377,12 +377,12 @@ const Fitness: React.FC = () => {
             <input
               type="checkbox"
               {...register("releaseOfLiability", {
-                required: "You must accept this clause",
+                required: "You must accept this policy",
               })}
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Release of Liability clause.
+              I acknowledge and accept the Release of Liability policy.
             </label>
           </div>
           {errors.releaseOfLiability && (
@@ -393,7 +393,7 @@ const Fitness: React.FC = () => {
         </div>
 
         {/* UNAUTHORIZED ACCESS POLICY */}
-        <div className={`${clauseStyling}`}>
+        <div className={`${policyStyling}`}>
           <h2 className="text-lg font-semibold">Unauthorized Access Policy</h2>
           <p className="mt-2 text-base">
             Members may not bring guests, share scan cards, or let others in
@@ -406,7 +406,7 @@ const Fitness: React.FC = () => {
             <input
               type="checkbox"
               {...register("unauthorizedAccess", {
-                required: "You must accept this clause",
+                required: "You must accept this policy",
               })}
               className={`${checkboxStyling}`}
             />

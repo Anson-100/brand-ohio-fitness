@@ -1,5 +1,9 @@
 import { useState } from "react"
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/solid"
 
 // Define the structure of a slide's data
 type Slide = {
@@ -58,7 +62,7 @@ const Carousel = ({ slides }: CarouselProps) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="viewport overflow-hidden m-auto h-full  relative">
+      <div className="viewport overflow-hidden m-auto h-full rounded-sm relative w-full xs:w-5/6 sm:w-2/3 ">
         {currentSlide > 0 && (
           <ArrowLeftIcon
             className="w-10 h-10 text-black bg-white rounded-full bg-opacity-50 hover:cursor-pointer z-10 absolute top-1/2 left-2 transform -translate-y-1/2"
@@ -75,15 +79,19 @@ const Carousel = ({ slides }: CarouselProps) => {
               className="slide flex-shrink-0 w-full h-full relative"
             >
               <img
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
                 src={slide.image}
                 alt={slide.alt}
               />
-              <div className="absolute inset-0 flex flex-col justify-end items-center">
-                <div className="bg-zinc-950 p-2 bg-opacity-60 backdrop-blur-sm w-full ">
-                  <h2 className="text-lg text-gray-100 font-bold">
-                    {slide.title}
-                  </h2>
+              <div className="absolute inset-0 flex flex-col justify-end items-start p-2">
+                <div className="relative rounded-full flex bg-zinc-950 bg-opacity-70 backdrop-blur-sm px-3 py-1 text-sm/6 text-gray-100 ring-1 ring-white/10 md:mb-0">
+                  <div className="flex items-center gap-1">
+                    <CheckCircleIcon className="h-5 text-emerald-theme" />
+                    {slide.title}{" "}
+                    {/* <span aria-hidden="true" className="text-emerald-500">
+                      &rarr;
+                    </span> */}
+                  </div>{" "}
                   <p className="text-gray-400 text-center">
                     {slide.description}
                   </p>

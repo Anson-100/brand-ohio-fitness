@@ -10,7 +10,7 @@ export default {
         lime: "#2bd410",
         "emerald-theme": "#059669",
         "zinc-theme": "#a1a1aa",
-        "gray-500": "#5E0000",
+
         "primary-100": "#FFE1E0",
         "primary-300": "#FFA6A3",
         "primary-500": "#FF6B66",

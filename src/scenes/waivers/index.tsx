@@ -39,7 +39,7 @@ const Waivers: React.FC = () => {
   return (
     <section
       id="waivers"
-      className="flex flex-col items-center min-h-[100svh] py-16 w-[90%] md:w-5/6  mx-auto relative isolate"
+      className="flex flex-col items-center min-h-[100svh] py-16 w-[90%] md:w-5/6 mx-auto relative isolate overflow-hidden"
     >
       {/* BG DESIGN PATTERN================================== */}
       <svg
@@ -72,7 +72,7 @@ const Waivers: React.FC = () => {
         />
       </svg>
       <div className="mt-[10vh] mr-auto flex flex-col gap-6 text-gray-100 mb-8 md:mb-16">
-        <motion.div
+        {/* <motion.div
           className=""
           initial="hidden"
           whileInView="visible"
@@ -82,11 +82,10 @@ const Waivers: React.FC = () => {
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-        >
-          <p className="md:text-[2rem] text-[1.5rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
-            Waivers
-          </p>
-        </motion.div>
+        ></motion.div> */}
+        <p className="md:text-[2rem] text-[1.5rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
+          Waivers
+        </p>
 
         <motion.div
           className="text-gray-200 text-base lg:text-lg"

@@ -6,7 +6,7 @@ import LinkMobile from "./LinkMobile"
 import LogoLink from "@/components/LogoLink"
 
 import {
-  Bars3Icon,
+  Bars2Icon,
   XMarkIcon,
   HomeIcon,
   FireIcon,
@@ -68,9 +68,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage(SelectedPage.Home)
                     sessionStorage.setItem("selectedPage", "home")
                   }}
-                  className="py-[10px] px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-zinc-300 hover:text-zinc-100"
+                  className="flex gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-zinc-300 hover:text-zinc-100"
                 >
-                  Home
+                  <div className="font-semibold text-emerald-500">
+                    <span aria-hidden="true">&larr;</span>
+                  </div>
+                  Home{" "}
                 </Link>
               </div>
             ) : isAboveMediumScreens ? (
@@ -105,21 +108,24 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     onClick={() => {
                       sessionStorage.setItem("selectedPage", "waivers")
                     }}
-                    className="py-2 px-4 m-2 bg-yellow-800 hover:bg-yellow-700 rounded-md  text-zinc-300 hover:text-zinc-100"
+                    className="flex gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md border border-emerald-theme"
                   >
                     Waivers
+                    <div className="font-semibold text-emerald-500">
+                      <span aria-hidden="true">&rarr;</span>
+                    </div>
                   </Link>
                 </div>
               </div>
             ) : (
               <button
-                className="rounded-full bg-zinc-300 p-2"
+                className="rounded-full p-2"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 {!isMenuToggled ? (
-                  <Bars3Icon className="w-6 text-zinc-900" />
+                  <Bars2Icon className="w-6 text-gray-400" />
                 ) : (
-                  <XMarkIcon className="w-6 text-zinc-900" />
+                  <XMarkIcon className="w-6 text-gray-400" />
                 )}
               </button>
             )}
@@ -191,10 +197,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     sessionStorage.setItem("selectedPage", "waivers")
                     setIsMenuToggled(false)
                   }}
-                  className="py-8 px-4 bg-yellow-800 w-full pl-10 flex items-center rounded-bl-md text-zinc-300"
+                  className="py-8 px-4 w-full pl-10 bg-zinc-700 flex items-center rounded-bl-md text-gray-300"
                 >
-                  <DocumentTextIcon className="h-6 w-6 mr-4" />
-                  <p>Waivers</p>
+                  <DocumentTextIcon className="h-6 w-6 mr-4 text-gray-300" />
+                  <p>
+                    Waivers <span className="text-emerald-theme">&rarr;</span>
+                  </p>
                 </Link>
               </>
             )}

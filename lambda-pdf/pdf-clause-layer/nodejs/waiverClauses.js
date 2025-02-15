@@ -5,26 +5,26 @@ const fitnessClauses = [
     key: "assumptionOfRisk",
     title: "Assumption of Risk",
     text: "By using the facility, the participant acknowledges that they do so at their own risk. The participant waives any claims for injury, damage, loss, or theft of property related to the use of any area within the facility, including parking areas. Additionally, the participant assumes full responsibility for any injuries or losses sustained by themselves, their guests, or family members while using the facility.",
-    acknowledgment: "I acknowledge and accept the Assumption of Risk clause.",
+    acknowledgment: "I acknowledge and accept the Assumption of Risk policy.",
   },
   {
     key: "awarenessOfStrenuousActivity",
     title: "Awareness of Strenuous Activity",
     text: "The participant acknowledges and understands that activities such as weight training, aerobics, cardiovascular training, and martial arts involve inherent risks. These activities may pose hazards to certain individuals and could result in injury to themselves, other members, or guests.",
     acknowledgment:
-      "I acknowledge and accept the Awareness of Strenuous Activity clause.",
+      "I acknowledge and accept the Awareness of Strenuous Activity policy.",
   },
   {
     key: "releaseOfLiability",
     title: "Release of Liability",
     text: "In consideration for permission to enter and use the facilities at Ohio Fitness and IT Martial Arts Center, the participant assumes all risks of injury while on the premises. The participant further agrees to release and not pursue legal action against Ohio Fitness and IT Martial Arts Center, its agents, employees, associates, or any affiliated parties for any claims, damages, costs, or causes of action that may arise from injuries or damages sustained while on the premises.",
-    acknowledgment: "I acknowledge and accept the Release of Liability clause.",
+    acknowledgment: "I acknowledge and accept the Release of Liability policy.",
   },
   {
     key: "unauthorizedAccess",
     title: "Unauthorized Access Policy",
     text: "Members may not bring guests, share scan cards, or let others in without written consent from the facility (via our Facebook business page). Violations will result in a one-day visit fee and may lead to membership suspension or cancellation.",
-    acknowledgment: "I acknowledge and accept the Unauthorized Access Policy.",
+    acknowledgment: "I acknowledge and accept the Unauthorized Access policy.",
   },
 ]
 

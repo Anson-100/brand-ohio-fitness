@@ -28,10 +28,10 @@ const LinkMobile = ({
 
   return (
     <AnchorLink
-      className={`py-8 px-4 border-b-[3px] w-5/6 flex items-center ${
+      className={`py-8 px-4 border-b-[1px] w-5/6 flex items-center ${
         selectedPage === lowerCasePage
-          ? " border-b-[3px] border-emerald-theme"
-          : "text-zinc-300 border-transparent hover:border-zinc-700"
+          ? " border-b-[1px] border-emerald-theme text-gray-50"
+          : "text-gray-400 border-transparent hover:border-zinc-700"
       }`}
       href={`#${lowerCasePage}`}
       onClick={handleClick}

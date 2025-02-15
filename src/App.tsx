@@ -47,16 +47,15 @@ function App() {
             element={
               <>
                 <Home setSelectedPage={setSelectedPage} />
-                <LineGradient />
                 <Fitness setSelectedPage={setSelectedPage} />
-                <LineGradient />
-
                 <MartialArts setSelectedPage={setSelectedPage} />
                 <LineGradient />
-
                 <ContactUs setSelectedPage={setSelectedPage} />
 
-                <Footer setSelectedPage={setSelectedPage} />
+                <Footer
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
               </>
             }
           />
