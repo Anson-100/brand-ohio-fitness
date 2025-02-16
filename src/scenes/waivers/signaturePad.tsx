@@ -34,7 +34,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
           penColor="black"
           canvasProps={{
             width: 300,
-            height: 200,
+            height: 175,
             style: {
               backgroundColor: "#e5e7eb",
               borderRadius: ".35rem",
@@ -46,7 +46,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
         <button
           type="button" // ✅ Prevents form submission
           onClick={saveSignature}
-          className="bg-green-700  px-4 py-2 rounded-md hover:bg-green-600 flex-1"
+          className="bg-emerald-800 font-semibold px-4 py-2 rounded-md text-gray-100 flex-1"
         >
           Save
         </button>
@@ -58,7 +58,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
           Clear
         </button>
       </div>
-      {isSigned && <p className="text-sm text-green-600">Signature saved!</p>}
+      {isSigned && <p className="text-sm text-emerald-400">Signature saved!</p>}
     </div>
   )
 }

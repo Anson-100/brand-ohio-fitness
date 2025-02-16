@@ -135,9 +135,9 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                     href="https://maps.app.goo.gl/v3i3PgJ8XBt68VfS8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-2 py-1 px-2 "
+                    className="group flex items-center justify-between gap-2 py-1 px-2 bg-zinc-800 hover:bg-zinc-700  rounded"
                   >
-                    <div className="group flex items-center justify-center gap-2 bg-zinc-700 w-9 md:w-12 rounded-full p-2">
+                    <div className="group flex items-center justify-center gap-2  rounded-full ">
                       <img
                         src={iconMaps}
                         alt="Google Maps Icon"
@@ -181,7 +181,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                       href="https://www.facebook.com/ofma5425"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 bg-zinc-700  rounded-full p-2"
+                      className="group flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 rounded-full p-2"
                     >
                       <img
                         src={iconfb2}

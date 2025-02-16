@@ -79,7 +79,7 @@ const Home = ({ setSelectedPage }: Props) => {
                 </Link>
               </div>
               <motion.div
-                className="text-gray-100 text-[3.4rem] md:text-[3.5rem] lg:text-[4rem] flex flex-col  sm:gap-3 md:gap-0 md:flex-col  md:mb-0"
+                className="text-gray-100 text-[3.3rem] md:text-[3.5rem] lg:text-[4rem] flex flex-col  sm:gap-3 md:gap-0 md:flex-col  md:mb-0"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}

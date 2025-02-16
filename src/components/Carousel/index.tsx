@@ -65,7 +65,7 @@ const Carousel = ({ slides }: CarouselProps) => {
       <div className="viewport overflow-hidden m-auto h-full rounded-sm relative w-full xs:w-5/6 sm:w-2/3 ">
         {currentSlide > 0 && (
           <ArrowLeftIcon
-            className="w-10 h-10 text-black bg-white rounded-full bg-opacity-50 hover:cursor-pointer z-10 absolute top-1/2 left-2 transform -translate-y-1/2"
+            className="w-8 h-8 text-gray-700 bg-gray-200 rounded-full bg-opacity-30 hover:cursor-pointer z-10 absolute top-1/2 left-2 transform -translate-y-1/2"
             onClick={goToPrevSlide}
           />
         )}
@@ -102,7 +102,7 @@ const Carousel = ({ slides }: CarouselProps) => {
         </div>
         {currentSlide < totalSlides - 1 && (
           <ArrowRightIcon
-            className="w-10 h-10 text-black bg-white rounded-full bg-opacity-50 hover:cursor-pointer z-10 absolute top-1/2 right-2 transform -translate-y-1/2"
+            className="w-8 h-8 text-gray-700 bg-gray-200 rounded-full bg-opacity-30 hover:cursor-pointer z-10 absolute top-1/2 right-2 transform -translate-y-1/2"
             onClick={goToNextSlide}
           />
         )}

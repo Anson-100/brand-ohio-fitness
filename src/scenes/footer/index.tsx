@@ -7,7 +7,7 @@ import ITLogo from "@/assets/it logo (nr).png"
 
 import IconFB from "@/assets/IconFB.svg"
 import IconInsta from "@/assets/IconInsta.svg"
-import IconTikTok from "@/assets/IconTikTok.svg"
+// import IconTikTok from "@/assets/IconTikTok.svg"
 import IconYT from "@/assets/IconYT.svg"
 
 type Props = {
@@ -55,16 +55,16 @@ const Footer = ({ selectedPage, setSelectedPage }: Props) => {
                     className="w-8 h-8 hover:cursor-pointer"
                   />
                 </span>
-                <span className="opacity-80 hover:opacity-100">
+                {/* <span className="opacity-80 hover:opacity-100">
                   <img
                     src={IconTikTok}
                     alt="TikTok"
                     className="w-8 h-8 hover:cursor-pointer"
                   />
-                </span>
+                </span> */}
               </div>
             </div>
-            <div className="h-28 w-[1px] bg-zinc-800"></div>
+            <div className="h-24 w-[1px] bg-zinc-800"></div>
             <div className="flex gap-4 items-center justify-center">
               <div className="flex flex-col gap-4">
                 <LinkFooter
@@ -88,9 +88,12 @@ const Footer = ({ selectedPage, setSelectedPage }: Props) => {
                   onClick={() => {
                     sessionStorage.setItem("selectedPage", "waivers")
                   }}
-                  className=" text-gray-200 hover:underline"
+                  className=" text-gray-200 hover:underline flex items-center justify-center"
                 >
-                  Waivers<span className="ml-1 text-emerald-theme">&rarr;</span>
+                  Waivers
+                  <span className="ml-1 text-emerald-theme text-lg">
+                    &rarr;
+                  </span>
                 </Link>
               </div>
             </div>

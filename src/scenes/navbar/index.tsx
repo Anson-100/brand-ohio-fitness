@@ -68,10 +68,10 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage(SelectedPage.Home)
                     sessionStorage.setItem("selectedPage", "home")
                   }}
-                  className="flex gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-zinc-300 hover:text-zinc-100"
+                  className="flex items-center justify-center gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-zinc-300 hover:text-zinc-100"
                 >
-                  <div className="font-semibold text-emerald-500">
-                    <span aria-hidden="true">&larr;</span>
+                  <div className="font-semibold text-emerald-500 text-lg">
+                    &larr;
                   </div>
                   Home{" "}
                 </Link>
@@ -108,11 +108,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     onClick={() => {
                       sessionStorage.setItem("selectedPage", "waivers")
                     }}
-                    className="flex gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md border border-emerald-theme"
+                    className="flex items-center justify-center gap-2 py-2 px-4 m-2 bg-zinc-800 hover:bg-zinc-700 rounded-md border border-emerald-theme"
                   >
                     Waivers
-                    <div className="font-semibold text-emerald-500">
-                      <span aria-hidden="true">&rarr;</span>
+                    <div className="font-semibold text-emerald-500 text-lg">
+                      &rarr;
                     </div>
                   </Link>
                 </div>
@@ -201,7 +201,8 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 >
                   <DocumentTextIcon className="h-6 w-6 mr-4 text-gray-300" />
                   <p>
-                    Waivers <span className="text-emerald-theme">&rarr;</span>
+                    Waivers{" "}
+                    <span className="text-emerald-theme text-lg">&rarr;</span>
                   </p>
                 </Link>
               </>

@@ -83,7 +83,7 @@ const martialArts: React.FC = () => {
     <section className="flex justify-center items-center rounded-lg bg-gray-900 text-white sm:py-12">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-4xl bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg space-y-6"
+        className="w-full max-w-4xl bg-gray-800 p-4 sm:p-8 rounded-lg shadow-lg space-y-6"
       >
         <h2 className="text-3xl font-bold mb-4 text-center">
           Martial Arts Liability Waiver
