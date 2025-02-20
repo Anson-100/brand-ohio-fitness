@@ -46,7 +46,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onSave }) => {
         <button
           type="button" // ✅ Prevents form submission
           onClick={saveSignature}
-          className="bg-emerald-800 font-semibold px-4 py-2 rounded-md text-gray-100 flex-1"
+          className="bg-emerald-700 font-semibold px-4 py-2 rounded-md text-gray-100 flex-1"
         >
           Save
         </button>

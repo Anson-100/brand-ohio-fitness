@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import SignaturePad from "./signaturePad"
+import { WaiverClause, martialArtsClauses } from "./waiverClauses"
 
 type FormData = {
   waiverType: string
@@ -13,6 +14,8 @@ type FormData = {
   childFirstName?: string
   childLastName?: string
   childDateOfBirth?: string
+  relationshipToChild?: string // New field for relationship to the child
+  otherRelationship?: string // Optional field if "Other" is selected
   emergencyContactName: string
   emergencyContactPhone: string
   assumptionOfRiskResponsibility: boolean
@@ -37,6 +40,7 @@ const martialArts: React.FC = () => {
     "success" | "error" | null
   >(null)
   const [signature, setSignature] = useState<string | null>(null)
+
   const onSubmit = async (data: FormData) => {
     try {
       setSubmissionStatus(null)
@@ -50,8 +54,13 @@ const martialArts: React.FC = () => {
       const requestData = {
         ...data,
         waiverType: data.waiverType || "martial_arts",
-        typedSignature: data.typedSignature, // 👈 Include this
-        signature, // 👈 Ensure drawn signature is included in payload
+        typedSignature: data.typedSignature,
+        signature,
+        // 🆕 Handle "Other" relationship scenario
+        relationshipToChild:
+          data.relationshipToChild === "Other"
+            ? data.otherRelationship || "Other"
+            : data.relationshipToChild,
       }
 
       const response = await fetch(
@@ -74,6 +83,17 @@ const martialArts: React.FC = () => {
       setSubmissionStatus("error")
     }
   }
+
+  // Extract individual clauses for manual use in JSX
+  const {
+    assumptionOfRiskResponsibility,
+    medicalTreatmentEmergencyCare,
+    liabilityWaiverIndemnification,
+    consentInstructionRules,
+  } = martialArtsClauses.reduce<Record<string, WaiverClause>>((acc, clause) => {
+    acc[clause.key] = clause
+    return acc
+  }, {})
 
   const clauseStyling =
     "p-4 flex flex-col gap-2 rounded-lg shadow-lg bg-gray-300 text-gray-900"
@@ -235,12 +255,24 @@ const martialArts: React.FC = () => {
             <label className="block mb-2 text-sm font-medium">
               Emergency Contact Name
             </label>
-            <input
-              type="text"
-              {...register("emergencyContactName", {
+            <Controller
+              name="emergencyContactName"
+              control={control}
+              rules={{
                 required: "Emergency contact name is required",
-              })}
-              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                pattern: {
+                  value: /^[a-zA-Z]+ [a-zA-Z]+$/,
+                  message: "Please enter a valid first and last name",
+                },
+              }}
+              render={({ field }) => (
+                <input
+                  type="text"
+                  {...field}
+                  placeholder="John Doe"
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+              )}
             />
             {errors.emergencyContactName && (
               <p className="text-red-500 text-sm">
@@ -297,7 +329,7 @@ const martialArts: React.FC = () => {
             )}
           </div>
         </div>
-        {/* Checkbox for Signing on Behalf of a Child */}
+        {/* Checkbox for Signing on Behalf of a Child ===================================================================*/}
         <div className="mt-4 flex items-center">
           <input
             type="checkbox"
@@ -393,24 +425,64 @@ const martialArts: React.FC = () => {
                 </p>
               )}
             </div>
+            {/* Relationship to Child */}
+            <div className="flex-1">
+              <label className="block mb-2 text-sm font-medium">
+                Relationship to Child
+              </label>
+              <select
+                {...register("relationshipToChild", {
+                  required: "Please specify your relationship to the child",
+                })}
+                className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+              >
+                <option value="">Select Relationship</option>
+                <option value="Parent">Parent</option>
+                <option value="Legal Guardian">Legal Guardian</option>
+                <option value="Relative">Relative</option>
+                <option value="Other">Other</option>
+              </select>
+              {errors.relationshipToChild && (
+                <p className="text-red-500 text-sm">
+                  {errors.relationshipToChild.message}
+                </p>
+              )}
+            </div>
+
+            {/* Conditional Text Field for "Other" */}
+            {watch("relationshipToChild") === "Other" && (
+              <div className="flex-1">
+                <label className="block mb-2 text-sm font-medium">
+                  Specify Relationship
+                </label>
+                <input
+                  type="text"
+                  {...register("otherRelationship", {
+                    required: "Please specify your relationship to the child",
+                  })}
+                  placeholder="Specify Relationship"
+                  className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-emerald-500"
+                />
+                {errors.otherRelationship && (
+                  <p className="text-red-500 text-sm">
+                    {errors.otherRelationship.message}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         )}
+        {/* =============================================================== */}
+        {/* =============================================================== */}
+        {/* =============================================================== */}
 
         {/* ASSUMPTION OF RISK & RESPONSIBILITY */}
         <div className={`${clauseStyling}`}>
           <h2 className="text-lg font-semibold">
-            Assumption of Risk & Responsibility
+            {assumptionOfRiskResponsibility.title}
           </h2>
           <p className="mt-2 text-base">
-            By signing this waiver, I acknowledge that I, or my child, will be
-            participating in martial arts training, which involves physical
-            contact and carries risks, including soreness, bruises, strains, and
-            potentially serious injuries. I understand that safety is my
-            responsibility, and I will ensure that I, or my child, train with
-            awareness of personal limits, follow instructions from instructors,
-            and withdraw from any exercise that feels unsafe. I acknowledge that
-            I, or my child, have the right to withdraw from training at any time
-            if there is any concern for safety or well-being.
+            {assumptionOfRiskResponsibility.text}
           </p>
           <div className="mt-3 flex items-center">
             <input
@@ -421,8 +493,7 @@ const martialArts: React.FC = () => {
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Assumption of Risk & Responsibility
-              policy.
+              {assumptionOfRiskResponsibility.acknowledgment}
             </label>
           </div>
           {errors.assumptionOfRiskResponsibility && (
@@ -435,17 +506,9 @@ const martialArts: React.FC = () => {
         {/* MEDICAL TREATMENT & EMERGENCY CARE */}
         <div className={`${clauseStyling}`}>
           <h2 className="text-lg font-semibold">
-            Medical Treatment & Emergency Care
+            {medicalTreatmentEmergencyCare.title}
           </h2>
-          <p className="mt-2 text-base">
-            In the event of an injury, I authorize Ohio Fitness & IT Martial
-            Arts Center LLC and its instructors to seek emergency medical
-            treatment for me or my child. I understand that I am responsible for
-            all medical costs incurred. Instructors may provide basic first aid
-            if necessary. I have disclosed any relevant medical conditions or
-            allergies that could affect my or my child's ability to participate
-            safely.
-          </p>
+          <p className="mt-2 text-base">{medicalTreatmentEmergencyCare.text}</p>
           <div className="mt-3 flex items-center">
             <input
               type="checkbox"
@@ -455,8 +518,7 @@ const martialArts: React.FC = () => {
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Medical Treatment & Emergency Care
-              policy.
+              {medicalTreatmentEmergencyCare.acknowledgment}
             </label>
           </div>
           {errors.medicalTreatmentEmergencyCare && (
@@ -469,24 +531,10 @@ const martialArts: React.FC = () => {
         {/* LIABILITY WAIVER & INDEMNIFICATION */}
         <div className={`${clauseStyling}`}>
           <h2 className="text-lg font-semibold">
-            Liability Waiver & Indemnification
+            {liabilityWaiverIndemnification.title}
           </h2>
           <p className="mt-2 text-base">
-            I voluntarily assume all risks associated with participation in
-            martial arts training for myself or my child and release Ohio
-            Fitness & IT Martial Arts Center LLC, its instructors, staff, and
-            affiliates from any claims, injuries, or damages that may arise,
-            except in cases of criminal conduct. I understand that neither I nor
-            my child may hold the facility, instructors, or staff responsible
-            for injuries, accidents, or losses incurred during training or while
-            on the premises. If signing on behalf of a minor, I agree that I
-            will not pursue legal claims against the school, its instructors, or
-            its affiliates on behalf of my child, except in cases of criminal
-            conduct. Any disputes related to this waiver shall be resolved
-            through binding arbitration. If any clause in this agreement is
-            found to be invalid, the remainder shall remain in full effect. This
-            waiver applies indefinitely, including any past training before
-            signing.
+            {liabilityWaiverIndemnification.text}
           </p>
           <div className="mt-3 flex items-center">
             <input
@@ -497,8 +545,7 @@ const martialArts: React.FC = () => {
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Liability Waiver & Indemnification
-              policy.
+              {liabilityWaiverIndemnification.acknowledgment}
             </label>
           </div>
           {errors.liabilityWaiverIndemnification && (
@@ -511,19 +558,9 @@ const martialArts: React.FC = () => {
         {/* CONSENT TO INSTRUCTION & RULES */}
         <div className={`${clauseStyling}`}>
           <h2 className="text-lg font-semibold">
-            Consent to Instruction & Rules
+            {consentInstructionRules.title}
           </h2>
-          <p className="mt-2 text-base">
-            I consent to instruction for myself or my child from any qualified
-            instructor or assistant at Ohio Fitness & IT Martial Arts Center
-            LLC. I understand that martial arts training involves physical
-            contact, including partner drills, sparring, and grappling. I, or my
-            child, must follow all safety rules and conduct ourselves
-            respectfully during training. If I observe any unsafe behavior or
-            equipment issues, I will report it immediately. I understand and
-            agree that failure to follow rules may result in temporary or
-            permanent removal from training.
-          </p>
+          <p className="mt-2 text-base">{consentInstructionRules.text}</p>
           <div className="mt-3 flex items-center">
             <input
               type="checkbox"
@@ -533,8 +570,7 @@ const martialArts: React.FC = () => {
               className={`${checkboxStyling}`}
             />
             <label className="text-sm">
-              I acknowledge and accept the Consent to Instruction & Rules
-              policy.
+              {consentInstructionRules.acknowledgment}
             </label>
           </div>
           {errors.consentInstructionRules && (
@@ -543,6 +579,10 @@ const martialArts: React.FC = () => {
             </p>
           )}
         </div>
+
+        {/* =============================================================== */}
+        {/* =============================================================== */}
+        {/* =============================================================== */}
 
         {/* Terms Agreement Section */}
         <div className="space-y-3">

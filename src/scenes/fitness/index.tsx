@@ -78,9 +78,9 @@ const Fitness = ({ setSelectedPage }: Props) => {
                     visible: { opacity: 1, x: 0 },
                   }}
                 >
-                  <p className=" text-[2rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
+                  <h1 className=" text-[2rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
                     Fitness
-                  </p>
+                  </h1>
                 </motion.div>
 
                 <motion.div
@@ -330,9 +330,9 @@ const Fitness = ({ setSelectedPage }: Props) => {
               {/* MOBILE SECTION=============================================================================================================*/}
               <div className="flex items-center  mb-8  mx-auto">
                 {" "}
-                <p className="font-bold text-gray-100 text-[1.5rem] border-b-[1px] border-emerald-theme pb-2">
+                <h1 className="font-bold text-gray-100 text-[1.5rem] border-b-[1px] border-emerald-theme pb-2">
                   Fitness
-                </p>
+                </h1>
               </div>
 
               {/* MOBILE FITNESS INFO ============================================================*/}

@@ -150,11 +150,11 @@ const Home = ({ setSelectedPage }: Props) => {
               </div>
             </div>
             {/* IMAGE=============================================== */}
-            <div className="flex md:justify-end w-[95%] md:w-5/6 lg:w-1/2 mt-16 lg:mt-0 sm:hidden md:flex">
+            <div className="flex md:justify-end w-[95%] md:w-5/6 lg:w-1/2 lg:mt-0 sm:hidden md:flex">
               <img
                 src={legPress}
                 alt=""
-                className="shadow-zinc  md:max-h-[30rem] rounded-md"
+                className="shadow-zinc  md:max-h-[26rem] ml:max-h-[30rem] rounded-md"
               />
             </div>
           </div>
@@ -216,7 +216,7 @@ const Home = ({ setSelectedPage }: Props) => {
                   className="flex justify-center py-3 gap-1 items-center font-montserrat bg-zinc-800 bg-opacity-40 hover:bg-opacity-100 text-gray-50 active:translate-y-[1px] active:translate-x-[1px]  rounded-md group border border-zinc-300/20"
                 >
                   Fill out a waiver online{" "}
-                  <span className="text-emerald-theme">&rarr;</span>
+                  <span className="text-emerald-theme text-lg">&rarr;</span>
                 </Link>{" "}
                 <a
                   href="https://www.facebook.com/ofma5425"

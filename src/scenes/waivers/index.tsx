@@ -83,9 +83,11 @@ const Waivers: React.FC = () => {
             visible: { opacity: 1, x: 0 },
           }}
         ></motion.div> */}
-        <p className="md:text-[2rem] text-[1.5rem] border-b-[1px] border-emerald-theme pb-2 font-bold inline-block">
-          Waivers
-        </p>
+        <div className="flex">
+          <h1 className="scene-title md:text-[2rem] text-[1.5rem] font-bold inline-block border-b-[1px] border-emerald-theme pb-2">
+            Waivers
+          </h1>
+        </div>
 
         <motion.div
           className="text-gray-200 text-base lg:text-lg"
@@ -110,7 +112,7 @@ const Waivers: React.FC = () => {
           <div key={item.id} className="flex flex-col">
             <button
               onClick={() => toggleOpen(item.id)}
-              className="flex items-center justify-between w-full text-left py-6 px-4"
+              className="flex items-center justify-between w-full text-left py-6 px-2"
             >
               <span
                 className={`${
