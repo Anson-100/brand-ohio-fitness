@@ -15,6 +15,8 @@ import {
   DocumentTextIcon,
 } from "@heroicons/react/24/solid"
 
+import { PhoneIcon } from "@heroicons/react/24/outline"
+
 import { SelectedPage } from "@/shared/types"
 import useMediaQuery from "@/hooks/useMediaQuery"
 
@@ -53,7 +55,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
       <div
         className={`${navbarBackground} ${flexBetween} fixed border-t-[5px] border-t-zinc-700 top-0 z-30 w-full max-w-full border-b-[1px] border-zinc-700 backdrop-blur-md bg-opacity-80 h-[4.5rem]`}
       >
-        <div className={`${flexBetween} mx-auto w-5/6`}>
+        <div className={`${flexBetween} mx-auto w-full px-4 sm:px-0 sm:w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
             <LogoLink />
@@ -118,16 +120,24 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 </div>
               </div>
             ) : (
-              <button
-                className="rounded-full p-2"
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
-              >
-                {!isMenuToggled ? (
-                  <Bars2Icon className="w-6 text-gray-400" />
-                ) : (
-                  <XMarkIcon className="w-6 text-gray-400" />
-                )}
-              </button>
+              <div className="flex items-center justify-center">
+                <a
+                  href="tel:+9375995425"
+                  className="flex items-center gap-2 px-4 py-2 text-gray-400"
+                >
+                  <PhoneIcon className="w-6 h-6" />
+                </a>
+                <button
+                  className="rounded-full p-2"
+                  onClick={() => setIsMenuToggled(!isMenuToggled)}
+                >
+                  {!isMenuToggled ? (
+                    <Bars2Icon className="w-6 text-gray-400" />
+                  ) : (
+                    <XMarkIcon className="w-6 text-gray-400" />
+                  )}
+                </button>
+              </div>
             )}
           </div>
         </div>

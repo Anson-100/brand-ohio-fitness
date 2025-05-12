@@ -27,7 +27,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
   return (
     <section
       id="contactus"
-      className="min-h-[100vsh] relative isolate overflow-hidden"
+      className="min-h-full relative isolate overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.ContactUs)}
@@ -135,7 +135,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                     href="https://maps.app.goo.gl/v3i3PgJ8XBt68VfS8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-2 py-1 px-2 bg-zinc-700 hover:bg-zinc-600  rounded"
+                    className="group flex items-center justify-between gap-2 underline rounded"
                   >
                     <div className="group flex items-center justify-center gap-2  rounded-full ">
                       <img
@@ -176,18 +176,19 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                       Contact Info
                     </p>
                   </div>
-                  <div className="flex flex-col  items-center gap-3">
+                  <div className="flex flex-col text-sm sm:text-base items-center gap-5">
                     {" "}
                     <a
                       href="https://www.facebook.com/ofma5425"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-2 bg-zinc-700 hover:bg-zinc-600 rounded-full p-2"
+                      className="group flex items-center underline"
                     >
+                      message on
                       <img
                         src={iconfb2}
                         alt="Facebook"
-                        className="rounded-full h-5 md:h-8 "
+                        className="rounded-full ml-1 h-5 md:h-8 "
                       />
                     </a>
                     <p className="hidden sm:inline text-sm sm:text-base">
@@ -195,7 +196,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                     </p>
                     <a
                       href="tel:9375995425"
-                      className="text-sm sm:text-base bg-zinc-700 py-1 px-2 rounded hover:bg-zinc-600 sm:hidden"
+                      className="text-sm sm:text-base underline sm:hidden"
                     >
                       (937) 599-5425
                     </a>
